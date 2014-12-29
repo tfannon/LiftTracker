@@ -1,0 +1,465 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132AC1A50B06B0036689C /* AppDelegate.swift */; };
+		656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */; };
+		656132B21A50B06B0036689C /* BodypartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132B11A50B06B0036689C /* BodypartController.swift */; };
+		656132B51A50B06B0036689C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656132B31A50B06B0036689C /* Main.storyboard */; };
+		656132B71A50B06B0036689C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656132B61A50B06B0036689C /* Images.xcassets */; };
+		656132BA1A50B06B0036689C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656132B81A50B06B0036689C /* LaunchScreen.xib */; };
+		656132C61A50B06B0036689C /* LiftTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132C51A50B06B0036689C /* LiftTrackerTests.swift */; };
+		656132D01A50B2940036689C /* BodypartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132CF1A50B2940036689C /* BodypartCell.swift */; };
+		656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D11A50B2B60036689C /* ExerciseCell.swift */; };
+		656132D41A50B8E70036689C /* ExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D31A50B8E70036689C /* ExerciseController.swift */; };
+		656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D51A50C1270036689C /* ExerciseHeaderView.swift */; };
+		656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D71A50C4EB0036689C /* LogEntryController.swift */; };
+		656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D91A50D1070036689C /* LogEntryCell.swift */; };
+		656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		656132C01A50B06B0036689C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6561329F1A50B06B0036689C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 656132A61A50B06B0036689C;
+			remoteInfo = LiftTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		656132A71A50B06B0036689C /* LiftTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		656132AB1A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		656132AC1A50B06B0036689C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		656132AF1A50B06B0036689C /* LiftTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiftTracker.xcdatamodel; sourceTree = "<group>"; };
+		656132B11A50B06B0036689C /* BodypartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodypartController.swift; sourceTree = "<group>"; };
+		656132B41A50B06B0036689C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		656132B61A50B06B0036689C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		656132B91A50B06B0036689C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		656132BF1A50B06B0036689C /* LiftTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiftTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		656132C41A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		656132C51A50B06B0036689C /* LiftTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftTrackerTests.swift; sourceTree = "<group>"; };
+		656132CF1A50B2940036689C /* BodypartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodypartCell.swift; sourceTree = "<group>"; };
+		656132D11A50B2B60036689C /* ExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
+		656132D31A50B8E70036689C /* ExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseController.swift; sourceTree = "<group>"; };
+		656132D51A50C1270036689C /* ExerciseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderView.swift; sourceTree = "<group>"; };
+		656132D71A50C4EB0036689C /* LogEntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryController.swift; sourceTree = "<group>"; };
+		656132D91A50D1070036689C /* LogEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryCell.swift; sourceTree = "<group>"; };
+		656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryHeaderView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		656132A41A50B06B0036689C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		656132BC1A50B06B0036689C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6561329E1A50B06B0036689C = {
+			isa = PBXGroup;
+			children = (
+				656132A91A50B06B0036689C /* LiftTracker */,
+				656132C21A50B06B0036689C /* LiftTrackerTests */,
+				656132A81A50B06B0036689C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		656132A81A50B06B0036689C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				656132A71A50B06B0036689C /* LiftTracker.app */,
+				656132BF1A50B06B0036689C /* LiftTrackerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		656132A91A50B06B0036689C /* LiftTracker */ = {
+			isa = PBXGroup;
+			children = (
+				656132AC1A50B06B0036689C /* AppDelegate.swift */,
+				656132B11A50B06B0036689C /* BodypartController.swift */,
+				656132B31A50B06B0036689C /* Main.storyboard */,
+				656132B61A50B06B0036689C /* Images.xcassets */,
+				656132B81A50B06B0036689C /* LaunchScreen.xib */,
+				656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */,
+				656132AA1A50B06B0036689C /* Supporting Files */,
+				656132CF1A50B2940036689C /* BodypartCell.swift */,
+				656132D11A50B2B60036689C /* ExerciseCell.swift */,
+				656132D31A50B8E70036689C /* ExerciseController.swift */,
+				656132D51A50C1270036689C /* ExerciseHeaderView.swift */,
+				656132D71A50C4EB0036689C /* LogEntryController.swift */,
+				656132D91A50D1070036689C /* LogEntryCell.swift */,
+				656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */,
+			);
+			path = LiftTracker;
+			sourceTree = "<group>";
+		};
+		656132AA1A50B06B0036689C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				656132AB1A50B06B0036689C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		656132C21A50B06B0036689C /* LiftTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				656132C51A50B06B0036689C /* LiftTrackerTests.swift */,
+				656132C31A50B06B0036689C /* Supporting Files */,
+			);
+			path = LiftTrackerTests;
+			sourceTree = "<group>";
+		};
+		656132C31A50B06B0036689C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				656132C41A50B06B0036689C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		656132A61A50B06B0036689C /* LiftTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 656132C91A50B06B0036689C /* Build configuration list for PBXNativeTarget "LiftTracker" */;
+			buildPhases = (
+				656132A31A50B06B0036689C /* Sources */,
+				656132A41A50B06B0036689C /* Frameworks */,
+				656132A51A50B06B0036689C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiftTracker;
+			productName = LiftTracker;
+			productReference = 656132A71A50B06B0036689C /* LiftTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		656132BE1A50B06B0036689C /* LiftTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 656132CC1A50B06B0036689C /* Build configuration list for PBXNativeTarget "LiftTrackerTests" */;
+			buildPhases = (
+				656132BB1A50B06B0036689C /* Sources */,
+				656132BC1A50B06B0036689C /* Frameworks */,
+				656132BD1A50B06B0036689C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				656132C11A50B06B0036689C /* PBXTargetDependency */,
+			);
+			name = LiftTrackerTests;
+			productName = LiftTrackerTests;
+			productReference = 656132BF1A50B06B0036689C /* LiftTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6561329F1A50B06B0036689C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Crazy8Dev;
+				TargetAttributes = {
+					656132A61A50B06B0036689C = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					656132BE1A50B06B0036689C = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 656132A61A50B06B0036689C;
+					};
+				};
+			};
+			buildConfigurationList = 656132A21A50B06B0036689C /* Build configuration list for PBXProject "LiftTracker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6561329E1A50B06B0036689C;
+			productRefGroup = 656132A81A50B06B0036689C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				656132A61A50B06B0036689C /* LiftTracker */,
+				656132BE1A50B06B0036689C /* LiftTrackerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		656132A51A50B06B0036689C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				656132B51A50B06B0036689C /* Main.storyboard in Resources */,
+				656132BA1A50B06B0036689C /* LaunchScreen.xib in Resources */,
+				656132B71A50B06B0036689C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		656132BD1A50B06B0036689C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		656132A31A50B06B0036689C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				656132B21A50B06B0036689C /* BodypartController.swift in Sources */,
+				656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */,
+				656132D41A50B8E70036689C /* ExerciseController.swift in Sources */,
+				656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */,
+				656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */,
+				656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */,
+				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
+				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
+				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
+				656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		656132BB1A50B06B0036689C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				656132C61A50B06B0036689C /* LiftTrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		656132C11A50B06B0036689C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 656132A61A50B06B0036689C /* LiftTracker */;
+			targetProxy = 656132C01A50B06B0036689C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		656132B31A50B06B0036689C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				656132B41A50B06B0036689C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		656132B81A50B06B0036689C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				656132B91A50B06B0036689C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		656132C71A50B06B0036689C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		656132C81A50B06B0036689C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		656132CA1A50B06B0036689C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LiftTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		656132CB1A50B06B0036689C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LiftTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		656132CD1A50B06B0036689C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LiftTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiftTracker.app/LiftTracker";
+			};
+			name = Debug;
+		};
+		656132CE1A50B06B0036689C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = LiftTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiftTracker.app/LiftTracker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		656132A21A50B06B0036689C /* Build configuration list for PBXProject "LiftTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				656132C71A50B06B0036689C /* Debug */,
+				656132C81A50B06B0036689C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		656132C91A50B06B0036689C /* Build configuration list for PBXNativeTarget "LiftTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				656132CA1A50B06B0036689C /* Debug */,
+				656132CB1A50B06B0036689C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		656132CC1A50B06B0036689C /* Build configuration list for PBXNativeTarget "LiftTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				656132CD1A50B06B0036689C /* Debug */,
+				656132CE1A50B06B0036689C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				656132AF1A50B06B0036689C /* LiftTracker.xcdatamodel */,
+			);
+			currentVersion = 656132AF1A50B06B0036689C /* LiftTracker.xcdatamodel */;
+			path = LiftTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6561329F1A50B06B0036689C /* Project object */;
+}
