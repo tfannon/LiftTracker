@@ -21,6 +21,12 @@
 		656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D71A50C4EB0036689C /* LogEntryController.swift */; };
 		656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D91A50D1070036689C /* LogEntryCell.swift */; };
 		656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */; };
+		65C1C9281A5204710088A2DB /* 1091-weights.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9251A5204710088A2DB /* 1091-weights.png */; };
+		65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9261A5204710088A2DB /* 1091-weights@2x.png */; };
+		65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9271A5204710088A2DB /* 1091-weights@3x.png */; };
+		65C1C93A1A52062C0088A2DB /* 912-gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9371A52062C0088A2DB /* 912-gears.png */; };
+		65C1C93B1A52062C0088A2DB /* 912-gears@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9381A52062C0088A2DB /* 912-gears@2x.png */; };
+		65C1C93C1A52062C0088A2DB /* 912-gears@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9391A52062C0088A2DB /* 912-gears@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +58,12 @@
 		656132D71A50C4EB0036689C /* LogEntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryController.swift; sourceTree = "<group>"; };
 		656132D91A50D1070036689C /* LogEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryCell.swift; sourceTree = "<group>"; };
 		656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryHeaderView.swift; sourceTree = "<group>"; };
+		65C1C9251A5204710088A2DB /* 1091-weights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights.png"; sourceTree = "<group>"; };
+		65C1C9261A5204710088A2DB /* 1091-weights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@2x.png"; sourceTree = "<group>"; };
+		65C1C9271A5204710088A2DB /* 1091-weights@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@3x.png"; sourceTree = "<group>"; };
+		65C1C9371A52062C0088A2DB /* 912-gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "912-gears.png"; sourceTree = "<group>"; };
+		65C1C9381A52062C0088A2DB /* 912-gears@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "912-gears@2x.png"; sourceTree = "<group>"; };
+		65C1C9391A52062C0088A2DB /* 912-gears@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "912-gears@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +105,7 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
+				65C1C9241A5203E30088A2DB /* Resources */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
 				656132B11A50B06B0036689C /* BodypartController.swift */,
 				656132B31A50B06B0036689C /* Main.storyboard */,
@@ -134,6 +147,19 @@
 				656132C41A50B06B0036689C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		65C1C9241A5203E30088A2DB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				65C1C9371A52062C0088A2DB /* 912-gears.png */,
+				65C1C9381A52062C0088A2DB /* 912-gears@2x.png */,
+				65C1C9391A52062C0088A2DB /* 912-gears@3x.png */,
+				65C1C9251A5204710088A2DB /* 1091-weights.png */,
+				65C1C9261A5204710088A2DB /* 1091-weights@2x.png */,
+				65C1C9271A5204710088A2DB /* 1091-weights@3x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,8 +243,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				656132B51A50B06B0036689C /* Main.storyboard in Resources */,
+				65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */,
+				65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */,
 				656132BA1A50B06B0036689C /* LaunchScreen.xib in Resources */,
+				65C1C93A1A52062C0088A2DB /* 912-gears.png in Resources */,
+				65C1C9281A5204710088A2DB /* 1091-weights.png in Resources */,
 				656132B71A50B06B0036689C /* Images.xcassets in Resources */,
+				65C1C93B1A52062C0088A2DB /* 912-gears@2x.png in Resources */,
+				65C1C93C1A52062C0088A2DB /* 912-gears@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +469,7 @@
 				656132CB1A50B06B0036689C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		656132CC1A50B06B0036689C /* Build configuration list for PBXNativeTarget "LiftTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +478,7 @@
 				656132CE1A50B06B0036689C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
