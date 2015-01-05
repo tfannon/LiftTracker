@@ -11,7 +11,6 @@
 		656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */; };
 		656132B21A50B06B0036689C /* BodypartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132B11A50B06B0036689C /* BodypartController.swift */; };
 		656132B51A50B06B0036689C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656132B31A50B06B0036689C /* Main.storyboard */; };
-		656132B71A50B06B0036689C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656132B61A50B06B0036689C /* Images.xcassets */; };
 		656132BA1A50B06B0036689C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656132B81A50B06B0036689C /* LaunchScreen.xib */; };
 		656132C61A50B06B0036689C /* LiftTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132C51A50B06B0036689C /* LiftTrackerTests.swift */; };
 		656132D01A50B2940036689C /* BodypartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132CF1A50B2940036689C /* BodypartCell.swift */; };
@@ -21,12 +20,18 @@
 		656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D71A50C4EB0036689C /* LogEntryController.swift */; };
 		656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D91A50D1070036689C /* LogEntryCell.swift */; };
 		656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */; };
+		658108931A5AA80800A1D380 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658108921A5AA80800A1D380 /* Media.xcassets */; };
 		65C1C9281A5204710088A2DB /* 1091-weights.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9251A5204710088A2DB /* 1091-weights.png */; };
 		65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9261A5204710088A2DB /* 1091-weights@2x.png */; };
 		65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9271A5204710088A2DB /* 1091-weights@3x.png */; };
 		65C1C93A1A52062C0088A2DB /* 912-gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9371A52062C0088A2DB /* 912-gears.png */; };
 		65C1C93B1A52062C0088A2DB /* 912-gears@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9381A52062C0088A2DB /* 912-gears@2x.png */; };
 		65C1C93C1A52062C0088A2DB /* 912-gears@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9391A52062C0088A2DB /* 912-gears@3x.png */; };
+		65C1C93E1A5206F40088A2DB /* SetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C1C93D1A5206F40088A2DB /* SetupController.swift */; };
+		65C1C9421A5209090088A2DB /* 910-graph.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C93F1A5209090088A2DB /* 910-graph.png */; };
+		65C1C9431A5209090088A2DB /* 910-graph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9401A5209090088A2DB /* 910-graph@2x.png */; };
+		65C1C9441A5209090088A2DB /* 910-graph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9411A5209090088A2DB /* 910-graph@3x.png */; };
+		65C1C94A1A521B4A0088A2DB /* dumbells.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9491A521B4A0088A2DB /* dumbells.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +51,6 @@
 		656132AF1A50B06B0036689C /* LiftTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiftTracker.xcdatamodel; sourceTree = "<group>"; };
 		656132B11A50B06B0036689C /* BodypartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodypartController.swift; sourceTree = "<group>"; };
 		656132B41A50B06B0036689C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		656132B61A50B06B0036689C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		656132B91A50B06B0036689C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		656132BF1A50B06B0036689C /* LiftTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiftTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		656132C41A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,12 +62,18 @@
 		656132D71A50C4EB0036689C /* LogEntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryController.swift; sourceTree = "<group>"; };
 		656132D91A50D1070036689C /* LogEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryCell.swift; sourceTree = "<group>"; };
 		656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryHeaderView.swift; sourceTree = "<group>"; };
+		658108921A5AA80800A1D380 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		65C1C9251A5204710088A2DB /* 1091-weights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights.png"; sourceTree = "<group>"; };
 		65C1C9261A5204710088A2DB /* 1091-weights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@2x.png"; sourceTree = "<group>"; };
 		65C1C9271A5204710088A2DB /* 1091-weights@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@3x.png"; sourceTree = "<group>"; };
 		65C1C9371A52062C0088A2DB /* 912-gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "912-gears.png"; sourceTree = "<group>"; };
 		65C1C9381A52062C0088A2DB /* 912-gears@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "912-gears@2x.png"; sourceTree = "<group>"; };
 		65C1C9391A52062C0088A2DB /* 912-gears@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "912-gears@3x.png"; sourceTree = "<group>"; };
+		65C1C93D1A5206F40088A2DB /* SetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupController.swift; sourceTree = "<group>"; };
+		65C1C93F1A5209090088A2DB /* 910-graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph.png"; sourceTree = "<group>"; };
+		65C1C9401A5209090088A2DB /* 910-graph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph@2x.png"; sourceTree = "<group>"; };
+		65C1C9411A5209090088A2DB /* 910-graph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph@3x.png"; sourceTree = "<group>"; };
+		65C1C9491A521B4A0088A2DB /* dumbells.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dumbells.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,14 +115,14 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
+				658108921A5AA80800A1D380 /* Media.xcassets */,
+				656132AA1A50B06B0036689C /* Supporting Files */,
 				65C1C9241A5203E30088A2DB /* Resources */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
 				656132B11A50B06B0036689C /* BodypartController.swift */,
 				656132B31A50B06B0036689C /* Main.storyboard */,
-				656132B61A50B06B0036689C /* Images.xcassets */,
 				656132B81A50B06B0036689C /* LaunchScreen.xib */,
 				656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */,
-				656132AA1A50B06B0036689C /* Supporting Files */,
 				656132CF1A50B2940036689C /* BodypartCell.swift */,
 				656132D11A50B2B60036689C /* ExerciseCell.swift */,
 				656132D31A50B8E70036689C /* ExerciseController.swift */,
@@ -120,6 +130,7 @@
 				656132D71A50C4EB0036689C /* LogEntryController.swift */,
 				656132D91A50D1070036689C /* LogEntryCell.swift */,
 				656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */,
+				65C1C93D1A5206F40088A2DB /* SetupController.swift */,
 			);
 			path = LiftTracker;
 			sourceTree = "<group>";
@@ -152,12 +163,16 @@
 		65C1C9241A5203E30088A2DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65C1C93F1A5209090088A2DB /* 910-graph.png */,
+				65C1C9401A5209090088A2DB /* 910-graph@2x.png */,
+				65C1C9411A5209090088A2DB /* 910-graph@3x.png */,
 				65C1C9371A52062C0088A2DB /* 912-gears.png */,
 				65C1C9381A52062C0088A2DB /* 912-gears@2x.png */,
 				65C1C9391A52062C0088A2DB /* 912-gears@3x.png */,
 				65C1C9251A5204710088A2DB /* 1091-weights.png */,
 				65C1C9261A5204710088A2DB /* 1091-weights@2x.png */,
 				65C1C9271A5204710088A2DB /* 1091-weights@3x.png */,
+				65C1C9491A521B4A0088A2DB /* dumbells.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -244,11 +259,15 @@
 			files = (
 				656132B51A50B06B0036689C /* Main.storyboard in Resources */,
 				65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */,
+				658108931A5AA80800A1D380 /* Media.xcassets in Resources */,
+				65C1C9431A5209090088A2DB /* 910-graph@2x.png in Resources */,
 				65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */,
+				65C1C94A1A521B4A0088A2DB /* dumbells.jpg in Resources */,
+				65C1C9421A5209090088A2DB /* 910-graph.png in Resources */,
 				656132BA1A50B06B0036689C /* LaunchScreen.xib in Resources */,
 				65C1C93A1A52062C0088A2DB /* 912-gears.png in Resources */,
+				65C1C9441A5209090088A2DB /* 910-graph@3x.png in Resources */,
 				65C1C9281A5204710088A2DB /* 1091-weights.png in Resources */,
-				656132B71A50B06B0036689C /* Images.xcassets in Resources */,
 				65C1C93B1A52062C0088A2DB /* 912-gears@2x.png in Resources */,
 				65C1C93C1A52062C0088A2DB /* 912-gears@3x.png in Resources */,
 			);
@@ -270,6 +289,7 @@
 			files = (
 				656132B21A50B06B0036689C /* BodypartController.swift in Sources */,
 				656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */,
+				65C1C93E1A5206F40088A2DB /* SetupController.swift in Sources */,
 				656132D41A50B8E70036689C /* ExerciseController.swift in Sources */,
 				656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */,
 				656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */,
@@ -400,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
