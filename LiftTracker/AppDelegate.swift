@@ -45,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coreDataStack.saveContext()
     }
     
+    class var get : AppDelegate {
+        return (UIApplication.sharedApplication().delegate! as AppDelegate)
+    }
+    
     
     //MARK: seed data
     func importJSONSeedDataIfNeeded() {
