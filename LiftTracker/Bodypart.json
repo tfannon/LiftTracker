@@ -1,0 +1,33 @@
+ [
+  {
+  "name": "Chest",
+  "isSystem": true,
+  "displayOrder": 0
+  },
+  {
+  "name": "Shoulders",
+  "isSystem": true,
+  "displayOrder": 1
+  },
+  {
+  "name": "Arms",
+  "isSystem": true,
+  "displayOrder": 2
+  },
+  {
+  "name": "Back",
+  "isSystem": true,
+  "displayOrder": 3
+  },
+  {
+  "name": "Leg",
+  "isSystem": true,
+  "displayOrder": 4
+  },
+  {
+  "name": "Other",
+  "isSystem": true,
+  "displayOrder": 5
+  }
+  
+ ]

@@ -13,10 +13,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    lazy var coreDataStack = CoreDataStack()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        importJSONSeedDataIfNeeded()
         return true
     }
 
@@ -41,9 +42,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
+        coreDataStack.saveContext()
     }
+    
+    
+    //MARK: seed data
+    func importJSONSeedDataIfNeeded() {
+        let fetchRequest = NSFetchRequest(entityName: "Bodypart")
+        var error: NSError? = nil
+        
+        let results = coreDataStack.context.countForFetchRequest(fetchRequest, error: &error)
+        if (results == 0) {
+            var fetchError: NSError? = nil
+            if let results = coreDataStack.context.executeFetchRequest(fetchRequest, error: &fetchError) {
+                for object in results {
+                    let bodypart = object as Bodypart
+                    coreDataStack.context.deleteObject(bodypart)
+                }
+            }
+            
+            coreDataStack.saveContext()
+            importJSONSeedData()
+        }
+    }
+    
+    func importJSONSeedData() {
+        let jsonURL = NSBundle.mainBundle().URLForResource("Bodypart", withExtension: "json")
+        let jsonData = NSData(contentsOfURL: jsonURL!)
+        
+        var error: NSError? = nil
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
+        
+        let entity = NSEntityDescription.entityForName("Bodypart", inManagedObjectContext: coreDataStack.context)
+        
+        for jsonDictionary in jsonArray {
+            
+            let name = jsonDictionary["name"] as String
+            let isSystem = jsonDictionary["isSystem"] as Bool
+            let displayOrder = jsonDictionary["displayOrder"] as Int
+            
+            let team = Bodypart(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
+            team.name = name
+            team.isSystem = isSystem
+            team.displayOrder = displayOrder
+        }
+        
+        coreDataStack.saveContext()
+        println("Imported \(jsonArray.count) teams")
+    }
+    
 
+    /*
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
@@ -106,6 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    */
 
 }
 

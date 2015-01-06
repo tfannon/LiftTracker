@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		654BA5371A5B812D007B3B53 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BA5361A5B812D007B3B53 /* Exercise.swift */; };
+		654BA5391A5B812E007B3B53 /* Bodypart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BA5381A5B812E007B3B53 /* Bodypart.swift */; };
+		654BA53E1A5B8367007B3B53 /* Bodypart.json in Resources */ = {isa = PBXBuildFile; fileRef = 654BA53D1A5B8367007B3B53 /* Bodypart.json */; };
+		654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */; };
 		656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132AC1A50B06B0036689C /* AppDelegate.swift */; };
 		656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */; };
 		656132B21A50B06B0036689C /* BodypartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132B11A50B06B0036689C /* BodypartController.swift */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		654BA5361A5B812D007B3B53 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		654BA5381A5B812E007B3B53 /* Bodypart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bodypart.swift; sourceTree = "<group>"; };
+		654BA53D1A5B8367007B3B53 /* Bodypart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bodypart.json; sourceTree = "<group>"; };
+		654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		656132A71A50B06B0036689C /* LiftTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656132AB1A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		656132AC1A50B06B0036689C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +102,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		654BA53A1A5B8136007B3B53 /* CoreDataFiles */ = {
+			isa = PBXGroup;
+			children = (
+				654BA53D1A5B8367007B3B53 /* Bodypart.json */,
+				656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */,
+				654BA5361A5B812D007B3B53 /* Exercise.swift */,
+				654BA5381A5B812E007B3B53 /* Bodypart.swift */,
+			);
+			name = CoreDataFiles;
+			sourceTree = "<group>";
+		};
 		6561329E1A50B06B0036689C = {
 			isa = PBXGroup;
 			children = (
@@ -115,14 +134,15 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
+				654BA53A1A5B8136007B3B53 /* CoreDataFiles */,
 				658108921A5AA80800A1D380 /* Media.xcassets */,
 				656132AA1A50B06B0036689C /* Supporting Files */,
 				65C1C9241A5203E30088A2DB /* Resources */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
+				654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */,
 				656132B11A50B06B0036689C /* BodypartController.swift */,
 				656132B31A50B06B0036689C /* Main.storyboard */,
 				656132B81A50B06B0036689C /* LaunchScreen.xib */,
-				656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */,
 				656132CF1A50B2940036689C /* BodypartCell.swift */,
 				656132D11A50B2B60036689C /* ExerciseCell.swift */,
 				656132D31A50B8E70036689C /* ExerciseController.swift */,
@@ -261,6 +281,7 @@
 				65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */,
 				658108931A5AA80800A1D380 /* Media.xcassets in Resources */,
 				65C1C9431A5209090088A2DB /* 910-graph@2x.png in Resources */,
+				654BA53E1A5B8367007B3B53 /* Bodypart.json in Resources */,
 				65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */,
 				65C1C94A1A521B4A0088A2DB /* dumbells.jpg in Resources */,
 				65C1C9421A5209090088A2DB /* 910-graph.png in Resources */,
@@ -292,6 +313,9 @@
 				65C1C93E1A5206F40088A2DB /* SetupController.swift in Sources */,
 				656132D41A50B8E70036689C /* ExerciseController.swift in Sources */,
 				656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */,
+				654BA5391A5B812E007B3B53 /* Bodypart.swift in Sources */,
+				654BA5371A5B812D007B3B53 /* Exercise.swift in Sources */,
+				654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */,
 				656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */,
 				656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
