@@ -3,14 +3,14 @@
 import Foundation
 import CoreData
 
-class CoreDataStack {
+public class CoreDataStack {
   
     var context:NSManagedObjectContext
-    var psc:NSPersistentStoreCoordinator
-    var model:NSManagedObjectModel
+    public var psc:NSPersistentStoreCoordinator
+    public var model:NSManagedObjectModel
     var store:NSPersistentStore?
   
-    init() {
+    public init() {
     
         let bundle = NSBundle.mainBundle()
         let modelURL =
@@ -56,4 +56,6 @@ class CoreDataStack {
           inDomains: .UserDomainMask) as Array<NSURL>
         return urls[0]
     }
+    
+    
 }

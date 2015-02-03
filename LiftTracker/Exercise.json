@@ -1,0 +1,22 @@
+[
+ {
+ "name": "Bench Press",
+ "isSystem": true,
+ },
+ {
+ "name": "Smith Machine Press",
+ "isSystem": true,
+ },
+ {
+ "name": "Dumbell Press",
+ "isSystem": true,
+ },
+ {
+ "name": "Flyes",
+ "isSystem": true,
+ },
+ {
+ "name": "Hammer Strength Press",
+ "isSystem": true,
+ },
+]

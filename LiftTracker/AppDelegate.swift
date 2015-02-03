@@ -52,50 +52,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: seed data
     func importJSONSeedDataIfNeeded() {
-        let fetchRequest = NSFetchRequest(entityName: "Bodypart")
+        getJsonData("Bodypart")
+        getJsonData("Exercise")
+    }
+    
+    func getJsonData(name : String) {
+        let fetchRequest = NSFetchRequest(entityName: name)
         var error: NSError? = nil
-        
         let results = coreDataStack.context.countForFetchRequest(fetchRequest, error: &error)
         if (results == 0) {
             var fetchError: NSError? = nil
             if let results = coreDataStack.context.executeFetchRequest(fetchRequest, error: &fetchError) {
                 for object in results {
-                    let bodypart = object as Bodypart
-                    coreDataStack.context.deleteObject(bodypart)
+                    //let bodypart = object as Bodypart
+                    coreDataStack.context.deleteObject(object as NSManagedObject)
                 }
             }
-            
             coreDataStack.saveContext()
-            importJSONSeedData()
+            let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
+            let jsonData = NSData(contentsOfURL: jsonURL!)
+            let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
+            importJson(name, jsonArray:jsonArray)
         }
     }
     
-    func importJSONSeedData() {
-        let jsonURL = NSBundle.mainBundle().URLForResource("Bodypart", withExtension: "json")
-        let jsonData = NSData(contentsOfURL: jsonURL!)
-        
-        var error: NSError? = nil
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
-        
-        let entity = NSEntityDescription.entityForName("Bodypart", inManagedObjectContext: coreDataStack.context)
-        
-        for jsonDictionary in jsonArray {
-            
-            let name = jsonDictionary["name"] as String
-            let isSystem = jsonDictionary["isSystem"] as Bool
-            let displayOrder = jsonDictionary["displayOrder"] as Int
-            
-            let team = Bodypart(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
-            team.name = name
-            team.isSystem = isSystem
-            team.displayOrder = displayOrder
+    func importJson(name : String, jsonArray : NSArray) {
+        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: coreDataStack.context)
+        switch name {
+        case "Bodypart":
+            for jsonDictionary in jsonArray {
+                let name = jsonDictionary["name"] as String
+                let isSystem = jsonDictionary["isSystem"] as Bool
+                let displayOrder = jsonDictionary["displayOrder"] as Int
+                let bodypart = Bodypart(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
+                bodypart.name = name
+                bodypart.isSystem = isSystem
+                bodypart.displayOrder = displayOrder
+                coreDataStack.saveContext()
+            }
+        case "Exercise":
+            for jsonDictionary in jsonArray {
+                let name = jsonDictionary["name"] as String
+                let isSystem = jsonDictionary["isSystem"] as Bool
+                let exercise = Exercise(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
+                exercise.name = name
+                exercise.isSystem = isSystem
+                coreDataStack.saveContext()
+           }
+        default:
+            println("there is a problem")
         }
-        
-        coreDataStack.saveContext()
-        println("Imported \(jsonArray.count) teams")
+       
+        println("Imported \(jsonArray.count) \(name)s")
     }
     
-
+   
     /*
     // MARK: - Core Data stack
 

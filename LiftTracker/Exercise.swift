@@ -10,9 +10,6 @@ import Foundation
 import CoreData
 
 class Exercise: NSManagedObject {
-
     @NSManaged var name: String
     @NSManaged var isSystem: Bool
-    @NSManaged var displayOrder: Int32
-
 }

@@ -13,5 +13,6 @@ class Bodypart: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var isSystem: Bool
+    @NSManaged var isHidden: Bool
     @NSManaged var displayOrder: Int
 }
