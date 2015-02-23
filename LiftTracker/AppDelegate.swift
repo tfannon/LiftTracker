@@ -64,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var fetchError: NSError? = nil
             if let results = coreDataStack.context.executeFetchRequest(fetchRequest, error: &fetchError) {
                 for object in results {
-                    //let bodypart = object as Bodypart
                     coreDataStack.context.deleteObject(object as NSManagedObject)
                 }
             }

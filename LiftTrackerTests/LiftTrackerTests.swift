@@ -9,15 +9,19 @@
 import UIKit
 import XCTest
 import LiftTracker
+import CoreData
 
 class LiftTrackerTests: XCTestCase {
-    var coreDataStack: CoreDataStack!
+    
+    var moc = NSManagedObjectContext()
     
     override func setUp() {
         super.setUp()
-        coreDataStack = TestCoreDataStack()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        var mmol = NSManagedObjectModel.mergedModelFromBundles(nil)
+        var psc = NSPersistentStoreCoordinator(managedObjectModel: mmol!)
+        var pstore = NSPersistentStore()
+        pstore = psc.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil, error: nil)!
+        moc.persistentStoreCoordinator = psc
     }
     
     override func tearDown() {
@@ -25,9 +29,12 @@ class LiftTrackerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    
+    func testExercise() {
+        var entity = NSEntityDescription.entityForName("Exercise", inManagedObjectContext: moc)
+        let exercise = Exercise(entity: entity!, insertIntoManagedObjectContext: moc)
+        exercise.name = "Bench Press"
+        moc.save(nil)
     }
     
     func testPerformanceExample() {

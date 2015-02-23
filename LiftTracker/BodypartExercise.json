@@ -4,3 +4,10 @@
  "Exercise": "Bench Press",
  "displayOrder": 0
  },
+ {
+ "Bodypart": "Chest",
+ "Exercise": "Smith Press",
+ "displayOrder": 1
+ }
+]
+

@@ -5,7 +5,7 @@ import CoreData
 
 public class CoreDataStack {
   
-    var context:NSManagedObjectContext
+    public var context:NSManagedObjectContext
     public var psc:NSPersistentStoreCoordinator
     public var model:NSManagedObjectModel
     var store:NSPersistentStore?

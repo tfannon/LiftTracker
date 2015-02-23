@@ -2,17 +2,20 @@
 //  Bodypart.swift
 //  LiftTracker
 //
-//  Created by Tommy Fannon on 1/5/15.
+//  Created by Tommy Fannon on 2/18/15.
 //  Copyright (c) 2015 Crazy8Dev. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class Bodypart: NSManagedObject {
+@objc(Bodypart)
+public class Bodypart: NSManagedObject {
 
-    @NSManaged var name: String
-    @NSManaged var isSystem: Bool
-    @NSManaged var isHidden: Bool
-    @NSManaged var displayOrder: Int
+    @NSManaged public var displayOrder: NSNumber
+    @NSManaged public var isHidden: NSNumber
+    @NSManaged public var isSystem: NSNumber
+    @NSManaged public var name: String
+    @NSManaged public var exercises: NSSet
+
 }
