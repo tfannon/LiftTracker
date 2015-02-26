@@ -75,6 +75,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func mapBodypartToExercise() {
+        var error: NSError? = nil
+        let jsonURL = NSBundle.mainBundle().URLForResource("BodypartExercise", withExtension: "json")
+        let jsonData = NSData(contentsOfURL: jsonURL!)
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
+        importJson(name, jsonArray:jsonArray)
+        
+    }
+    
     func importJson(name : String, jsonArray : NSArray) {
         let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: coreDataStack.context)
         switch name {
