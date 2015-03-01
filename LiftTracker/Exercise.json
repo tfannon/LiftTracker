@@ -4,7 +4,7 @@
  "isSystem": true,
  },
  {
- "name": "Smith Machine Press",
+ "name": "Smith Press",
  "isSystem": true,
  },
  {
@@ -16,7 +16,15 @@
  "isSystem": true,
  },
  {
- "name": "Hammer Strength Press",
+ "name": "Hammer Press",
+ "isSystem": true,
+ },
+ {
+ "name": "Standing Curls",
+ "isSystem": true,
+ },
+ {
+ "name": "Tricep Pressdown",
  "isSystem": true,
  },
 ]

@@ -28,5 +28,4 @@ public extension Bodypart {
         var items = self.mutableSetValueForKey("exercises")
         items.removeObject(value)
     }
-    
 }

@@ -57,5 +57,24 @@ public class CoreDataStack {
         return urls[0]
     }
     
+    //todo: make this a generic function
+    public func fetch(entityName : String) -> [AnyObject]? {
+        let request = NSFetchRequest(entityName: entityName)
+//        if name != nil {
+//            request.predicate = NSPredicate(format: "name == %@", name!)
+//        }
+        var error: NSError?
+        return context.executeFetchRequest(request, error: &error)
+    }
     
+    func fetch2(name : String) -> [NSManagedObject] {
+        let request = NSFetchRequest(entityName: name)
+        var e : NSError?
+        if let results = context.executeFetchRequest(request, error: &e) as? [NSManagedObject] {
+            return results
+        } else {
+            println("fetch error: \(e!.localizedDescription)")
+            abort();
+        }
+    }
 }

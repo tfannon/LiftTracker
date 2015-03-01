@@ -139,7 +139,18 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     }
     
     
-     // MARK: UICollectionViewDataSource
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let dest = segue.destinationViewController as ExerciseController
+        var indexPath = self.collectionView!.indexPathsForSelectedItems()[0] as NSIndexPath
+        var bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as Bodypart
+        println(bodypart)
+        dest.bodypart = bodypart
+    }
+    
+    
+    // MARK: UICollectionViewDataSource
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as BodypartCell

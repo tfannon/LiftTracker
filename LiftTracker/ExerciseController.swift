@@ -7,24 +7,36 @@
 //
 
 import UIKit
+import CoreData
 
 class ExerciseController: UICollectionViewController {
     
-    
     let cellIdentifier = "ExerciseCell"
-    let exerciseTypes = ["Free weight", "Machines"]
-    var exercisesByType : Dictionary<String,[String]> = [
-        "Free weight": [
-            "Bench Press", "Incline Press", "Dumbell Press", "Dumbell Incline Press", "Dumbell Flyes"],
-         
-         "Machines": [
-            "Smith Press", "Smith Incline Press", "Hammer Press", "Hammer Incline Press", "Cable Flyes"]]
     
-//= ["Bench Press", "Incline Press", "Dumbell Press", "Dumbell Incline Press", "Flyes", "Incline Flyes", "Cable Flys", "Cable Crossovers", "Smith Bench Press", "Smith Incline Press", "Cybex Chest Press", "Hammer Chest Press"]
+    var coreData : CoreDataStack!
+    /*
+    var fetchedResultsController : NSFetchedResultsController!
+    var objectChanges : Array<Dictionary<NSFetchedResultsChangeType, (NSIndexPath,NSIndexPath?)>>!
+    var sectionChanges : Array<Dictionary<NSFetchedResultsChangeType, Int>>!
+    let fetchRequest = NSFetchRequest(entityName: "Bodypart")
+    */
+    var bodypart : Bodypart!
+    lazy var exercises : [Exercise] = {
+        var result = [Exercise]()
+        for x in self.bodypart.exercises {
+            result.append(x as Exercise)
+        }
+        return result
+    }()
 
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        var imageView = UIImageView(frame:self.view.bounds)
+        imageView.contentMode = UIViewContentMode.ScaleToFill
+        imageView.image = UIImage(named: "dumbells.jpg")!
+        self.view.insertSubview(imageView, atIndex: 0)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,6 +44,10 @@ class ExerciseController: UICollectionViewController {
         //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        self.coreData = AppDelegate.get.coreDataStack
+        self.collectionView!.reloadData()
+        //todo: refresh the view
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,35 +55,31 @@ class ExerciseController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /* In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        var bo
+        (segue.destinationViewController as ExerciseController).
     }
     */
+    
 
     // MARK: UICollectionViewDataSource
-    
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return exerciseTypes.count
-    }
-
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        var sectionKey = exerciseTypes[section]
-        return exercisesByType[sectionKey]!.count
+        return exercises.count
     }
-
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as ExerciseCell
-        var sectionKey = exerciseTypes[indexPath.section]
-        cell.title.text = exercisesByType[sectionKey]![indexPath.row]
+        cell.title.text = exercises[indexPath.row].name
         return cell
     }
     
+    /*
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         switch kind {
@@ -83,6 +95,7 @@ class ExerciseController: UICollectionViewController {
                 assert(false, "Unexpected element kind")
         }
     }
+    */
 
     // MARK: UICollectionViewDelegate
 

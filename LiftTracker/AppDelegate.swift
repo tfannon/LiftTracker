@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         importJSONSeedDataIfNeeded()
+        println(bodyparts)
+        println(exercises)
         return true
     }
 
@@ -49,18 +51,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return (UIApplication.sharedApplication().delegate! as AppDelegate)
     }
     
+    var bodyparts = [String:Bodypart]()
+    var exercises = [String:Exercise]()
+    let clearData = false
     
     //MARK: seed data
     func importJSONSeedDataIfNeeded() {
         getJsonData("Bodypart")
         getJsonData("Exercise")
+        mapBodypartToExercise("BodypartExercise")
     }
     
     func getJsonData(name : String) {
         let fetchRequest = NSFetchRequest(entityName: name)
         var error: NSError? = nil
         let results = coreDataStack.context.countForFetchRequest(fetchRequest, error: &error)
-        if (results == 0) {
+        //todo: set cleardata flag to false when we are ready to keep data around
+        if (results == 0 || clearData) {
             var fetchError: NSError? = nil
             if let results = coreDataStack.context.executeFetchRequest(fetchRequest, error: &fetchError) {
                 for object in results {
@@ -73,20 +80,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
             importJson(name, jsonArray:jsonArray)
         }
+//        else {
+//            let bodyparts = coreDataStack.fetch2(name) as [Bodypart]
+//            println(bodyparts)
+//        }
     }
     
-    func mapBodypartToExercise() {
+    func mapBodypartToExercise(name : String) {
+        if bodyparts.count == 0 || exercises.count == 0 {
+            return
+        }
+        
         var error: NSError? = nil
-        let jsonURL = NSBundle.mainBundle().URLForResource("BodypartExercise", withExtension: "json")
+        let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
         let jsonData = NSData(contentsOfURL: jsonURL!)
         let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
         importJson(name, jsonArray:jsonArray)
         
     }
     
-    func importJson(name : String, jsonArray : NSArray) {
-        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: coreDataStack.context)
-        switch name {
+    func importJson(entityName : String, jsonArray : NSArray) {
+        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: coreDataStack.context)
+        switch entityName {
         case "Bodypart":
             for jsonDictionary in jsonArray {
                 let name = jsonDictionary["name"] as String
@@ -97,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 bodypart.isSystem = isSystem
                 bodypart.displayOrder = displayOrder
                 coreDataStack.saveContext()
+                bodyparts[name] = bodypart
             }
         case "Exercise":
             for jsonDictionary in jsonArray {
@@ -106,12 +122,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 exercise.name = name
                 exercise.isSystem = isSystem
                 coreDataStack.saveContext()
-           }
+                exercises[name] = exercise
+            }
+        case "BodypartExercise":
+            //println(bodyparts)
+            //println(exercises)
+            for jsonDictionary in jsonArray {
+                let bodypartName = jsonDictionary["bodypart"] as String
+                let exerciseName = jsonDictionary["exercise"] as String
+                let displayOrder = jsonDictionary["displayOrder"] as Int
+                println("\(bodypartName) - \(exerciseName):  \(displayOrder)")
+                if let bodypart = bodyparts[bodypartName] {
+                    if let exercise = exercises[exerciseName] {
+                        //println("\(bodypart.name):\(exercise.name)")
+                        bodypart.addExercise(exercise)
+                        coreDataStack.saveContext()
+                        continue
+                    }
+                }
+                println("problem with \(bodypartName):\(exerciseName)")
+                abort()
+            }
+
         default:
             println("there is a problem")
         }
        
-        println("Imported \(jsonArray.count) \(name)s")
+        println("Imported \(jsonArray.count) \(entityName)s")
     }
     
    

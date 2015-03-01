@@ -1,12 +1,22 @@
 [
  {
- "Bodypart": "Chest",
- "Exercise": "Bench Press",
+ "bodypart": "Chest",
+ "exercise": "Bench Press",
  "displayOrder": 0
  },
  {
- "Bodypart": "Chest",
- "Exercise": "Smith Press",
+ "bodypart": "Chest",
+ "exercise": "Smith Press",
+ "displayOrder": 1
+ },
+ {
+ "bodypart": "Arms",
+ "exercise": "Standing Curls",
+ "displayOrder": 0
+ },
+ {
+ "bodypart": "Arms",
+ "exercise": "Tricep Pressdown",
  "displayOrder": 1
  }
 ]
