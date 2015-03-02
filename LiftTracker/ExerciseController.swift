@@ -37,6 +37,16 @@ class ExerciseController: UICollectionViewController {
         imageView.image = UIImage(named: "dumbells.jpg")!
         self.view.insertSubview(imageView, atIndex: 0)
         
+        addTitleBar()
+        
+        self.addButton("+", action: "addNewExercise")
+        
+        //the long press will trigger a delete for now
+        var swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
+        swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.Left
+        collectionView!.addGestureRecognizer(swipeLeftRecognizer)
+
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,6 +58,19 @@ class ExerciseController: UICollectionViewController {
         self.collectionView!.reloadData()
         //todo: refresh the view
         
+    }
+    
+    func handleSwipeLeft(recognizer : UISwipeGestureRecognizer) {
+        navigationController!.popViewControllerAnimated(true)
+    }
+    
+    
+    func addTitleBar() {
+        self.navigationItem.title = bodypart.name
+    }
+    
+    func addNewExercise() {
+        println("add called")
     }
 
     override func didReceiveMemoryWarning() {
