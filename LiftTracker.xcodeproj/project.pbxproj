@@ -40,6 +40,7 @@
 		65C1C9441A5209090088A2DB /* 910-graph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9411A5209090088A2DB /* 910-graph@3x.png */; };
 		65C1C94A1A521B4A0088A2DB /* dumbells.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9491A521B4A0088A2DB /* dumbells.jpg */; };
 		65F01A691AA4DCD0003FBBBF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A681AA4DCD0003FBBBF /* Extensions.swift */; };
+		65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		65C1C9411A5209090088A2DB /* 910-graph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph@3x.png"; sourceTree = "<group>"; };
 		65C1C9491A521B4A0088A2DB /* dumbells.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dumbells.jpg; sourceTree = "<group>"; };
 		65F01A681AA4DCD0003FBBBF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				656132B11A50B06B0036689C /* BodypartController.swift */,
 				65F01A681AA4DCD0003FBBBF /* Extensions.swift */,
 				656132B31A50B06B0036689C /* Main.storyboard */,
+				65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */,
 				656132B81A50B06B0036689C /* LaunchScreen.xib */,
 				656132CF1A50B2940036689C /* BodypartCell.swift */,
 				656132D11A50B2B60036689C /* ExerciseCell.swift */,
@@ -333,6 +336,7 @@
 				659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
 				659A4A711A9569B10042F6DF /* Exercise.swift in Sources */,
+				65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */,
 				65F01A691AA4DCD0003FBBBF /* Extensions.swift in Sources */,
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,

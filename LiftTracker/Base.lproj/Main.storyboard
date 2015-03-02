@@ -50,7 +50,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWl-kU-vvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="1566"/>
+            <point key="canvasLocation" x="1488" y="1690"/>
         </scene>
         <!--Setup Controller-->
         <scene sceneID="6NY-Xi-dpE">
@@ -137,6 +137,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00J-FU-pJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4850" y="431"/>
+        </scene>
+        <!--Add Exercise Controller-->
+        <scene sceneID="MNL-G8-sZV">
+            <objects>
+                <tableViewController id="Txw-9F-TQX" customClass="AddExerciseController" customModule="LiftTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9lV-FH-Hqd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5LD-25-7aY">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5LD-25-7aY" id="Oiq-WG-iYC">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Txw-9F-TQX" id="mDm-no-6NM"/>
+                            <outlet property="delegate" destination="Txw-9F-TQX" id="I19-0V-9Dh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nlz-2I-yK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="570" y="2464"/>
         </scene>
         <!--Exercise Controller-->
         <scene sceneID="6le-gM-SS1">
