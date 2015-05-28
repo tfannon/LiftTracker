@@ -20,7 +20,7 @@ class LogEntryController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as LogEntryCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! LogEntryCell
         cell.title.text = "\(indexPath.row+1)"
     
         return cell
@@ -34,7 +34,7 @@ class LogEntryController: UICollectionViewController {
             collectionView.dequeueReusableSupplementaryViewOfKind(kind,
                 withReuseIdentifier: "LogEntryHeaderView",
                 forIndexPath: indexPath)
-                as LogEntryHeaderView
+               as! LogEntryHeaderView
             //headerView.title.text = exerciseTypes[indexPath.section]
             return headerView
         default:

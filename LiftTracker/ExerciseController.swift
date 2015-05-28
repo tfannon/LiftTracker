@@ -24,7 +24,7 @@ class ExerciseController: UICollectionViewController {
     lazy var exercises : [Exercise] = {
         var result = [Exercise]()
         for x in self.bodypart.exercises {
-            result.append(x as Exercise)
+            result.append(x as! Exercise)
         }
         return result
     }()
@@ -97,7 +97,7 @@ class ExerciseController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as ExerciseCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! ExerciseCell
         cell.title.text = exercises[indexPath.row].name
         return cell
     }

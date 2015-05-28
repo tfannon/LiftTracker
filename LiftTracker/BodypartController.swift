@@ -53,7 +53,7 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         }
         let p = recognizer.locationInView(self.collectionView!)
         if let indexPath = collectionView!.indexPathForItemAtPoint(p) {
-            let cell = collectionView!.cellForItemAtIndexPath(indexPath) as BodypartCell
+            let cell = collectionView!.cellForItemAtIndexPath(indexPath) as! BodypartCell
             deleteItem(cell.title.text!, indexPath:indexPath)
         }
         else {
@@ -96,11 +96,11 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         
         alert.addAction(UIAlertAction(title: "Save",
             style: .Default, handler: { (action: UIAlertAction!) in
-                let nameTextField = alert.textFields![0] as UITextField
+                let nameTextField = alert.textFields![0] as! UITextField
                 
                 let bodypart =
                 NSEntityDescription.insertNewObjectForEntityForName("Bodypart",
-                    inManagedObjectContext: self.coreData.context) as Bodypart
+                    inManagedObjectContext: self.coreData.context) as! Bodypart
                 
                 bodypart.name = nameTextField.text
                 //right now insert it at the end of the list
@@ -125,7 +125,7 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         
         alert.addAction(UIAlertAction(title: "Delete",
             style: UIAlertActionStyle.Destructive, handler: { (action: UIAlertAction!) in
-                let bodypart = self.fetchedResultsController.objectAtIndexPath(indexPath) as Bodypart
+                let bodypart = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Bodypart
                 
                 self.coreData.context.deleteObject(bodypart)
                 self.coreData.saveContext()
@@ -142,9 +142,9 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let dest = segue.destinationViewController as ExerciseController
-        var indexPath = self.collectionView!.indexPathsForSelectedItems()[0] as NSIndexPath
-        var bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as Bodypart
+        let dest = segue.destinationViewController as! ExerciseController
+        var indexPath = self.collectionView!.indexPathsForSelectedItems()[0] as! NSIndexPath
+        var bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as! Bodypart
         println(bodypart)
         dest.bodypart = bodypart
     }
@@ -153,15 +153,15 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     // MARK: UICollectionViewDataSource
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as BodypartCell
-        let bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as Bodypart
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! BodypartCell
+        let bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as! Bodypart
         cell.title.text = bodypart.name
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return bodyparts.count
-        let sectionInfo = fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+        let sectionInfo = fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
     }
     

@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     class var get : AppDelegate {
-        return (UIApplication.sharedApplication().delegate! as AppDelegate)
+        return (UIApplication.sharedApplication().delegate! as! AppDelegate)
     }
     
     var bodyparts = [String:Bodypart]()
@@ -71,13 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var fetchError: NSError? = nil
             if let results = coreDataStack.context.executeFetchRequest(fetchRequest, error: &fetchError) {
                 for object in results {
-                    coreDataStack.context.deleteObject(object as NSManagedObject)
+                    coreDataStack.context.deleteObject(object as! NSManagedObject)
                 }
             }
             coreDataStack.saveContext()
             let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
             let jsonData = NSData(contentsOfURL: jsonURL!)
-            let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
+            let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
             importJson(name, jsonArray:jsonArray)
         }
 //        else {
@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var error: NSError? = nil
         let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
         let jsonData = NSData(contentsOfURL: jsonURL!)
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as NSArray
+        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
         importJson(name, jsonArray:jsonArray)
         
     }
@@ -104,9 +104,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch entityName {
         case "Bodypart":
             for jsonDictionary in jsonArray {
-                let name = jsonDictionary["name"] as String
-                let isSystem = jsonDictionary["isSystem"] as Bool
-                let displayOrder = jsonDictionary["displayOrder"] as Int
+                let name = jsonDictionary["name"] as! String
+                let isSystem = jsonDictionary["isSystem"] as! Bool
+                let displayOrder = jsonDictionary["displayOrder"] as! Int
                 let bodypart = Bodypart(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
                 bodypart.name = name
                 bodypart.isSystem = isSystem
@@ -116,8 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         case "Exercise":
             for jsonDictionary in jsonArray {
-                let name = jsonDictionary["name"] as String
-                let isSystem = jsonDictionary["isSystem"] as Bool
+                let name = jsonDictionary["name"] as! String
+                let isSystem = jsonDictionary["isSystem"] as! Bool
                 let exercise = Exercise(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
                 exercise.name = name
                 exercise.isSystem = isSystem
@@ -128,9 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //println(bodyparts)
             //println(exercises)
             for jsonDictionary in jsonArray {
-                let bodypartName = jsonDictionary["bodypart"] as String
-                let exerciseName = jsonDictionary["exercise"] as String
-                let displayOrder = jsonDictionary["displayOrder"] as Int
+                let bodypartName = jsonDictionary["bodypart"] as! String
+                let exerciseName = jsonDictionary["exercise"] as! String
+                let displayOrder = jsonDictionary["displayOrder"] as! Int
                 println("\(bodypartName) - \(exerciseName):  \(displayOrder)")
                 if let bodypart = bodyparts[bodypartName] {
                     if let exercise = exercises[exerciseName] {
