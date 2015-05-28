@@ -183,29 +183,25 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         sectionChanges.append(change)
     }
     
-    func controller(controller: NSFetchedResultsController,
-                    didChangeObject anObject: AnyObject,
-                    atIndexPath indexPath: NSIndexPath!,
-                    forChangeType type: NSFetchedResultsChangeType,
-                    newIndexPath: NSIndexPath!) {
-            
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
         var change = Dictionary<NSFetchedResultsChangeType, (NSIndexPath, NSIndexPath?)>()
         switch type {
         case .Insert:
-            change[type] = (newIndexPath,nil)
+            change[type] = (newIndexPath!,nil)
         case .Delete:
-            change[type] = (indexPath,nil)
+            change[type] = (indexPath!,nil)
         case .Update:
-            change[type] = (indexPath,nil)
+            change[type] = (indexPath!,nil)
         case .Move:
-            change[type] = (indexPath,newIndexPath)
+            change[type] = (indexPath!,newIndexPath!)
         default:
             break
         }
         objectChanges.append(change)
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
         if sectionChanges.count > 0 {
             self.collectionView!.performBatchUpdates({
