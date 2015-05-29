@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6534F0BC1B17C6B90098FB87 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0BA1B17C6B90098FB87 /* Realm.framework */; };
+		6534F0BD1B17C6B90098FB87 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0BA1B17C6B90098FB87 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6534F0BE1B17C6B90098FB87 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0BB1B17C6B90098FB87 /* RealmSwift.framework */; };
+		6534F0BF1B17C6B90098FB87 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0BB1B17C6B90098FB87 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0C01B17C6CD0098FB87 /* libc++.dylib */; };
 		654BA53E1A5B8367007B3B53 /* Bodypart.json in Resources */ = {isa = PBXBuildFile; fileRef = 654BA53D1A5B8367007B3B53 /* Bodypart.json */; };
 		654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */; };
 		656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132AC1A50B06B0036689C /* AppDelegate.swift */; };
@@ -28,6 +33,9 @@
 		659A4A711A9569B10042F6DF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A701A9569B10042F6DF /* Exercise.swift */; };
 		659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A721A9569B20042F6DF /* Bodypart.swift */; };
 		659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */; };
+		65AC65B31B17C8B90072364E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B21B17C8B90072364E /* RealmModel.swift */; };
+		65AC65B51B17CA110072364E /* RealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B41B17CA110072364E /* RealmTests.swift */; };
+		65AC65E41B17CD5D0072364E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B21B17C8B90072364E /* RealmModel.swift */; };
 		65C1C9281A5204710088A2DB /* 1091-weights.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9251A5204710088A2DB /* 1091-weights.png */; };
 		65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9261A5204710088A2DB /* 1091-weights@2x.png */; };
 		65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9271A5204710088A2DB /* 1091-weights@3x.png */; };
@@ -53,7 +61,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6534F0B81B17C5110098FB87 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6534F0BF1B17C6B90098FB87 /* RealmSwift.framework in Embed Frameworks */,
+				6534F0BD1B17C6B90098FB87 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6534F0BA1B17C6B90098FB87 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		6534F0BB1B17C6B90098FB87 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		6534F0C01B17C6CD0098FB87 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		654BA53D1A5B8367007B3B53 /* Bodypart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bodypart.json; sourceTree = "<group>"; };
 		654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		656132A71A50B06B0036689C /* LiftTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +105,9 @@
 		659A4A701A9569B10042F6DF /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		659A4A721A9569B20042F6DF /* Bodypart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bodypart.swift; sourceTree = "<group>"; };
 		659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
+		65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiftTracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		65AC65B21B17C8B90072364E /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmModel.swift; path = LiftTracker/RealmModel.swift; sourceTree = "<group>"; };
+		65AC65B41B17CA110072364E /* RealmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTests.swift; sourceTree = "<group>"; };
 		65C1C9251A5204710088A2DB /* 1091-weights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights.png"; sourceTree = "<group>"; };
 		65C1C9261A5204710088A2DB /* 1091-weights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@2x.png"; sourceTree = "<group>"; };
 		65C1C9271A5204710088A2DB /* 1091-weights@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@3x.png"; sourceTree = "<group>"; };
@@ -99,6 +128,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */,
+				6534F0BE1B17C6B90098FB87 /* RealmSwift.framework in Frameworks */,
+				6534F0BC1B17C6B90098FB87 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,9 +161,14 @@
 		6561329E1A50B06B0036689C = {
 			isa = PBXGroup;
 			children = (
+				65AC65B21B17C8B90072364E /* RealmModel.swift */,
+				6534F0C01B17C6CD0098FB87 /* libc++.dylib */,
+				6534F0BA1B17C6B90098FB87 /* Realm.framework */,
+				6534F0BB1B17C6B90098FB87 /* RealmSwift.framework */,
 				656132A91A50B06B0036689C /* LiftTracker */,
 				656132C21A50B06B0036689C /* LiftTrackerTests */,
 				656132A81A50B06B0036689C /* Products */,
+				65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				656132C51A50B06B0036689C /* LiftTrackerTests.swift */,
+				65AC65B41B17CA110072364E /* RealmTests.swift */,
 				656132C31A50B06B0036689C /* Supporting Files */,
 			);
 			path = LiftTrackerTests;
@@ -222,6 +260,8 @@
 				656132A31A50B06B0036689C /* Sources */,
 				656132A41A50B06B0036689C /* Frameworks */,
 				656132A51A50B06B0036689C /* Resources */,
+				6534F0B81B17C5110098FB87 /* Embed Frameworks */,
+				6534F0B91B17C5950098FB87 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -320,6 +360,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6534F0B91B17C5950098FB87 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		656132A31A50B06B0036689C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -338,6 +394,7 @@
 				659A4A711A9569B10042F6DF /* Exercise.swift in Sources */,
 				65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */,
 				65F01A691AA4DCD0003FBBBF /* Extensions.swift in Sources */,
+				65AC65B31B17C8B90072364E /* RealmModel.swift in Sources */,
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
 				659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */,
@@ -350,6 +407,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				656132C61A50B06B0036689C /* LiftTrackerTests.swift in Sources */,
+				65AC65E41B17CD5D0072364E /* RealmModel.swift in Sources */,
+				65AC65B51B17CA110072364E /* RealmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,9 +524,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiftTracker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -476,9 +542,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LiftTracker-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -489,6 +561,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -508,6 +581,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LiftTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
