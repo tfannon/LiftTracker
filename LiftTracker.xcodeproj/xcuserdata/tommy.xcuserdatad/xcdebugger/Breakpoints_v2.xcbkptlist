@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiftTracker/RealmModel.swift"
-            timestampString = "454543682.519317"
+            timestampString = "454813989.853439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
             landmarkName = "RBodypart"
             landmarkType = "3">
          </BreakpointContent>
@@ -25,13 +25,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LiftTrackerTests/RealmTests.swift"
-            timestampString = "454568878.03678"
+            filePath = "LiftTracker/RealmModel.swift"
+            timestampString = "454822270.166114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "testBodypartExercises()"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "PR"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiftTracker.PR.__deallocating_deinit"
+                  moduleName = "LiftTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tommy/Dev/LiftTracker/LiftTracker/RealmModel.swift"
+                  timestampString = "454823526.622603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LiftTrackerTests.PR.__deallocating_deinit"
+                  moduleName = "LiftTrackerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tommy/Dev/LiftTracker/LiftTracker/RealmModel.swift"
+                  timestampString = "454823526.7498"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiftTrackerTests/RealmTests.swift"
+            timestampString = "454821955.489851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "testPRs()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LiftTrackerTests/RealmTests.swift"
+            timestampString = "454823536.121381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "testJson()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
