@@ -27,7 +27,12 @@ public class RExercise : Object {
 }
 
 public class PR : Object {
+    dynamic var id = NSUUID().UUIDString
     dynamic var rep : Int = 0
     dynamic var weight : Int = 0
     dynamic var date = NSDate()
+    
+    override public static func primaryKey() -> String? {
+        return "id"
+    }
 }
