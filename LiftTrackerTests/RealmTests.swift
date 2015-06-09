@@ -54,29 +54,33 @@ class RealmTests: XCTestCase {
     func testPRs() {
         let exercise = RExercise()
         exercise.name = "Squat"
-        let pr1 = PR()
-        pr1.rep = 6
+        let pr1 = PR(parent: exercise, reps:6)
         pr1.weight = 125
         exercise.prs.append(pr1)
         
-        let pr2 = PR()
-        pr2.rep = 5
-        pr2.weight = 125
+        let pr2 = PR(parent: exercise, reps:5, weight:140)
         exercise.prs.append(pr2)
         
         let exercise2 = RExercise()
         exercise2.name = "Bench Press"
-        let pr3 = PR()
-        pr3.rep = 8
-        pr3.weight = 95
+        let pr3 = PR(parent: exercise, reps: 8, weight: 95)
         pr3.date = NSDate().dateBySubtractingDays(4)
         exercise2.prs.append(pr3)
-        
         
         let realm = Realm()
         realm.write {
             realm.add(exercise)
             realm.add(exercise2)
+        }
+        
+        //update the 5 rep pr for squat
+        realm.write {
+            pr2.weight = 150
+        }
+        
+        let pr4 = PR(parent: exercise2,reps: 4, weight: 100)
+        realm.write {
+            exercise2.prs.append(pr4)
         }
     }
     
@@ -128,6 +132,14 @@ class RealmTests: XCTestCase {
         realm.commitWrite()
     }
     
+    func testImporter() {
+        var importer = Importer()
+        importer.importSeedDataIfNeeded()
+        let exercises = Realm().objects(RExercise)
+        let bodyparts = Realm().objects(RBodypart)
+        XCTAssertEqual(7, bodyparts.count)
+        
+    }
     
 }
         

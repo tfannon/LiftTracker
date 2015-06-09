@@ -14,6 +14,10 @@ public class RBodypart : Object {
     dynamic var displayOrder = 0
     dynamic var isSystem = true
     let exercises = List<RExercise>()
+    
+    override public static func primaryKey() -> String? {
+        return "name"
+    }
 }
 
 public class RExercise : Object {
@@ -27,11 +31,26 @@ public class RExercise : Object {
 }
 
 public class PR : Object {
-    dynamic var id = NSUUID().UUIDString
-    dynamic var rep : Int = 0
+    dynamic var id : String = ""
+    dynamic var reps : Int = 0
     dynamic var weight : Int = 0
     dynamic var date = NSDate()
     
+    convenience public init(parent : RExercise, reps : Int) {
+        self.init()
+        self.id = "\(parent.name).\(reps)"
+        self.reps = reps
+    }
+    
+    convenience public init(parent : RExercise, reps : Int, weight : Int) {
+        self.init(parent: parent, reps: reps)
+        self.weight = weight
+    }
+
+    required public init() {
+        super.init()
+    }
+
     override public static func primaryKey() -> String? {
         return "id"
     }

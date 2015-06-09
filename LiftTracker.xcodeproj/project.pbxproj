@@ -52,6 +52,8 @@
 		65C1C9431A5209090088A2DB /* 910-graph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9401A5209090088A2DB /* 910-graph@2x.png */; };
 		65C1C9441A5209090088A2DB /* 910-graph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9411A5209090088A2DB /* 910-graph@3x.png */; };
 		65C1C94A1A521B4A0088A2DB /* dumbells.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9491A521B4A0088A2DB /* dumbells.jpg */; };
+		65C947F21B261C5A00C3024A /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C947F11B261C5A00C3024A /* Importer.swift */; };
+		65C947F31B261C5A00C3024A /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C947F11B261C5A00C3024A /* Importer.swift */; };
 		65F01A691AA4DCD0003FBBBF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A681AA4DCD0003FBBBF /* Extensions.swift */; };
 		65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */; };
 /* End PBXBuildFile section */
@@ -126,6 +128,7 @@
 		65C1C9401A5209090088A2DB /* 910-graph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph@2x.png"; sourceTree = "<group>"; };
 		65C1C9411A5209090088A2DB /* 910-graph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph@3x.png"; sourceTree = "<group>"; };
 		65C1C9491A521B4A0088A2DB /* dumbells.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dumbells.jpg; sourceTree = "<group>"; };
+		65C947F11B261C5A00C3024A /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
 		65F01A681AA4DCD0003FBBBF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,6 +192,7 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
+				65C947F01B261C4000C3024A /* DataAccess */,
 				659163711B1BEFA40087244E /* 3rdParty */,
 				654BA53A1A5B8136007B3B53 /* CoreDataFiles */,
 				658108921A5AA80800A1D380 /* Media.xcassets */,
@@ -273,6 +277,14 @@
 				65C1C9491A521B4A0088A2DB /* dumbells.jpg */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		65C947F01B261C4000C3024A /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				65C947F11B261C5A00C3024A /* Importer.swift */,
+			);
+			name = DataAccess;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +430,7 @@
 				656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */,
 				659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
+				65C947F21B261C5A00C3024A /* Importer.swift in Sources */,
 				659A4A711A9569B10042F6DF /* Exercise.swift in Sources */,
 				65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */,
 				65F01A691AA4DCD0003FBBBF /* Extensions.swift in Sources */,
@@ -439,6 +452,7 @@
 				659163721B1BF12F0087244E /* AF+Date+Extension.swift in Sources */,
 				659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */,
 				65AC65B51B17CA110072364E /* RealmTests.swift in Sources */,
+				65C947F31B261C5A00C3024A /* Importer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
