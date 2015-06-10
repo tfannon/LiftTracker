@@ -19,7 +19,7 @@
 		656132B21A50B06B0036689C /* BodypartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132B11A50B06B0036689C /* BodypartController.swift */; };
 		656132B51A50B06B0036689C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656132B31A50B06B0036689C /* Main.storyboard */; };
 		656132BA1A50B06B0036689C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656132B81A50B06B0036689C /* LaunchScreen.xib */; };
-		656132C61A50B06B0036689C /* LiftTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132C51A50B06B0036689C /* LiftTrackerTests.swift */; };
+		656132C61A50B06B0036689C /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132C51A50B06B0036689C /* CoreDataTests.swift */; };
 		656132D01A50B2940036689C /* BodypartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132CF1A50B2940036689C /* BodypartCell.swift */; };
 		656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D11A50B2B60036689C /* ExerciseCell.swift */; };
 		656132D41A50B8E70036689C /* ExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D31A50B8E70036689C /* ExerciseController.swift */; };
@@ -98,7 +98,7 @@
 		656132B91A50B06B0036689C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		656132BF1A50B06B0036689C /* LiftTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiftTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		656132C41A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		656132C51A50B06B0036689C /* LiftTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftTrackerTests.swift; sourceTree = "<group>"; };
+		656132C51A50B06B0036689C /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		656132CF1A50B2940036689C /* BodypartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodypartCell.swift; sourceTree = "<group>"; };
 		656132D11A50B2B60036689C /* ExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		656132D31A50B8E70036689C /* ExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseController.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		659A4A721A9569B20042F6DF /* Bodypart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bodypart.swift; sourceTree = "<group>"; };
 		659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
 		65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiftTracker-Bridging-Header.h"; sourceTree = "<group>"; };
-		65AC65B21B17C8B90072364E /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmModel.swift; path = LiftTracker/RealmModel.swift; sourceTree = "<group>"; };
+		65AC65B21B17C8B90072364E /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		65AC65B41B17CA110072364E /* RealmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTests.swift; sourceTree = "<group>"; };
 		65C1C9251A5204710088A2DB /* 1091-weights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights.png"; sourceTree = "<group>"; };
 		65C1C9261A5204710088A2DB /* 1091-weights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@2x.png"; sourceTree = "<group>"; };
@@ -157,12 +157,10 @@
 		654BA53A1A5B8136007B3B53 /* CoreDataFiles */ = {
 			isa = PBXGroup;
 			children = (
-				654BA53D1A5B8367007B3B53 /* Bodypart.json */,
 				656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */,
+				654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */,
 				659A4A721A9569B20042F6DF /* Bodypart.swift */,
 				659A4A701A9569B10042F6DF /* Exercise.swift */,
-				6574F65C1A806672007434C8 /* Exercise.json */,
-				6574F65E1A80731D007434C8 /* BodypartExercise.json */,
 				659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */,
 			);
 			name = CoreDataFiles;
@@ -172,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				659163731B1C00AE0087244E /* Frameworks */,
-				65AC65B21B17C8B90072364E /* RealmModel.swift */,
 				656132A91A50B06B0036689C /* LiftTracker */,
 				656132C21A50B06B0036689C /* LiftTrackerTests */,
 				656132A81A50B06B0036689C /* Products */,
@@ -199,7 +196,6 @@
 				656132AA1A50B06B0036689C /* Supporting Files */,
 				65C1C9241A5203E30088A2DB /* Resources */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
-				654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */,
 				656132B11A50B06B0036689C /* BodypartController.swift */,
 				65F01A681AA4DCD0003FBBBF /* Extensions.swift */,
 				656132B31A50B06B0036689C /* Main.storyboard */,
@@ -228,7 +224,7 @@
 		656132C21A50B06B0036689C /* LiftTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				656132C51A50B06B0036689C /* LiftTrackerTests.swift */,
+				656132C51A50B06B0036689C /* CoreDataTests.swift */,
 				65AC65B41B17CA110072364E /* RealmTests.swift */,
 				656132C31A50B06B0036689C /* Supporting Files */,
 			);
@@ -282,6 +278,10 @@
 		65C947F01B261C4000C3024A /* DataAccess */ = {
 			isa = PBXGroup;
 			children = (
+				654BA53D1A5B8367007B3B53 /* Bodypart.json */,
+				6574F65C1A806672007434C8 /* Exercise.json */,
+				6574F65E1A80731D007434C8 /* BodypartExercise.json */,
+				65AC65B21B17C8B90072364E /* RealmModel.swift */,
 				65C947F11B261C5A00C3024A /* Importer.swift */,
 			);
 			name = DataAccess;
@@ -447,7 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				656132C61A50B06B0036689C /* LiftTrackerTests.swift in Sources */,
+				656132C61A50B06B0036689C /* CoreDataTests.swift in Sources */,
 				65AC65E41B17CD5D0072364E /* RealmModel.swift in Sources */,
 				659163721B1BF12F0087244E /* AF+Date+Extension.swift in Sources */,
 				659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */,

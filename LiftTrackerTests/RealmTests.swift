@@ -52,19 +52,16 @@ class RealmTests: XCTestCase {
     }
     
     func testPRs() {
-        let exercise = RExercise()
-        exercise.name = "Squat"
-        let pr1 = PR(parent: exercise, reps:6)
-        pr1.weight = 125
+        let exercise = RExercise(name: "Squat")
+        let pr1 = PR(parent: exercise, reps:6, weight:125)
         exercise.prs.append(pr1)
         
         let pr2 = PR(parent: exercise, reps:5, weight:140)
         exercise.prs.append(pr2)
         
-        let exercise2 = RExercise()
-        exercise2.name = "Bench Press"
-        let pr3 = PR(parent: exercise, reps: 8, weight: 95)
-        pr3.date = NSDate().dateBySubtractingDays(4)
+        //test that each exercise can have its own unique value for a rep
+        let exercise2 = RExercise(name: "Bench Press")
+        let pr3 = PR(parent: exercise2, reps: 5, weight: 95, date: NSDate().dateBySubtractingDays(4))
         exercise2.prs.append(pr3)
         
         let realm = Realm()
@@ -100,6 +97,9 @@ class RealmTests: XCTestCase {
         
         bodypart.exercises.extend([exercise, exercise2])
         bodypart2.exercises.append(exercise2)
+        
+        let benchPR = PR(parent: exercise2, reps: 3, weight: 205)
+        exercise2.prs.append(benchPR)
         
         let realm = Realm()
         realm.write {

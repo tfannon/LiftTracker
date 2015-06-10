@@ -11,7 +11,7 @@ import XCTest
 import LiftTracker
 import CoreData
 
-class LiftTrackerTests: XCTestCase {
+class CoreDataTests: XCTestCase {
     
     var moc = NSManagedObjectContext()
     

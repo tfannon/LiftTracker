@@ -12,8 +12,13 @@ import Foundation
 public class RBodypart : Object {
     dynamic var name = ""
     dynamic var displayOrder = 0
-    dynamic var isSystem = true
+    dynamic var isSystem = false
     let exercises = List<RExercise>()
+    
+    convenience public init(name : String) {
+        self.init()
+        self.name = name
+    }
     
     override public static func primaryKey() -> String? {
         return "name"
@@ -24,6 +29,11 @@ public class RExercise : Object {
     dynamic var name = ""
     dynamic var isSystem = true
     let prs = List<PR>()
+    
+    convenience public init(name : String) {
+        self.init()
+        self.name = name
+    }
     
     override public static func primaryKey() -> String? {
         return "name"
@@ -46,9 +56,10 @@ public class PR : Object {
         self.init(parent: parent, reps: reps)
         self.weight = weight
     }
-
-    required public init() {
-        super.init()
+    
+    convenience public init(parent : RExercise, reps : Int, weight : Int, date : NSDate) {
+        self.init(parent: parent, reps: reps, weight: weight)
+        self.date = date
     }
 
     override public static func primaryKey() -> String? {
