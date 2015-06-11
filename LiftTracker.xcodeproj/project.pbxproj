@@ -38,6 +38,15 @@
 		659A4A711A9569B10042F6DF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A701A9569B10042F6DF /* Exercise.swift */; };
 		659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A721A9569B20042F6DF /* Bodypart.swift */; };
 		659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */; };
+		65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A884B31B2919790024EEA1 /* FirebaseHelper.swift */; };
+		65A884B51B2919790024EEA1 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A884B31B2919790024EEA1 /* FirebaseHelper.swift */; };
+		65A884B71B291C090024EEA1 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884B61B291C090024EEA1 /* libicucore.dylib */; };
+		65A884B91B291C1D0024EEA1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884B81B291C1D0024EEA1 /* CFNetwork.framework */; };
+		65A884BB1B291C270024EEA1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884BA1B291C270024EEA1 /* Security.framework */; };
+		65A884BD1B291C330024EEA1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884BC1B291C330024EEA1 /* SystemConfiguration.framework */; };
+		65A884C11B291CF40024EEA1 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884C01B291CF40024EEA1 /* Firebase.framework */; };
+		65A884C21B291CF40024EEA1 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884C01B291CF40024EEA1 /* Firebase.framework */; };
+		65A884C61B291F980024EEA1 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A884C41B291F980024EEA1 /* FirebaseTests.swift */; };
 		65AC65B31B17C8B90072364E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B21B17C8B90072364E /* RealmModel.swift */; };
 		65AC65B51B17CA110072364E /* RealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B41B17CA110072364E /* RealmTests.swift */; };
 		65AC65E41B17CD5D0072364E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B21B17C8B90072364E /* RealmModel.swift */; };
@@ -114,7 +123,14 @@
 		659A4A701A9569B10042F6DF /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		659A4A721A9569B20042F6DF /* Bodypart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bodypart.swift; sourceTree = "<group>"; };
 		659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
-		65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiftTracker-Bridging-Header.h"; sourceTree = "<group>"; };
+		65A884B31B2919790024EEA1 /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
+		65A884B61B291C090024EEA1 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		65A884B81B291C1D0024EEA1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		65A884BA1B291C270024EEA1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		65A884BC1B291C330024EEA1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		65A884C01B291CF40024EEA1 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		65A884C41B291F980024EEA1 /* FirebaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
+		65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiftTracker-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		65AC65B21B17C8B90072364E /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		65AC65B41B17CA110072364E /* RealmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTests.swift; sourceTree = "<group>"; };
 		65C1C9251A5204710088A2DB /* 1091-weights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights.png"; sourceTree = "<group>"; };
@@ -138,9 +154,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A884BD1B291C330024EEA1 /* SystemConfiguration.framework in Frameworks */,
+				65A884BB1B291C270024EEA1 /* Security.framework in Frameworks */,
+				65A884B91B291C1D0024EEA1 /* CFNetwork.framework in Frameworks */,
+				65A884B71B291C090024EEA1 /* libicucore.dylib in Frameworks */,
 				6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */,
 				6534F0BE1B17C6B90098FB87 /* RealmSwift.framework in Frameworks */,
 				6534F0BC1B17C6B90098FB87 /* Realm.framework in Frameworks */,
+				65A884C11B291CF40024EEA1 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A884C21B291CF40024EEA1 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +195,6 @@
 				656132A91A50B06B0036689C /* LiftTracker */,
 				656132C21A50B06B0036689C /* LiftTrackerTests */,
 				656132A81A50B06B0036689C /* Products */,
-				65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,26 +210,13 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
-				65C947F01B261C4000C3024A /* DataAccess */,
 				659163711B1BEFA40087244E /* 3rdParty */,
-				654BA53A1A5B8136007B3B53 /* CoreDataFiles */,
-				658108921A5AA80800A1D380 /* Media.xcassets */,
-				656132AA1A50B06B0036689C /* Supporting Files */,
-				65C1C9241A5203E30088A2DB /* Resources */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
-				656132B11A50B06B0036689C /* BodypartController.swift */,
-				65F01A681AA4DCD0003FBBBF /* Extensions.swift */,
 				656132B31A50B06B0036689C /* Main.storyboard */,
-				65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */,
-				656132B81A50B06B0036689C /* LaunchScreen.xib */,
-				656132CF1A50B2940036689C /* BodypartCell.swift */,
-				656132D11A50B2B60036689C /* ExerciseCell.swift */,
-				656132D31A50B8E70036689C /* ExerciseController.swift */,
-				656132D51A50C1270036689C /* ExerciseHeaderView.swift */,
-				656132D71A50C4EB0036689C /* LogEntryController.swift */,
-				656132D91A50D1070036689C /* LogEntryCell.swift */,
-				656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */,
-				65C1C93D1A5206F40088A2DB /* SetupController.swift */,
+				65A884C31B291D6A0024EEA1 /* UI */,
+				65C947F01B261C4000C3024A /* DataAccess */,
+				65C1C9241A5203E30088A2DB /* Resources */,
+				656132AA1A50B06B0036689C /* Supporting Files */,
 			);
 			path = LiftTracker;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 		656132AA1A50B06B0036689C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */,
 				656132AB1A50B06B0036689C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -225,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				656132C51A50B06B0036689C /* CoreDataTests.swift */,
+				65A884C41B291F980024EEA1 /* FirebaseTests.swift */,
 				65AC65B41B17CA110072364E /* RealmTests.swift */,
 				656132C31A50B06B0036689C /* Supporting Files */,
 			);
@@ -251,6 +261,11 @@
 		659163731B1C00AE0087244E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65A884C01B291CF40024EEA1 /* Firebase.framework */,
+				65A884BC1B291C330024EEA1 /* SystemConfiguration.framework */,
+				65A884BA1B291C270024EEA1 /* Security.framework */,
+				65A884B81B291C1D0024EEA1 /* CFNetwork.framework */,
+				65A884B61B291C090024EEA1 /* libicucore.dylib */,
 				6534F0C01B17C6CD0098FB87 /* libc++.dylib */,
 				6534F0BA1B17C6B90098FB87 /* Realm.framework */,
 				6534F0BB1B17C6B90098FB87 /* RealmSwift.framework */,
@@ -258,9 +273,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		65A884C31B291D6A0024EEA1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */,
+				656132CF1A50B2940036689C /* BodypartCell.swift */,
+				656132B11A50B06B0036689C /* BodypartController.swift */,
+				656132D11A50B2B60036689C /* ExerciseCell.swift */,
+				656132D31A50B8E70036689C /* ExerciseController.swift */,
+				656132D51A50C1270036689C /* ExerciseHeaderView.swift */,
+				65F01A681AA4DCD0003FBBBF /* Extensions.swift */,
+				656132D91A50D1070036689C /* LogEntryCell.swift */,
+				656132D71A50C4EB0036689C /* LogEntryController.swift */,
+				656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */,
+				65C1C93D1A5206F40088A2DB /* SetupController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		65C1C9241A5203E30088A2DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				658108921A5AA80800A1D380 /* Media.xcassets */,
+				656132B81A50B06B0036689C /* LaunchScreen.xib */,
 				65C1C93F1A5209090088A2DB /* 910-graph.png */,
 				65C1C9401A5209090088A2DB /* 910-graph@2x.png */,
 				65C1C9411A5209090088A2DB /* 910-graph@3x.png */,
@@ -278,11 +313,13 @@
 		65C947F01B261C4000C3024A /* DataAccess */ = {
 			isa = PBXGroup;
 			children = (
+				654BA53A1A5B8136007B3B53 /* CoreDataFiles */,
 				654BA53D1A5B8367007B3B53 /* Bodypart.json */,
 				6574F65C1A806672007434C8 /* Exercise.json */,
 				6574F65E1A80731D007434C8 /* BodypartExercise.json */,
 				65AC65B21B17C8B90072364E /* RealmModel.swift */,
 				65C947F11B261C5A00C3024A /* Importer.swift */,
+				65A884B31B2919790024EEA1 /* FirebaseHelper.swift */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -333,6 +370,7 @@
 		6561329F1A50B06B0036689C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Crazy8Dev;
 				TargetAttributes = {
@@ -439,6 +477,7 @@
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
 				659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */,
 				659163701B1BEF950087244E /* AF+Date+Extension.swift in Sources */,
+				65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */,
 				656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,7 +486,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A884B51B2919790024EEA1 /* FirebaseHelper.swift in Sources */,
 				656132C61A50B06B0036689C /* CoreDataTests.swift in Sources */,
+				65A884C61B291F980024EEA1 /* FirebaseTests.swift in Sources */,
 				65AC65E41B17CD5D0072364E /* RealmModel.swift in Sources */,
 				659163721B1BF12F0087244E /* AF+Date+Extension.swift in Sources */,
 				659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */,
@@ -572,9 +613,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/tommy/Downloads,
 				);
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiftTracker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -590,9 +633,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/tommy/Downloads,
 				);
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LiftTracker-Bridging-Header.h";
 			};

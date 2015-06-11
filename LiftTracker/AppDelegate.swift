@@ -20,7 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         importJSONSeedDataIfNeeded()
         println(bodyparts)
         println(exercises)
+        testFirebase()
         return true
+    }
+    
+    func testFirebase() {
+        var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
+        var alan = ["full_name": "Alan Turing", "date_of_birth": "June 23, 1912"]
+        myRootRef.childByAppendingPath("alan").setValue(alan)
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -23,141 +23,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LiftTrackerTests/RealmTests.swift"
-            timestampString = "455508563.070648"
+            filePath = "LiftTrackerTests/FirebaseTests.swift"
+            timestampString = "455681441.26796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "testImporter()"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "testExercise()"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LiftTrackerTests.RealmTests.testImporter (LiftTrackerTests.RealmTests)() -&gt; ()"
-                  moduleName = "LiftTrackerTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tommy/Dev/LiftTracker/LiftTrackerTests/RealmTests.swift"
-                  timestampString = "455509470.930928"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "264">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LiftTrackerTests.RealmTests.(testImporter (LiftTrackerTests.RealmTests) -&gt; () -&gt; ()).(implicit closure #1)"
-                  moduleName = "LiftTrackerTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tommy/Dev/LiftTracker/LiftTrackerTests/RealmTests.swift"
-                  timestampString = "455509470.931125"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "9">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LiftTrackerTests.RealmTests.(testImporter (LiftTrackerTests.RealmTests) -&gt; () -&gt; ()).(implicit closure #2)"
-                  moduleName = "LiftTrackerTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tommy/Dev/LiftTracker/LiftTrackerTests/RealmTests.swift"
-                  timestampString = "455509470.931224"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiftTrackerTests/RealmTests.swift"
-            timestampString = "455508390.710053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "testPRs()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiftTrackerTests/RealmTests.swift"
-            timestampString = "455508563.070648"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "testBodypartExercises()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LiftTracker/Importer.swift"
-            timestampString = "455509462.153845"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "importJson(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LiftTracker.Importer.importJson (LiftTracker.Importer)(Swift.String) -&gt; ()"
-                  moduleName = "LiftTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tommy/Dev/LiftTracker/LiftTracker/Importer.swift"
-                  timestampString = "455509470.66377"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "4154">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LiftTrackerTests.Importer.importJson (LiftTrackerTests.Importer)(Swift.String) -&gt; ()"
-                  moduleName = "LiftTrackerTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tommy/Dev/LiftTracker/LiftTracker/Importer.swift"
-                  timestampString = "455509470.931557"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "4154">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
