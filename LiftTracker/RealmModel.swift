@@ -10,10 +10,10 @@ import RealmSwift
 import Foundation
 
 public class RBodypart : Object {
-    dynamic var name = ""
-    dynamic var displayOrder = 0
-    dynamic var isSystem = false
-    let exercises = List<RExercise>()
+    public dynamic var name = ""
+    public dynamic var displayOrder = 0
+    public dynamic var isSystem = false
+    public let exercises = List<RExercise>()
     
     convenience public init(name : String) {
         self.init()
@@ -26,9 +26,9 @@ public class RBodypart : Object {
 }
 
 public class RExercise : Object {
-    dynamic var name = ""
-    dynamic var isSystem = true
-    let prs = List<PR>()
+    public dynamic var name = ""
+    public dynamic var isSystem = true
+    public let prs = List<PR>()
     
     convenience public init(name : String) {
         self.init()
@@ -41,10 +41,10 @@ public class RExercise : Object {
 }
 
 public class PR : Object {
-    dynamic var id : String = ""
-    dynamic var reps : Int = 0
-    dynamic var weight : Int = 0
-    dynamic var date = NSDate()
+    public dynamic var id : String = ""
+    public dynamic var reps : Int = 0
+    public dynamic var weight : Int = 0
+    public dynamic var date = NSDate()
     
     convenience public init(parent : RExercise, reps : Int) {
         self.init()

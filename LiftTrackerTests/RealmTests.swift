@@ -115,7 +115,6 @@ class RealmTests: XCTestCase {
         XCTAssertEqual(2, exercises.count)
         XCTAssertEqual(2, bodypart.exercises.count)
         XCTAssertEqual(1, bodypart2.exercises.count)
-
     }
     
     
@@ -133,12 +132,15 @@ class RealmTests: XCTestCase {
     }
     
     func testImporter() {
-        var importer = Importer()
+        var importer = RealmImporter()
         importer.importSeedDataIfNeeded()
         let exercises = Realm().objects(RExercise)
         let bodyparts = Realm().objects(RBodypart)
-        XCTAssertEqual(7, bodyparts.count)
-        
+        XCTAssertEqual(6, bodyparts.count)
+        XCTAssertEqual(7, exercises.count)
+        var chest =  Realm().objectForPrimaryKey(RBodypart.self, key: "Chest")!
+        println(chest)
+        XCTAssertEqual(2, chest.exercises.count)
     }
     
 }

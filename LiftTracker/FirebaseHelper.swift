@@ -6,4 +6,9 @@
 //  Copyright (c) 2015 Crazy8Dev. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class FirebaseHelper {
+    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
+
+}
