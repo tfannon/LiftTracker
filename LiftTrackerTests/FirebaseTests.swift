@@ -39,7 +39,7 @@ class FirebaseTests: XCTestCase {
     }
     
     func testImporter() {
-        //var importer = FirebaseImporter()
-        //importer.importSeedDataIfNeeded()
+        var importer = FirebaseImporter(root: myRootRef)
+        importer.importSeedDataIfNeeded()
     }
 }

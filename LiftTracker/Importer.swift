@@ -68,21 +68,34 @@ public class RealmImporter : BaseImporter {
     }
 }
 
-/*
-class FirebaseImporter : BaseImporter {
+
+public class FirebaseImporter : BaseImporter {
     var firebase : Firebase!
 
-    init(url : String) {
-        firebase = Firebase(url: url)
+    public init(root : Firebase) {
+        firebase = root
     }
 
-    override func importJson(name: String) {
+    public override func importJson(name: String) {
         let jsonArray = readJson(name)
-        for x in jsonArray {
+        for dict in jsonArray as! [NSDictionary] {
             switch(name) {
+            case "Exercise" :
+                let exerciseRoot = firebase.childByAppendingPath("exercise")
+                let exerciseNode = exerciseRoot.childByAppendingPath(dict["name"] as! String)
+                exerciseNode.setValue(dict)
+            case "Bodypart" : ""//realm.create(RBodypart.self, value: dict, update: true)
+            case "BodypartExercise" :
+                let bp = dict["bodypart"] as! String,
+                ex = dict["exercise"] as! String
+                println("\(bp) \(ex)")
+                //let exercise = realm.objectForPrimaryKey(RExercise.self, key: ex),
+                //bodypart = realm.objectForPrimaryKey(RBodypart.self, key: bp)
+                //bodypart!.exercises.append(exercise!)
             default:""
             }
         }
+
     }
 }
-*/
+
