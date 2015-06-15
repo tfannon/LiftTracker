@@ -9,6 +9,5 @@
 import UIKit
 
 class FirebaseHelper {
-    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
-
+    static var RootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
 }

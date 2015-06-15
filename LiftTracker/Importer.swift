@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import CoreData
 
 
 public class BaseImporter {
@@ -22,7 +23,6 @@ public class BaseImporter {
         preconditionFailure("This method must be overridden")
     }
     
-    
     func readJson(name : String) -> NSArray {
         var error: NSError? = nil
         let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
@@ -32,7 +32,11 @@ public class BaseImporter {
     }
 }
 
+
 public class RealmImporter : BaseImporter {
+
+    public override init() {
+    }
 
     override public func importJson(name : String) {
         let jsonArray = readJson(name)
@@ -63,9 +67,6 @@ public class RealmImporter : BaseImporter {
         }
         realm.commitWrite()
     }
-    
-    public override init() {
-    }
 }
 
 
@@ -95,7 +96,79 @@ public class FirebaseImporter : BaseImporter {
             default:""
             }
         }
-
     }
 }
 
+
+public class CoreDataImporter : BaseImporter {
+    
+    var bodyparts = [String:Bodypart]()
+    var exercises = [String:Exercise]()
+    let clearData = false
+    lazy var coreDataStack = CoreDataStack()
+    
+    
+    public override func importJson(name: String) {
+        let jsonArray = readJson(name)
+        for dict in jsonArray as! [NSDictionary] {
+            let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: coreDataStack.context)
+            switch(name) {
+            case "Exercise":
+                let exercise = Exercise(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
+                exercise.name = dict["name"] as! String
+                exercise.isSystem = dict["isSystem"] as! Bool
+                coreDataStack.saveContext()
+                exercises[name] = exercise
+            case "Bodypart":
+                let bodypart = Bodypart(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
+                bodypart.name = dict["name"] as! String
+                bodypart.isSystem = dict["isSystem"] as! Bool
+                bodypart.displayOrder = dict["displayOrder"] as! Int
+                coreDataStack.saveContext()
+                bodyparts[name] = bodypart
+            case "BodypartExercise":
+                let bodypartName = dict["bodypart"] as! String
+                let exerciseName = dict["exercise"] as! String
+                let displayOrder = dict["displayOrder"] as! Int
+                println("\(bodypartName) - \(exerciseName):  \(displayOrder)")
+                if let bodypart = bodyparts[bodypartName],
+                       exercise = exercises[exerciseName] {
+                    println("\(bodypart.name):\(exercise.name)")
+                    bodypart.addExercise(exercise)
+                    coreDataStack.saveContext()
+                    continue
+                }
+                println("problem with \(bodypartName):\(exerciseName)")
+                abort()
+            default:
+                println("there is a problem")
+            }
+        }
+    }
+
+    /*
+    func getJsonData(name : String) {
+        let fetchRequest = NSFetchRequest(entityName: name)
+        var error: NSError? = nil
+        let results = coreDataStack.context.countForFetchRequest(fetchRequest, error: &error)
+        //todo: set cleardata flag to false when we are ready to keep data around
+        if (results == 0 || clearData) {
+            var fetchError: NSError? = nil
+            if let results = coreDataStack.context.executeFetchRequest(fetchRequest, error: &fetchError) {
+                for object in results {
+                    coreDataStack.context.deleteObject(object as! NSManagedObject)
+                }
+            }
+            coreDataStack.saveContext()
+            let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
+            let jsonData = NSData(contentsOfURL: jsonURL!)
+            let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
+            importJson(name, jsonArray:jsonArray)
+        }
+        //        else {
+        //            let bodyparts = coreDataStack.fetch2(name) as [Bodypart]
+        //            println(bodyparts)
+        //        }
+    }
+    */
+}

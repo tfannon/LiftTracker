@@ -17,19 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        importJSONSeedDataIfNeeded()
-        println(bodyparts)
-        println(exercises)
-        testFirebase()
+        let importer = FirebaseImporter(root: FirebaseHelper.RootRef)
+        importer.importSeedDataIfNeeded()
         return true
     }
     
-    func testFirebase() {
-        var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
-        var alan = ["full_name": "Alan Turing", "date_of_birth": "June 23, 1912"]
-        myRootRef.childByAppendingPath("alan").setValue(alan)
-    }
-
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -56,106 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     class var get : AppDelegate {
         return (UIApplication.sharedApplication().delegate! as! AppDelegate)
-    }
-    
-    var bodyparts = [String:Bodypart]()
-    var exercises = [String:Exercise]()
-    let clearData = false
-    
-    //MARK: seed data
-    func importJSONSeedDataIfNeeded() {
-        getJsonData("Bodypart")
-        getJsonData("Exercise")
-        mapBodypartToExercise("BodypartExercise")
-    }
-    
-    func getJsonData(name : String) {
-        let fetchRequest = NSFetchRequest(entityName: name)
-        var error: NSError? = nil
-        let results = coreDataStack.context.countForFetchRequest(fetchRequest, error: &error)
-        //todo: set cleardata flag to false when we are ready to keep data around
-        if (results == 0 || clearData) {
-            var fetchError: NSError? = nil
-            if let results = coreDataStack.context.executeFetchRequest(fetchRequest, error: &fetchError) {
-                for object in results {
-                    coreDataStack.context.deleteObject(object as! NSManagedObject)
-                }
-            }
-            coreDataStack.saveContext()
-            let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
-            let jsonData = NSData(contentsOfURL: jsonURL!)
-            let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
-            importJson(name, jsonArray:jsonArray)
-        }
-//        else {
-//            let bodyparts = coreDataStack.fetch2(name) as [Bodypart]
-//            println(bodyparts)
-//        }
-    }
-    
-    func mapBodypartToExercise(name : String) {
-        if bodyparts.count == 0 || exercises.count == 0 {
-            return
-        }
-        
-        var error: NSError? = nil
-        let jsonURL = NSBundle.mainBundle().URLForResource(name, withExtension: "json")
-        let jsonData = NSData(contentsOfURL: jsonURL!)
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
-        importJson(name, jsonArray:jsonArray)
-        
-    }
-    
-    func importJson(entityName : String, jsonArray : NSArray) {
-        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: coreDataStack.context)
-        switch entityName {
-        case "Bodypart":
-            for jsonDictionary in jsonArray {
-                let name = jsonDictionary["name"] as! String
-                let isSystem = jsonDictionary["isSystem"] as! Bool
-                let displayOrder = jsonDictionary["displayOrder"] as! Int
-                let bodypart = Bodypart(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
-                bodypart.name = name
-                bodypart.isSystem = isSystem
-                bodypart.displayOrder = displayOrder
-                coreDataStack.saveContext()
-                bodyparts[name] = bodypart
-            }
-        case "Exercise":
-            for jsonDictionary in jsonArray {
-                let name = jsonDictionary["name"] as! String
-                let isSystem = jsonDictionary["isSystem"] as! Bool
-                let exercise = Exercise(entity: entity!, insertIntoManagedObjectContext: coreDataStack.context)
-                exercise.name = name
-                exercise.isSystem = isSystem
-                coreDataStack.saveContext()
-                exercises[name] = exercise
-            }
-        case "BodypartExercise":
-            //println(bodyparts)
-            //println(exercises)
-            for jsonDictionary in jsonArray {
-                let bodypartName = jsonDictionary["bodypart"] as! String
-                let exerciseName = jsonDictionary["exercise"] as! String
-                let displayOrder = jsonDictionary["displayOrder"] as! Int
-                println("\(bodypartName) - \(exerciseName):  \(displayOrder)")
-                if let bodypart = bodyparts[bodypartName] {
-                    if let exercise = exercises[exerciseName] {
-                        //println("\(bodypart.name):\(exercise.name)")
-                        bodypart.addExercise(exercise)
-                        coreDataStack.saveContext()
-                        continue
-                    }
-                }
-                println("problem with \(bodypartName):\(exerciseName)")
-                abort()
-            }
-
-        default:
-            println("there is a problem")
-        }
-       
-        println("Imported \(jsonArray.count) \(entityName)s")
     }
     
    
