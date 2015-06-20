@@ -21,7 +21,7 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     let fetchRequest = NSFetchRequest(entityName: "Bodypart")
     
     var firebase : Firebase!
-    var bodyparts = [String:String]()
+    var bodyparts = [String]()
 
     
     override func viewDidLoad() {
@@ -98,9 +98,10 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
             while let child = enumerator.nextObject() as? FDataSnapshot {
                 //println(child.value)
                 let name = (child.value as! NSDictionary) ["name"] as! String
-                self.bodyparts[child.key] = name
+                self.bodyparts.append(name)
             }
             println(self.bodyparts)
+            self.collectionView?.reloadData()
         })
     }
     
@@ -174,15 +175,17 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! BodypartCell
-        let bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as! Bodypart
-        cell.title.text = bodypart.name
+        //let bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as! Bodypart
+        //cell.title.text = bodypart.name
+        let name = bodyparts[indexPath.row]
+        cell.title.text = name
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return bodyparts.count
-        let sectionInfo = fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
-        return sectionInfo.numberOfObjects
+        //let sectionInfo = fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
+        //return sectionInfo.numberOfObjects
+        return bodyparts.count
     }
     
     // MARK: NSFetchedResultsControllerDelegate
