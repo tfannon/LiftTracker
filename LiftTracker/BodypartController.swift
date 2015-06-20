@@ -19,6 +19,9 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     var objectChanges : Array<Dictionary<NSFetchedResultsChangeType, (NSIndexPath,NSIndexPath?)>>!
     var sectionChanges : Array<Dictionary<NSFetchedResultsChangeType, Int>>!
     let fetchRequest = NSFetchRequest(entityName: "Bodypart")
+    
+    var firebase : Firebase!
+    var bodyparts = [String:String]()
 
     
     override func viewDidLoad() {
@@ -44,7 +47,10 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         self.coreData = AppDelegate.get.coreDataStack
         objectChanges = Array<Dictionary<NSFetchedResultsChangeType, (NSIndexPath,NSIndexPath?)>>()
         sectionChanges = Array<Dictionary<NSFetchedResultsChangeType, Int>>()
+        
+        firebase = AppDelegate.get.firebase
         fetchData()
+        fetchDataFromFirebase()
     }
     
     func handleLongPress(recognizer : UILongPressGestureRecognizer) {
@@ -82,6 +88,20 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         if (!fetchedResultsController.performFetch(&error)) {
             println("Error fetching Bodyparts: \(error?.localizedDescription)")
         }
+    }
+    
+    func fetchDataFromFirebase() {
+        let node = firebase.childByAppendingPath("bodyparts")
+        node.queryOrderedByChild("displayOrder").observeSingleEventOfType(.Value, withBlock: { result in
+            //println(result)
+            let enumerator = result.children
+            while let child = enumerator.nextObject() as? FDataSnapshot {
+                //println(child.value)
+                let name = (child.value as! NSDictionary) ["name"] as! String
+                self.bodyparts[child.key] = name
+            }
+            println(self.bodyparts)
+        })
     }
     
     func addNewItem() {

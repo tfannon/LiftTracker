@@ -12,8 +12,9 @@ import CoreData
 class ExerciseController: UICollectionViewController {
     
     let cellIdentifier = "ExerciseCell"
+    let firebase = AppDelegate.get.firebase
     
-    var coreData : CoreDataStack!
+    //var coreData : CoreDataStack!
     /*
     var fetchedResultsController : NSFetchedResultsController!
     var objectChanges : Array<Dictionary<NSFetchedResultsChangeType, (NSIndexPath,NSIndexPath?)>>!
@@ -21,6 +22,7 @@ class ExerciseController: UICollectionViewController {
     let fetchRequest = NSFetchRequest(entityName: "Bodypart")
     */
     var bodypart : Bodypart!
+    
     lazy var exercises : [Exercise] = {
         var result = [Exercise]()
         for x in self.bodypart.exercises {
@@ -28,6 +30,7 @@ class ExerciseController: UICollectionViewController {
         }
         return result
     }()
+    
 
    
     override func viewDidLoad() {
@@ -54,7 +57,7 @@ class ExerciseController: UICollectionViewController {
         //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        self.coreData = AppDelegate.get.coreDataStack
+        //self.coreData = AppDelegate.get.coreDataStack
         self.collectionView!.reloadData()
         //todo: refresh the view
         
