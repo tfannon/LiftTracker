@@ -21,7 +21,8 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     let fetchRequest = NSFetchRequest(entityName: "Bodypart")
     
     var firebase : Firebase!
-    var bodyparts = [String]()
+    //tuple:  KVP of key->bodypart Name
+    var bodyparts:[(key: String, name: String)] = []
 
     
     override func viewDidLoad() {
@@ -91,6 +92,7 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
     }
     
     func fetchDataFromFirebase() {
+        bodyparts.removeAll()
         let node = firebase.childByAppendingPath("bodyparts")
         node.queryOrderedByChild("displayOrder").observeSingleEventOfType(.Value, withBlock: { result in
             //println(result)
@@ -98,7 +100,7 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
             while let child = enumerator.nextObject() as? FDataSnapshot {
                 //println(child.value)
                 let name = (child.value as! NSDictionary) ["name"] as! String
-                self.bodyparts.append(name)
+                self.bodyparts += [(key: child.key!, name: name)]
             }
             println(self.bodyparts)
             self.collectionView?.reloadData()
@@ -117,18 +119,34 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         
         alert.addAction(UIAlertAction(title: "Save",
             style: .Default, handler: { (action: UIAlertAction!) in
-                let nameTextField = alert.textFields![0] as! UITextField
-                
-                let bodypart =
-                NSEntityDescription.insertNewObjectForEntityForName("Bodypart",
-                    inManagedObjectContext: self.coreData.context) as! Bodypart
-                
-                bodypart.name = nameTextField.text
-                //right now insert it at the end of the list
-                //there is an issue with delete and the index is screwed up?
-                let count = self.coreData.context.countForFetchRequest(self.fetchRequest, error: nil)
-                bodypart.displayOrder = count
-                self.coreData.saveContext()
+                let name = (alert.textFields![0] as! UITextField).text
+                let key = name.removeWhitespace().lowercaseString
+                let keys = self.bodyparts.map { $0.key }
+                if  find(keys,key) == nil {
+                    let order = self.bodyparts.count
+                    var dict = [String:AnyObject]()
+                    dict["displayOrder"] = order
+                    dict["isSystem"] = false
+                    dict["name"] = name
+                    let node = self.firebase.childByAppendingPath("bodyparts/\(key)")
+                    node.setValue(dict, withCompletionBlock: { (error,result) in
+                        println(result)
+                        self.fetchDataFromFirebase()
+                    })
+                }
+                else {
+                }
+//                let bp = find(self.bodyparts.0, key)
+//                let bodypart =
+//                NSEntityDescription.insertNewObjectForEntityForName("Bodypart",
+//                    inManagedObjectContext: self.coreData.context) as! Bodypart
+//                
+//                bodypart.name = nameTextField.text
+//                //right now insert it at the end of the list
+//                //there is an issue with delete and the index is screwed up?
+//                let count = self.coreData.context.countForFetchRequest(self.fetchRequest, error: nil)
+//                bodypart.displayOrder = count
+//                self.coreData.saveContext()
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel",
@@ -136,7 +154,6 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         }))
         
         presentViewController(alert, animated: true, completion: nil)
-
     }
     
     func deleteItem(title : String, indexPath : NSIndexPath) {
@@ -177,8 +194,7 @@ class BodypartController: UICollectionViewController, NSFetchedResultsController
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! BodypartCell
         //let bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as! Bodypart
         //cell.title.text = bodypart.name
-        let name = bodyparts[indexPath.row]
-        cell.title.text = name
+        cell.title.text = bodyparts[indexPath.row].name
         return cell
     }
     
