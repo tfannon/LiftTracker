@@ -34,6 +34,48 @@ public class BaseImporter {
     }
 }
 
+public class FirebaseImporter : BaseImporter {
+    var firebase : Firebase!
+    
+    public init(root : Firebase) {
+        firebase = root
+    }
+    
+    override func importJson(name: String) {
+        if overwrite {
+            firebase.removeValue()
+            overwrite = false
+        }
+        let jsonArray = readJson(name)
+        for dict in jsonArray as! [NSDictionary] {
+            switch(name) {
+            case "Exercise" :
+                let root = firebase.childByAppendingPath("exercises")
+                let name = dict["name"] as! String
+                let node = root.childByAppendingPath(name.removeWhitespace().lowercaseString)
+                node.setValue(dict)
+            case "Bodypart" :
+                let root = firebase.childByAppendingPath("bodyparts")
+                let name = dict["name"] as! String
+                let node = root.childByAppendingPath(name.removeWhitespace().lowercaseString)
+                node.setValue(dict)
+                
+            case "BodypartExercise" : ""
+                let root = firebase.childByAppendingPath("bodyparts")
+                let bodypart = dict["bodypart"] as! String,
+                    exercise = dict["exercise"] as! String,
+                    displayOrder = dict["displayOrder"] as! Int
+                
+                let childKey = "\(bodypart.removeWhitespace().lowercaseString)/exercises/\(exercise.removeWhitespace().lowercaseString)"
+                var node = root.childByAppendingPath(childKey)
+                node.setValue(displayOrder)
+            default:""
+            }
+        }
+    }
+}
+
+
 
 public class RealmImporter : BaseImporter {
 
@@ -72,43 +114,6 @@ public class RealmImporter : BaseImporter {
 }
 
 
-public class FirebaseImporter : BaseImporter {
-    var firebase : Firebase!
-
-    public init(root : Firebase) {
-        firebase = root
-    }
-
-    override func importJson(name: String) {
-        if overwrite {
-            firebase.removeValue()
-        }
-        let jsonArray = readJson(name)
-        for dict in jsonArray as! [NSDictionary] {
-            switch(name) {
-            case "Exercise" :
-                let root = firebase.childByAppendingPath("exercises")
-                let name = dict["name"] as! String
-                let node = root.childByAppendingPath(name.removeWhitespace().lowercaseString)
-                node.setValue(dict)
-            case "Bodypart" :
-                let root = firebase.childByAppendingPath("bodyparts")
-                let name = dict["name"] as! String
-                let node = root.childByAppendingPath(name.removeWhitespace().lowercaseString)
-                node.setValue(dict)
-                
-            case "BodypartExercise" :
-                let root = firebase.childByAppendingPath("bodyparts")
-                let bodypart = dict["bodypart"] as! String,
-                    exercise = dict["exercise"] as! String
-                let childKey = "\(bodypart.removeWhitespace().lowercaseString)/exercises/\(exercise.removeWhitespace().lowercaseString)"
-                var node = root.childByAppendingPath(childKey)
-                node.setValue(true)
-            default:""
-            }
-        }
-    }
-}
 
 
 public class CoreDataImporter : BaseImporter {

@@ -7,31 +7,17 @@
 //
 
 import UIKit
-import CoreData
+
 
 class ExerciseController: UICollectionViewController {
     
     let cellIdentifier = "ExerciseCell"
     let firebase = AppDelegate.get.firebase
     
-    //var coreData : CoreDataStack!
-    /*
-    var fetchedResultsController : NSFetchedResultsController!
-    var objectChanges : Array<Dictionary<NSFetchedResultsChangeType, (NSIndexPath,NSIndexPath?)>>!
-    var sectionChanges : Array<Dictionary<NSFetchedResultsChangeType, Int>>!
-    let fetchRequest = NSFetchRequest(entityName: "Bodypart")
-    */
-    var bodypart : Bodypart!
+    var bodypart:(key: String, name: String)!
+    var allExercises:[(key: String, name: String)] = []
+    var bodypartExercises:[(key: String, name: String)] = []
     
-    lazy var exercises : [Exercise] = {
-        var result = [Exercise]()
-        for x in self.bodypart.exercises {
-            result.append(x as! Exercise)
-        }
-        return result
-    }()
-    
-
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +34,42 @@ class ExerciseController: UICollectionViewController {
         var swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
         swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         collectionView!.addGestureRecognizer(swipeLeftRecognizer)
-
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        //self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-        //self.coreData = AppDelegate.get.coreDataStack
-        self.collectionView!.reloadData()
-        //todo: refresh the view
-        
+        fetchGlobalExercises()
+        fetchBodypart()
     }
+    
+    func fetchGlobalExercises() {
+        allExercises.removeAll()
+        let node = firebase.childByAppendingPath("exercises")
+        node.observeSingleEventOfType(.Value, withBlock: { result in
+            //println(result)
+            let enumerator = result.children
+            while let child = enumerator.nextObject() as? FDataSnapshot {
+                //println(child.value)
+                let name = (child.value as! NSDictionary) ["name"] as! String
+                self.allExercises += [(key: child.key!, name: name)]
+            }
+            println(self.allExercises)
+        })
+    }
+    
+    func fetchBodypart() {
+        bodypartExercises.removeAll()
+        let node = firebase.childByAppendingPath("bodyparts/\(bodypart.key)/exercises")
+        node.queryOrderedByChild("displayOrder").observeSingleEventOfType(.Value, withBlock: { result in
+            let enumerator = result.children
+            while let child = enumerator.nextObject() as? FDataSnapshot {
+                //println(child.key)
+                //println(child.value)
+                //fetch the exercise name from the global exercise list....
+                let exerciseDisplayName = self.allExercises.filter { $0.key == child.key }[0].name
+                self.bodypartExercises += [(key: child.key!, name: exerciseDisplayName)]
+                println(self.bodypartExercises)
+            }
+            self.collectionView?.reloadData()
+        })
+    }
+ 
     
     func handleSwipeLeft(recognizer : UISwipeGestureRecognizer) {
         navigationController!.popViewControllerAnimated(true)
@@ -96,12 +104,12 @@ class ExerciseController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return exercises.count
+        return bodypartExercises.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! ExerciseCell
-        cell.title.text = exercises[indexPath.row].name
+        cell.title.text = bodypartExercises[indexPath.row].name
         return cell
     }
     
