@@ -64,6 +64,7 @@
 		65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */; };
 		65F4C5021B2BE08B00A0557E /* DataAccessFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */; };
 		65F4C5031B2BE08B00A0557E /* DataAccessFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */; };
+		65F60F6A1B34DC4E004DEDAB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F60F691B34DC4E004DEDAB /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		65F01A681AA4DCD0003FBBBF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseController.swift; sourceTree = "<group>"; };
 		65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccessFacade.swift; sourceTree = "<group>"; };
+		65F60F691B34DC4E004DEDAB /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
+				65F60F681B34DC3E004DEDAB /* Extensions */,
 				659163711B1BEFA40087244E /* 3rdParty */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
 				656132B31A50B06B0036689C /* Main.storyboard */,
@@ -323,6 +326,14 @@
 				65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */,
 			);
 			name = DataAccess;
+			sourceTree = "<group>";
+		};
+		65F60F681B34DC3E004DEDAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				65F60F691B34DC4E004DEDAB /* StringExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65F60F6A1B34DC4E004DEDAB /* StringExtensions.swift in Sources */,
 				656132B21A50B06B0036689C /* BodypartController.swift in Sources */,
 				656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */,
 				65C1C93E1A5206F40088A2DB /* SetupController.swift in Sources */,

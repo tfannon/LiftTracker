@@ -12,7 +12,7 @@ import LiftTracker
 
 class FirebaseTests: XCTestCase {
     
-    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/testing/tfannon")
+    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/test")
 
     override func setUp() {
         super.setUp()
@@ -38,8 +38,35 @@ class FirebaseTests: XCTestCase {
         }
     }
     
+    func test() {
+        var node = myRootRef.childByAppendingPath("main")
+        var dict = ["foo":"bar"]
+        var done = false
+        
+        node.setValue(dict) { (result) in
+            println(result)
+            done = true
+        }
+        
+        waitUntil(5) { done }
+        
+        XCTAssert(done, "Completion should be called")
+    }
+    
+    func waitUntil(timeout: NSTimeInterval, predicate:(Void -> Bool)) {
+        var timeoutTime = NSDate(timeIntervalSinceNow: timeout).timeIntervalSinceReferenceDate
+        
+        while (!predicate() && NSDate.timeIntervalSinceReferenceDate() < timeoutTime) {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 0.25))
+        }
+    }
+    
     func testImporter() {
         var importer = FirebaseImporter(root: myRootRef)
-        importer.importSeedDataIfNeeded()
+        importer.importSeedDataIfNeeded(overwrite: true)
+        var done = false
+
+        waitUntil(5) { done }
+        
     }
 }

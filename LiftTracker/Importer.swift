@@ -12,14 +12,16 @@ import CoreData
 
 
 public class BaseImporter {
+    var overwrite : Bool = false
     
-    public func importSeedDataIfNeeded() {
+    public func importSeedDataIfNeeded(overwrite : Bool = false) {
+        self.overwrite = overwrite
         importJson("Bodypart")
         importJson("Exercise")
         importJson("BodypartExercise")
     }
     
-    public func importJson(name : String) {
+    func importJson(name : String) {
         preconditionFailure("This method must be overridden")
     }
     
@@ -38,7 +40,7 @@ public class RealmImporter : BaseImporter {
     public override init() {
     }
 
-    override public func importJson(name : String) {
+    override func importJson(name : String) {
         let jsonArray = readJson(name)
         var exercises : [RExercise]
         var bodyparts : [RBodypart]
@@ -77,22 +79,31 @@ public class FirebaseImporter : BaseImporter {
         firebase = root
     }
 
-    public override func importJson(name: String) {
+    override func importJson(name: String) {
+        if overwrite {
+            firebase.removeValue()
+        }
         let jsonArray = readJson(name)
         for dict in jsonArray as! [NSDictionary] {
             switch(name) {
             case "Exercise" :
-                let exerciseRoot = firebase.childByAppendingPath("exercise")
-                let exerciseNode = exerciseRoot.childByAppendingPath(dict["name"] as! String)
-                exerciseNode.setValue(dict)
-            case "Bodypart" : ""//realm.create(RBodypart.self, value: dict, update: true)
+                let root = firebase.childByAppendingPath("exercises")
+                let name = dict["name"] as! String
+                let node = root.childByAppendingPath(name.removeWhitespace().lowercaseString)
+                node.setValue(dict)
+            case "Bodypart" :
+                let root = firebase.childByAppendingPath("bodyparts")
+                let name = dict["name"] as! String
+                let node = root.childByAppendingPath(name.removeWhitespace().lowercaseString)
+                node.setValue(dict)
+                
             case "BodypartExercise" :
-                let bp = dict["bodypart"] as! String,
-                ex = dict["exercise"] as! String
-                println("\(bp) \(ex)")
-                //let exercise = realm.objectForPrimaryKey(RExercise.self, key: ex),
-                //bodypart = realm.objectForPrimaryKey(RBodypart.self, key: bp)
-                //bodypart!.exercises.append(exercise!)
+                let root = firebase.childByAppendingPath("bodyparts")
+                let bodypart = dict["bodypart"] as! String,
+                    exercise = dict["exercise"] as! String
+                let childKey = "\(bodypart.removeWhitespace().lowercaseString)/exercises/\(exercise.removeWhitespace().lowercaseString)"
+                var node = root.childByAppendingPath(childKey)
+                node.setValue(true)
             default:""
             }
         }
@@ -108,7 +119,7 @@ public class CoreDataImporter : BaseImporter {
     lazy var coreDataStack = CoreDataStack()
     
     
-    public override func importJson(name: String) {
+    override func importJson(name: String) {
         let jsonArray = readJson(name)
         for dict in jsonArray as! [NSDictionary] {
             let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: coreDataStack.context)

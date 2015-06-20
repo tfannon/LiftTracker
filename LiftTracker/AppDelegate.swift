@@ -14,10 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     lazy var coreDataStack = CoreDataStack()
+    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/tfannon")
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let importer = FirebaseImporter(root: FirebaseHelper.RootRef)
+        
+        let importer = FirebaseImporter(root: myRootRef)
         importer.importSeedDataIfNeeded()
         return true
     }
