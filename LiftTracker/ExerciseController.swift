@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ExerciseController: UICollectionViewController {
+class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let cellIdentifier = "ExerciseCell"
     let firebase = AppDelegate.get.firebase
@@ -17,6 +17,11 @@ class ExerciseController: UICollectionViewController {
     var bodypart:(key: String, name: String)!
     var allExercises:[(key: String, name: String)] = []
     var bodypartExercises:[(key: String, name: String)] = []
+    
+    var btnAddExercise : UIButton!
+    var pickerHiddenTextField : UITextField!
+    var picker : UIPickerView!
+    var tapGesture : UITapGestureRecognizer!
     
    
     override func viewDidLoad() {
@@ -28,7 +33,8 @@ class ExerciseController: UICollectionViewController {
         
         addTitleBar()
         
-        self.addButton("+", action: "addNewExercise")
+        self.btnAddExercise = self.addButton("+", action: "addNewExercise")
+        setupPickerView()
         
         //the long press will trigger a delete for now
         var swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
@@ -37,6 +43,17 @@ class ExerciseController: UICollectionViewController {
         fetchGlobalExercises()
         fetchBodypart()
     }
+    
+    func setupPickerView() {
+        pickerHiddenTextField = UITextField()
+        self.view.addSubview(pickerHiddenTextField)
+        picker = UIPickerView()
+        picker.showsSelectionIndicator = true
+        picker.dataSource = self
+        picker.delegate = self
+        pickerHiddenTextField.inputView = picker
+        self.tapGesture = UITapGestureRecognizer(target: self, action: "handleTap")
+     }
     
     func fetchGlobalExercises() {
         allExercises.removeAll()
@@ -81,7 +98,14 @@ class ExerciseController: UICollectionViewController {
     }
     
     func addNewExercise() {
-        println("add called")
+        self.pickerHiddenTextField.becomeFirstResponder()
+        //recognize a tap outside the picker closes it down
+        self.collectionView?.addGestureRecognizer(tapGesture)
+    }
+    
+    func handleTap() {
+        pickerHiddenTextField.resignFirstResponder()
+        self.collectionView?.removeGestureRecognizer(tapGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -161,5 +185,22 @@ class ExerciseController: UICollectionViewController {
     
     }
     */
+    
+    // MARK:  UIPickerViewDataSource
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.allExercises.count
+    }
+    
+    //MARK: Delegates
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return self.allExercises[row].name
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerHiddenTextField.resignFirstResponder()
+    }
 
 }
