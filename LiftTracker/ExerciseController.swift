@@ -18,6 +18,10 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
     var allExercises:[(key: String, name: String)] = []
     var bodypartExercises:[(key: String, name: String)] = []
     
+    //will be alphabetized list of items not already found in bodypart exercises
+    var exercisesValidForSelection:[(key: String, name: String)] = []
+
+    
     var btnAddExercise : UIButton!
     var pickerHiddenTextField : UITextField!
     var picker : UIPickerView!
@@ -66,7 +70,7 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
                 let name = (child.value as! NSDictionary) ["name"] as! String
                 self.allExercises += [(key: child.key!, name: name)]
             }
-            println(self.allExercises)
+            //println(self.allExercises)
         })
     }
     
@@ -81,7 +85,7 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
                 //fetch the exercise name from the global exercise list....
                 let exerciseDisplayName = self.allExercises.filter { $0.key == child.key }[0].name
                 self.bodypartExercises += [(key: child.key!, name: exerciseDisplayName)]
-                println(self.bodypartExercises)
+                //println(self.bodypartExercises)
             }
             self.collectionView?.reloadData()
         })
@@ -98,9 +102,15 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
     }
     
     func addNewExercise() {
-        self.pickerHiddenTextField.becomeFirstResponder()
+        exercisesValidForSelection.removeAll()
+        let bpKeys = bodypartExercises.map { $0.key }
+        var x = allExercises.filter { find(bpKeys, $0.key) == nil }
+        x.sort { $0.key < $1.key }
+        //println(x)
+        exercisesValidForSelection = x
         //recognize a tap outside the picker closes it down
         self.collectionView?.addGestureRecognizer(tapGesture)
+        self.pickerHiddenTextField.becomeFirstResponder()
     }
     
     func handleTap() {
@@ -191,16 +201,23 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.allExercises.count
+        return self.exercisesValidForSelection.count
     }
     
     //MARK: Delegates
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return self.allExercises[row].name
+        
+        return self.exercisesValidForSelection[row].name
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerHiddenTextField.resignFirstResponder()
+        let exercise = exercisesValidForSelection[row]
+        let childKey = firebase.childByAppendingPath("bodyparts/\(bodypart.key)/exercises/\(exercise.key)")
+        childKey.setValue(bodypartExercises.count, withCompletionBlock: { _ in
+            self.pickerHiddenTextField.resignFirstResponder()
+            self.fetchBodypart()
+        })
+        
     }
 
 }
