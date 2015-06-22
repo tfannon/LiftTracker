@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let importer = FirebaseImporter(root: firebase)
-        //importer.importSeedDataIfNeeded()
+        //importer.importSeedDataIfNeeded(overwrite: true)
         return true
     }
     

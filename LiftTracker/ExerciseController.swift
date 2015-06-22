@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let cellIdentifier = "ExerciseCell"
     let firebase = AppDelegate.get.firebase
@@ -38,9 +38,16 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
         addTitleBar()
         
         self.btnAddExercise = self.addButton("+", action: "addNewExercise")
+        
+        //the long press will trigger a delete
+        var longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+        longPressGestureRecognizer.delegate = self
+        longPressGestureRecognizer.delaysTouchesBegan = true //so wont interfere with normal tap
+        collectionView!.addGestureRecognizer(longPressGestureRecognizer)
+        
         setupPickerView()
         
-        //the long press will trigger a delete for now
+        //swipe left will return back to bodypart
         var swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
         swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         collectionView!.addGestureRecognizer(swipeLeftRecognizer)
@@ -56,28 +63,28 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
         picker.dataSource = self
         picker.delegate = self
         pickerHiddenTextField.inputView = picker
-        self.tapGesture = UITapGestureRecognizer(target: self, action: "handleTap")
+        //tapping anywhere outside picker exists
+        self.tapGesture = UITapGestureRecognizer(target: self, action: "exitPicker")
      }
+    
+    
     
     func fetchGlobalExercises() {
         allExercises.removeAll()
         let node = firebase.childByAppendingPath("exercises")
         node.observeSingleEventOfType(.Value, withBlock: { result in
-            //println(result)
             let enumerator = result.children
             while let child = enumerator.nextObject() as? FDataSnapshot {
-                //println(child.value)
                 let name = (child.value as! NSDictionary) ["name"] as! String
                 self.allExercises += [(key: child.key!, name: name)]
             }
-            //println(self.allExercises)
         })
     }
     
     func fetchBodypart() {
         bodypartExercises.removeAll()
         let node = firebase.childByAppendingPath("bodyparts/\(bodypart.key)/exercises")
-        node.queryOrderedByChild("displayOrder").observeSingleEventOfType(.Value, withBlock: { result in
+        node.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: { result in
             let enumerator = result.children
             while let child = enumerator.nextObject() as? FDataSnapshot {
                 //println(child.key)
@@ -85,11 +92,27 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
                 //fetch the exercise name from the global exercise list....
                 let exerciseDisplayName = self.allExercises.filter { $0.key == child.key }[0].name
                 self.bodypartExercises += [(key: child.key!, name: exerciseDisplayName)]
-                //println(self.bodypartExercises)
+                println(self.bodypartExercises)
             }
             self.collectionView?.reloadData()
         })
     }
+    
+    //long press will delete an exercise associated with the bodypart
+    func handleLongPress(recognizer : UILongPressGestureRecognizer) {
+        if recognizer.state != UIGestureRecognizerState.Ended {
+            return
+        }
+        let p = recognizer.locationInView(self.collectionView!)
+        if let indexPath = collectionView!.indexPathForItemAtPoint(p) {
+            let cell = collectionView!.cellForItemAtIndexPath(indexPath) as! ExerciseCell
+            removeExercise(cell.title.text!, indexPath:indexPath)
+        }
+        else {
+            println("could not find cell for longpress")
+        }
+    }
+
  
     
     func handleSwipeLeft(recognizer : UISwipeGestureRecognizer) {
@@ -104,16 +127,41 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
     func addNewExercise() {
         exercisesValidForSelection.removeAll()
         let bpKeys = bodypartExercises.map { $0.key }
+        //filter out any of the exercises that are already chosen
         var x = allExercises.filter { find(bpKeys, $0.key) == nil }
+        //display them alphabetically
         x.sort { $0.key < $1.key }
-        //println(x)
         exercisesValidForSelection = x
         //recognize a tap outside the picker closes it down
         self.collectionView?.addGestureRecognizer(tapGesture)
         self.pickerHiddenTextField.becomeFirstResponder()
     }
     
-    func handleTap() {
+    func removeExercise(title : String, indexPath : NSIndexPath) {
+        var alert = UIAlertController(title: "",
+            message: "Do you want to remove \(title) from \(bodypart.name)?",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Remove",
+            style: UIAlertActionStyle.Destructive, handler: { (action: UIAlertAction!) in
+                let key = self.bodypartExercises[indexPath.row].key
+                let node = self.firebase.childByAppendingPath("bodyparts/\(self.bodypart.key)/exercises/\(key)")
+                node.removeValueWithCompletionBlock {(result) in
+                    //println(result)
+                    self.fetchBodypart()
+                }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel",
+            style: .Default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+
+    
+    
+    func exitPicker() {
         pickerHiddenTextField.resignFirstResponder()
         self.collectionView?.removeGestureRecognizer(tapGesture)
     }
@@ -213,6 +261,7 @@ class ExerciseController: UICollectionViewController, UIPickerViewDataSource, UI
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let exercise = exercisesValidForSelection[row]
         let childKey = firebase.childByAppendingPath("bodyparts/\(bodypart.key)/exercises/\(exercise.key)")
+        //put it at the end (which would be the index = total exercises already picked
         childKey.setValue(bodypartExercises.count, withCompletionBlock: { _ in
             self.pickerHiddenTextField.resignFirstResponder()
             self.fetchBodypart()

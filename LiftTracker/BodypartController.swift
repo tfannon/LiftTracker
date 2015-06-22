@@ -16,6 +16,8 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
    
     //tuple:  KVP of key->bodypart Name
     var bodyparts:[(key: String, name: String)] = []
+    
+    var btnAddBodypart : UIButton!
 
     
     override func viewDidLoad() {
@@ -25,14 +27,9 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         imageView.image = UIImage(named: "dumbells.jpg")!
         self.view.insertSubview(imageView, atIndex: 0)
         
-        //todo: can we put this in the storyboard???
-        let addButton = UIButton(frame: CGRectMake(0, UIScreen.mainScreen().bounds.size.height - 88, UIScreen.mainScreen().bounds.size.width, 44))
-        addButton.setTitle("+", forState: .Normal)
-        addButton.backgroundColor = UIColor(red: 0.5, green: 0.9, blue: 0.5, alpha: 1.0)
-        addButton.addTarget(self, action: "addNewItem", forControlEvents: .TouchUpInside)
-        self.view.addSubview(addButton)
+        self.btnAddBodypart = self.addButton("+", action: "addNewBodypart")
         
-        //the long press will trigger a delete for now
+        //the long press will trigger a delete
         var longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
         longPressGestureRecognizer.delegate = self
         longPressGestureRecognizer.delaysTouchesBegan = true //so wont interfere with normal tap
@@ -71,7 +68,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         })
     }
     
-    func addNewItem() {
+    func addNewBodypart() {
         var alert = UIAlertController(title: "Bodypart",
             message: "Add a new bodypart",
             preferredStyle: UIAlertControllerStyle.Alert)
