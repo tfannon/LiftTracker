@@ -27,6 +27,12 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
     var picker : UIPickerView!
     var tapGesture : UITapGestureRecognizer!
     
+    var indexOfAddNewExercise : Int {
+        get {
+            return exercisesValidForSelection.count
+        }
+    }
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +43,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         
         addTitleBar()
         
-        self.btnAddExercise = self.addButton("+", action: "addNewExercise")
+        self.btnAddExercise = self.addButton("+", action: "pickExercise")
         
         //the long press will trigger a delete
         var longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
@@ -124,7 +130,8 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         self.navigationItem.title = bodypart.name
     }
     
-    func addNewExercise() {
+    //this will let the user choose an exercise from the global list of exercises which has not already been chosen for this bodypart
+    func pickExercise() {
         exercisesValidForSelection.removeAll()
         let bpKeys = bodypartExercises.map { $0.key }
         //filter out any of the exercises that are already chosen
@@ -249,24 +256,90 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.exercisesValidForSelection.count
+        return self.exercisesValidForSelection.count + 1
     }
     
     //MARK: Delegates
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        return self.exercisesValidForSelection[row].name
+        var color = row == indexOfAddNewExercise ? UIColor.redColor() : UIColor.blackColor()
+        var title = row == indexOfAddNewExercise ? "[Add new exercise]" : exercisesValidForSelection[row].name
+        
+        var attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName : color])
+        
+        return attributedString
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let exercise = exercisesValidForSelection[row]
-        let childKey = firebase.childByAppendingPath("bodyparts/\(bodypart.key)/exercises/\(exercise.key)")
+        if row == indexOfAddNewExercise {
+            addNewExercise()
+        }
+        else {
+            let exercise = exercisesValidForSelection[row]
+            addExerciseToBodypart(bodypart.key, exerciseKey: exercise.key)
+        }
+    }
+    
+    func addExerciseToBodypart(bodypartKey : String, exerciseKey : String) {
+        let childKey = firebase.childByAppendingPath("bodyparts/\(bodypartKey)/exercises/\(exerciseKey)")
         //put it at the end (which would be the index = total exercises already picked
         childKey.setValue(bodypartExercises.count, withCompletionBlock: { _ in
             self.pickerHiddenTextField.resignFirstResponder()
             self.fetchBodypart()
+            self.saveExerciseBodypartRelationship(exerciseKey, bodypartKey: bodypartKey)
         })
-        
     }
+    
+    func saveExerciseBodypartRelationship(exerciseKey : String,  bodypartKey : String) {
+        let childKey = firebase.childByAppendingPath("bodyparts/\(bodypartKey)/exercises/\(exerciseKey)")
+        //put it at the end (which would be the index = total exercises already picked
+        childKey.setValue(bodypartExercises.count, withCompletionBlock: { _ in
+            self.pickerHiddenTextField.resignFirstResponder()
+            //trigger a refetch
+            self.fetchBodypart()
+        })
+    }
+    
+    func addNewExercise() {
+        var alert = UIAlertController(title: "Exercise",
+            message: "Add a new exercise",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) in
+            textField.placeholder = "Exercise"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Save",
+            style: .Default, handler: { (action: UIAlertAction!) in
+                let name = (alert.textFields![0] as! UITextField).text
+                let key = name.removeWhitespace().lowercaseString
+                let keys = self.allExercises.map { $0.key }
+                if  find(keys,key) == nil {
+                    //first add it to the global list of exercises
+                    var dict = [String:AnyObject]()
+                    dict["isSystem"] = false
+                    dict["name"] = name
+                    let node = self.firebase.childByAppendingPath("exercises/\(key)")
+                    node.setValue(dict, withCompletionBlock: { (error,result) in
+                        println(result)
+                        self.fetchGlobalExercises()
+                        self.saveExerciseBodypartRelationship(key, bodypartKey: self.bodypart.key)
+                    })
+                }
+                else {
+                }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel",
+            style: .Default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    
 
 }
