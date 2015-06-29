@@ -10,6 +10,7 @@
 		6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0C01B17C6CD0098FB87 /* libc++.dylib */; };
 		654BA53E1A5B8367007B3B53 /* Bodypart.json in Resources */ = {isa = PBXBuildFile; fileRef = 654BA53D1A5B8367007B3B53 /* Bodypart.json */; };
 		654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */; };
+		654C4F141B3D753C0027367D /* SetRepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C4F131B3D753C0027367D /* SetRepController.swift */; };
 		656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132AC1A50B06B0036689C /* AppDelegate.swift */; };
 		656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */; };
 		656132B21A50B06B0036689C /* BodypartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132B11A50B06B0036689C /* BodypartController.swift */; };
@@ -96,6 +97,7 @@
 		6534F0C01B17C6CD0098FB87 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		654BA53D1A5B8367007B3B53 /* Bodypart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bodypart.json; sourceTree = "<group>"; };
 		654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		654C4F131B3D753C0027367D /* SetRepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRepController.swift; sourceTree = "<group>"; };
 		656132A71A50B06B0036689C /* LiftTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656132AB1A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		656132AC1A50B06B0036689C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				656132D71A50C4EB0036689C /* LogEntryController.swift */,
 				656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */,
 				65C1C93D1A5206F40088A2DB /* SetupController.swift */,
+				654C4F131B3D753C0027367D /* SetRepController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
 				659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */,
 				659163701B1BEF950087244E /* AF+Date+Extension.swift in Sources */,
+				654C4F141B3D753C0027367D /* SetRepController.swift in Sources */,
 				65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */,
 				656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */,
 			);

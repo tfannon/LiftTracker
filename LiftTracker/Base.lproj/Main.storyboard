@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LH8-nl-3Ia">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xOC-Tx-ABA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -291,6 +291,63 @@
             </objects>
             <point key="canvasLocation" x="2249" y="2464"/>
         </scene>
+        <!--Set Rep Controller-->
+        <scene sceneID="h7Q-j5-Vq8">
+            <objects>
+                <viewController id="xOC-Tx-ABA" customClass="SetRepController" customModule="LiftTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GYQ-Fp-DMV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xlo-6R-YIH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qLZ-Tb-dAo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Military Press" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pg-Pf-0F3">
+                                <rect key="frame" x="203" y="46" width="195" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="195" id="gYJ-Fa-BKd"/>
+                                    <constraint firstAttribute="height" constant="21" id="odh-Pe-vJ5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huc-Jn-gxX">
+                                <rect key="frame" x="0.0" y="133" width="600" height="162"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef">
+                                <rect key="frame" x="128" y="89" width="344" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KHl-dM-Jg0"/>
+                                    <constraint firstAttribute="width" constant="344" id="bwW-9y-opM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="4Sl-I0-mMB"/>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="22" id="6Sf-PQ-fBT"/>
+                            <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="23" id="Eez-RX-5KW"/>
+                            <constraint firstItem="2Pg-Pf-0F3" firstAttribute="centerX" secondItem="xc7-Fs-Jef" secondAttribute="centerX" id="S4A-O8-zRW"/>
+                            <constraint firstItem="huc-Jn-gxX" firstAttribute="leading" secondItem="qLZ-Tb-dAo" secondAttribute="leading" id="Tap-aU-vrU"/>
+                            <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="26" id="Wkp-wN-1iD"/>
+                            <constraint firstAttribute="trailing" secondItem="huc-Jn-gxX" secondAttribute="trailing" id="sby-wh-Qr2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblExercise" destination="2Pg-Pf-0F3" id="Zz6-YO-KmR"/>
+                        <outlet property="lblPickedValue" destination="xc7-Fs-Jef" id="hpW-f9-EHy"/>
+                        <outlet property="picker" destination="huc-Jn-gxX" id="nOr-yk-URe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="he4-WL-ITk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589" y="1553"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ClN-0L-Rxd">
             <objects>
@@ -332,7 +389,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zK-dK-OO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="822"/>
+            <point key="canvasLocation" x="1500" y="874"/>
         </scene>
         <!--Setup-->
         <scene sceneID="A3z-WX-ELn">
