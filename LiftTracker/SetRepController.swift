@@ -16,12 +16,19 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     let ones = [2.5, 5]
     
+    //will be set by preceeding view controller
+    var exercise : (key:String, name:String)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.dataSource = self
         picker.delegate = self
+        lblExercise.text = exercise.name
     }
+    
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//    }
     
     //MARK: - PickerViewDataSource
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

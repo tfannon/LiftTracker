@@ -14,7 +14,9 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
     let cellIdentifier = "ExerciseCell"
     let firebase = AppDelegate.get.firebase
     
+    //will be set by previous controller
     var bodypart:(key: String, name: String)!
+    
     var allExercises:[(key: String, name: String)] = []
     var bodypartExercises:[(key: String, name: String)] = []
     
@@ -33,7 +35,8 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         }
     }
     
-   
+    // MARK: ViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         var imageView = UIImageView(frame:self.view.bounds)
@@ -180,15 +183,12 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
 
     
     // MARK: - Navigation
-
-    /* In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        var bo
-        (segue.destinationViewController as ExerciseController).
+        let dest = segue.destinationViewController as! SetRepController
+        var indexPath = self.collectionView!.indexPathsForSelectedItems()[0] as! NSIndexPath
+        dest.exercise = bodypartExercises[indexPath.row]
     }
-    */
     
 
     // MARK: UICollectionViewDataSource

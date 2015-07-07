@@ -15,6 +15,20 @@ class LogEntryController: UICollectionViewController {
 
     let maxReps = 20
     
+    //will be set by preceeding view controller
+    var exercise : (key:String, name:String)!
+    
+    // MARK: ViewController
+    override func viewDidLoad() {
+        addTitleBar()
+    }
+    
+    func addTitleBar() {
+        self.navigationItem.title = exercise.name
+    }
+    
+    // MARK: UICollectionViewDataSource
+
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return maxReps
     }

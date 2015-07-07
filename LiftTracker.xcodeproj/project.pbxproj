@@ -21,9 +21,6 @@
 		656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D11A50B2B60036689C /* ExerciseCell.swift */; };
 		656132D41A50B8E70036689C /* ExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D31A50B8E70036689C /* ExerciseController.swift */; };
 		656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D51A50C1270036689C /* ExerciseHeaderView.swift */; };
-		656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D71A50C4EB0036689C /* LogEntryController.swift */; };
-		656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D91A50D1070036689C /* LogEntryCell.swift */; };
-		656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */; };
 		6574F65D1A806672007434C8 /* Exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercise.json */; };
 		6574F65F1A80731D007434C8 /* BodypartExercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65E1A80731D007434C8 /* BodypartExercise.json */; };
 		658108931A5AA80800A1D380 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658108921A5AA80800A1D380 /* Media.xcassets */; };
@@ -112,9 +109,6 @@
 		656132D11A50B2B60036689C /* ExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		656132D31A50B8E70036689C /* ExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseController.swift; sourceTree = "<group>"; };
 		656132D51A50C1270036689C /* ExerciseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderView.swift; sourceTree = "<group>"; };
-		656132D71A50C4EB0036689C /* LogEntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryController.swift; sourceTree = "<group>"; };
-		656132D91A50D1070036689C /* LogEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryCell.swift; sourceTree = "<group>"; };
-		656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryHeaderView.swift; sourceTree = "<group>"; };
 		6574F65C1A806672007434C8 /* Exercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Exercise.json; sourceTree = "<group>"; };
 		6574F65E1A80731D007434C8 /* BodypartExercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BodypartExercise.json; sourceTree = "<group>"; };
 		658108921A5AA80800A1D380 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -288,9 +282,6 @@
 				656132D31A50B8E70036689C /* ExerciseController.swift */,
 				656132D51A50C1270036689C /* ExerciseHeaderView.swift */,
 				65F01A681AA4DCD0003FBBBF /* Extensions.swift */,
-				656132D91A50D1070036689C /* LogEntryCell.swift */,
-				656132D71A50C4EB0036689C /* LogEntryController.swift */,
-				656132DB1A50D30A0036689C /* LogEntryHeaderView.swift */,
 				65C1C93D1A5206F40088A2DB /* SetupController.swift */,
 				654C4F131B3D753C0027367D /* SetRepController.swift */,
 			);
@@ -475,14 +466,11 @@
 			files = (
 				65F60F6A1B34DC4E004DEDAB /* StringExtensions.swift in Sources */,
 				656132B21A50B06B0036689C /* BodypartController.swift in Sources */,
-				656132DC1A50D30A0036689C /* LogEntryHeaderView.swift in Sources */,
 				65C1C93E1A5206F40088A2DB /* SetupController.swift in Sources */,
 				659163761B1C05D00087244E /* SwiftyJSON.swift in Sources */,
 				656132D41A50B8E70036689C /* ExerciseController.swift in Sources */,
 				656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */,
 				654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */,
-				656132D81A50C4EB0036689C /* LogEntryController.swift in Sources */,
-				656132DA1A50D1070036689C /* LogEntryCell.swift in Sources */,
 				659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
 				65C947F21B261C5A00C3024A /* Importer.swift in Sources */,

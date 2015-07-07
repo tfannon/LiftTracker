@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xOC-Tx-ABA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LH8-nl-3Ia">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -138,32 +138,6 @@
             </objects>
             <point key="canvasLocation" x="4850" y="431"/>
         </scene>
-        <!--Add Exercise Controller-->
-        <scene sceneID="MNL-G8-sZV">
-            <objects>
-                <tableViewController id="Txw-9F-TQX" customClass="AddExerciseController" customModule="LiftTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9lV-FH-Hqd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5LD-25-7aY">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5LD-25-7aY" id="Oiq-WG-iYC">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Txw-9F-TQX" id="mDm-no-6NM"/>
-                            <outlet property="delegate" destination="Txw-9F-TQX" id="I19-0V-9Dh"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nlz-2I-yK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="570" y="2464"/>
-        </scene>
         <!--Exercise Controller-->
         <scene sceneID="6le-gM-SS1">
             <objects>
@@ -196,7 +170,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="title" destination="Rhp-IV-XLs" id="4he-wS-sOl"/>
-                                    <segue destination="dO1-oi-YZ3" kind="show" id="6db-5I-YBy"/>
+                                    <segue destination="xOC-Tx-ABA" kind="show" id="zkA-GS-6F4"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -210,87 +184,6 @@
             </objects>
             <point key="canvasLocation" x="1488" y="2456"/>
         </scene>
-        <!--Log Entry Controller-->
-        <scene sceneID="kB5-1v-0Uv">
-            <objects>
-                <collectionViewController id="dO1-oi-YZ3" customClass="LogEntryController" customModule="LiftTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SeV-eg-1RD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z6f-5m-KLh">
-                            <size key="itemSize" width="100" height="100"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LogEntryCell" id="0ZJ-kY-IGg" customClass="LogEntryCell" customModule="LiftTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOe-zI-wpf">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" red="0.085211659410000001" green="1" blue="0.1120132843" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <connections>
-                                    <outlet property="title" destination="eOe-zI-wpf" id="QyQ-wY-2PT"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LogEntryHeaderView" id="DdB-bx-w8l" customClass="LogEntryHeaderView" customModule="LiftTracker" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="600" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="225" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="107-j1-Fg4">
-                                    <rect key="frame" x="188" y="10" width="97" height="30"/>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOz-mv-yrr">
-                                    <rect key="frame" x="124" y="14" width="68" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.085211659410000001" green="1" blue="0.1120132843" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sets" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJT-r5-9hU">
-                                    <rect key="frame" x="322" y="14" width="49" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.085211659410000001" green="1" blue="0.1120132843" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWV-Kv-sOx">
-                                    <rect key="frame" x="372" y="10" width="97" height="30"/>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
-                            <connections>
-                                <outlet property="txtSets" destination="aWV-Kv-sOx" id="1YX-wR-IXu"/>
-                                <outlet property="txtWeight" destination="107-j1-Fg4" id="gai-my-ldT"/>
-                            </connections>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="dO1-oi-YZ3" id="d3I-4r-8fv"/>
-                            <outlet property="delegate" destination="dO1-oi-YZ3" id="779-GD-JYY"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rwj-qt-X8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2249" y="2464"/>
-        </scene>
         <!--Set Rep Controller-->
         <scene sceneID="h7Q-j5-Vq8">
             <objects>
@@ -303,25 +196,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Military Press" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pg-Pf-0F3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Military Press" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pg-Pf-0F3" userLabel="Exercise">
                                 <rect key="frame" x="203" y="46" width="195" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="195" id="gYJ-Fa-BKd"/>
-                                    <constraint firstAttribute="height" constant="21" id="odh-Pe-vJ5"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huc-Jn-gxX">
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huc-Jn-gxX">
                                 <rect key="frame" x="0.0" y="133" width="600" height="162"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef" userLabel="Weight x Reps">
                                 <rect key="frame" x="128" y="89" width="344" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="KHl-dM-Jg0"/>
-                                    <constraint firstAttribute="width" constant="344" id="bwW-9y-opM"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -329,14 +214,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="4Sl-I0-mMB"/>
-                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="22" id="6Sf-PQ-fBT"/>
-                            <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="23" id="Eez-RX-5KW"/>
-                            <constraint firstItem="2Pg-Pf-0F3" firstAttribute="centerX" secondItem="xc7-Fs-Jef" secondAttribute="centerX" id="S4A-O8-zRW"/>
-                            <constraint firstItem="huc-Jn-gxX" firstAttribute="leading" secondItem="qLZ-Tb-dAo" secondAttribute="leading" id="Tap-aU-vrU"/>
-                            <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="26" id="Wkp-wN-1iD"/>
-                            <constraint firstAttribute="trailing" secondItem="huc-Jn-gxX" secondAttribute="trailing" id="sby-wh-Qr2"/>
+                            <constraint firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="D5p-eW-Va1">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="30" id="Dib-XZ-UtR"/>
+                            <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="26" id="SiS-jq-gGY"/>
+                            <constraint firstAttribute="centerX" secondItem="2Pg-Pf-0F3" secondAttribute="centerX" id="Wui-cm-Fif"/>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="39" id="bty-Ou-g0r"/>
+                            <constraint firstAttribute="centerX" secondItem="xc7-Fs-Jef" secondAttribute="centerX" id="cHI-X7-aV2"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SiS-jq-gGY"/>
+                                <exclude reference="Wui-cm-Fif"/>
+                                <exclude reference="D5p-eW-Va1"/>
+                                <exclude reference="Dib-XZ-UtR"/>
+                                <exclude reference="bty-Ou-g0r"/>
+                                <exclude reference="cHI-X7-aV2"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="SiS-jq-gGY"/>
+                                <include reference="Wui-cm-Fif"/>
+                                <include reference="D5p-eW-Va1"/>
+                                <include reference="Dib-XZ-UtR"/>
+                                <include reference="bty-Ou-g0r"/>
+                                <include reference="cHI-X7-aV2"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="lblExercise" destination="2Pg-Pf-0F3" id="Zz6-YO-KmR"/>
@@ -346,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he4-WL-ITk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589" y="1553"/>
+            <point key="canvasLocation" x="2341.5" y="2430"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ClN-0L-Rxd">
