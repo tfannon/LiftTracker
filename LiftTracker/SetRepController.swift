@@ -26,10 +26,6 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         lblExercise.text = exercise.name
     }
     
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
-    
     //MARK: - PickerViewDataSource
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 4
@@ -66,7 +62,6 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         else {
             return 22
         }
-        
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

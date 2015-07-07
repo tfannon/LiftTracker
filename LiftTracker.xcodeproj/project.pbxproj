@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650EAD9A1B4C91160062C999 /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650EAD991B4C91160062C999 /* AFDateExtension.swift */; };
+		650EAD9B1B4C91440062C999 /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650EAD991B4C91160062C999 /* AFDateExtension.swift */; };
 		6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0C01B17C6CD0098FB87 /* libc++.dylib */; };
 		654BA53E1A5B8367007B3B53 /* Bodypart.json in Resources */ = {isa = PBXBuildFile; fileRef = 654BA53D1A5B8367007B3B53 /* Bodypart.json */; };
 		654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */; };
@@ -24,8 +26,6 @@
 		6574F65D1A806672007434C8 /* Exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercise.json */; };
 		6574F65F1A80731D007434C8 /* BodypartExercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65E1A80731D007434C8 /* BodypartExercise.json */; };
 		658108931A5AA80800A1D380 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658108921A5AA80800A1D380 /* Media.xcassets */; };
-		659163701B1BEF950087244E /* AF+Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6591636F1B1BEF950087244E /* AF+Date+Extension.swift */; };
-		659163721B1BF12F0087244E /* AF+Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6591636F1B1BEF950087244E /* AF+Date+Extension.swift */; };
 		659163761B1C05D00087244E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659163751B1C05D00087244E /* SwiftyJSON.swift */; };
 		659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659163751B1C05D00087244E /* SwiftyJSON.swift */; };
 		659163791B1C09E70087244E /* Exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercise.json */; };
@@ -91,6 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		650EAD991B4C91160062C999 /* AFDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateExtension.swift; sourceTree = "<group>"; };
 		6534F0C01B17C6CD0098FB87 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		654BA53D1A5B8367007B3B53 /* Bodypart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bodypart.json; sourceTree = "<group>"; };
 		654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		6574F65C1A806672007434C8 /* Exercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Exercise.json; sourceTree = "<group>"; };
 		6574F65E1A80731D007434C8 /* BodypartExercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BodypartExercise.json; sourceTree = "<group>"; };
 		658108921A5AA80800A1D380 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		6591636F1B1BEF950087244E /* AF+Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AF+Date+Extension.swift"; sourceTree = "<group>"; };
 		659163751B1C05D00087244E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		659A4A701A9569B10042F6DF /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		659A4A721A9569B20042F6DF /* Bodypart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bodypart.swift; sourceTree = "<group>"; };
@@ -252,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				659163751B1C05D00087244E /* SwiftyJSON.swift */,
-				6591636F1B1BEF950087244E /* AF+Date+Extension.swift */,
 			);
 			name = 3rdParty;
 			sourceTree = "<group>";
@@ -325,6 +324,7 @@
 		65F60F681B34DC3E004DEDAB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				650EAD991B4C91160062C999 /* AFDateExtension.swift */,
 				65F60F691B34DC4E004DEDAB /* StringExtensions.swift */,
 			);
 			name = Extensions;
@@ -470,6 +470,7 @@
 				659163761B1C05D00087244E /* SwiftyJSON.swift in Sources */,
 				656132D41A50B8E70036689C /* ExerciseController.swift in Sources */,
 				656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */,
+				650EAD9A1B4C91160062C999 /* AFDateExtension.swift in Sources */,
 				654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */,
 				659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
@@ -482,7 +483,6 @@
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
 				659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */,
-				659163701B1BEF950087244E /* AF+Date+Extension.swift in Sources */,
 				654C4F141B3D753C0027367D /* SetRepController.swift in Sources */,
 				65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */,
 				656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */,
@@ -493,10 +493,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650EAD9B1B4C91440062C999 /* AFDateExtension.swift in Sources */,
 				656132C61A50B06B0036689C /* CoreDataTests.swift in Sources */,
 				65F4C5031B2BE08B00A0557E /* DataAccessFacade.swift in Sources */,
 				65A884C61B291F980024EEA1 /* FirebaseTests.swift in Sources */,
-				659163721B1BF12F0087244E /* AF+Date+Extension.swift in Sources */,
 				659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */,
 				65AC65B51B17CA110072364E /* RealmTests.swift in Sources */,
 			);

@@ -38,6 +38,36 @@ class FirebaseTests: XCTestCase {
         }
     }
     
+    func testPR() {
+        var done = false
+        let oneRepNode = myRootRef.childByAppendingPath("/exercises/benchpress/prs/1")
+        /* can do it this way by autoid
+        var child = oneRepNode.childByAutoId()
+        var pr = ["date":"2015-07-01", "weight":225]
+        child.setValue(pr) { (result) in
+        }
+        child = oneRepNode.childByAutoId()
+        pr = ["date":"2015-07-04", "weight":235]
+        child.setValue(pr) { (result) in
+        }
+        child = oneRepNode.childByAutoId()
+        pr = ["date":"2015-07-08", "weight":240]
+        child.setValue(pr) { (result) in
+            done = true
+        }
+        */
+        oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
+        oneRepNode.childByAppendingPath("2015-07-05").setValue(230)
+        oneRepNode.childByAppendingPath("2015-07-10").setValue(240)
+        oneRepNode.childByAppendingPath("2015-07-10").setValue(250, withCompletionBlock: { _ in
+            done = true
+        })
+        
+        waitUntil(5) { done }
+    }
+    
+    
+    
     func test() {
         var node = myRootRef.childByAppendingPath("main")
         var dict = ["foo":"bar"]
