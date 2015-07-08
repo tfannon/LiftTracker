@@ -58,10 +58,7 @@
 		65C1C9441A5209090088A2DB /* 910-graph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9411A5209090088A2DB /* 910-graph@3x.png */; };
 		65C1C94A1A521B4A0088A2DB /* dumbells.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9491A521B4A0088A2DB /* dumbells.jpg */; };
 		65C947F21B261C5A00C3024A /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C947F11B261C5A00C3024A /* Importer.swift */; };
-		65F01A691AA4DCD0003FBBBF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A681AA4DCD0003FBBBF /* Extensions.swift */; };
-		65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */; };
-		65F4C5021B2BE08B00A0557E /* DataAccessFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */; };
-		65F4C5031B2BE08B00A0557E /* DataAccessFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */; };
+		65F01A691AA4DCD0003FBBBF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A681AA4DCD0003FBBBF /* UIViewControllerExtensions.swift */; };
 		65F60F6A1B34DC4E004DEDAB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F60F691B34DC4E004DEDAB /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,9 +138,7 @@
 		65C1C9411A5209090088A2DB /* 910-graph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph@3x.png"; sourceTree = "<group>"; };
 		65C1C9491A521B4A0088A2DB /* dumbells.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dumbells.jpg; sourceTree = "<group>"; };
 		65C947F11B261C5A00C3024A /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
-		65F01A681AA4DCD0003FBBBF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseController.swift; sourceTree = "<group>"; };
-		65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAccessFacade.swift; sourceTree = "<group>"; };
+		65F01A681AA4DCD0003FBBBF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		65F60F691B34DC4E004DEDAB /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +246,7 @@
 		659163711B1BEFA40087244E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				650EAD991B4C91160062C999 /* AFDateExtension.swift */,
 				659163751B1C05D00087244E /* SwiftyJSON.swift */,
 			);
 			name = 3rdParty;
@@ -274,13 +270,11 @@
 		65A884C31B291D6A0024EEA1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				65F01A6A1AA4DFCE003FBBBF /* AddExerciseController.swift */,
 				656132CF1A50B2940036689C /* BodypartCell.swift */,
 				656132B11A50B06B0036689C /* BodypartController.swift */,
 				656132D11A50B2B60036689C /* ExerciseCell.swift */,
 				656132D31A50B8E70036689C /* ExerciseController.swift */,
 				656132D51A50C1270036689C /* ExerciseHeaderView.swift */,
-				65F01A681AA4DCD0003FBBBF /* Extensions.swift */,
 				65C1C93D1A5206F40088A2DB /* SetupController.swift */,
 				654C4F131B3D753C0027367D /* SetRepController.swift */,
 			);
@@ -316,7 +310,6 @@
 				65AC65B21B17C8B90072364E /* RealmModel.swift */,
 				65C947F11B261C5A00C3024A /* Importer.swift */,
 				65A884B31B2919790024EEA1 /* FirebaseHelper.swift */,
-				65F4C5011B2BE08B00A0557E /* DataAccessFacade.swift */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -324,8 +317,8 @@
 		65F60F681B34DC3E004DEDAB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				650EAD991B4C91160062C999 /* AFDateExtension.swift */,
 				65F60F691B34DC4E004DEDAB /* StringExtensions.swift */,
+				65F01A681AA4DCD0003FBBBF /* UIViewControllerExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -476,9 +469,7 @@
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
 				65C947F21B261C5A00C3024A /* Importer.swift in Sources */,
 				659A4A711A9569B10042F6DF /* Exercise.swift in Sources */,
-				65F4C5021B2BE08B00A0557E /* DataAccessFacade.swift in Sources */,
-				65F01A6B1AA4DFCE003FBBBF /* AddExerciseController.swift in Sources */,
-				65F01A691AA4DCD0003FBBBF /* Extensions.swift in Sources */,
+				65F01A691AA4DCD0003FBBBF /* UIViewControllerExtensions.swift in Sources */,
 				65AC65B31B17C8B90072364E /* RealmModel.swift in Sources */,
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
@@ -495,7 +486,6 @@
 			files = (
 				650EAD9B1B4C91440062C999 /* AFDateExtension.swift in Sources */,
 				656132C61A50B06B0036689C /* CoreDataTests.swift in Sources */,
-				65F4C5031B2BE08B00A0557E /* DataAccessFacade.swift in Sources */,
 				65A884C61B291F980024EEA1 /* FirebaseTests.swift in Sources */,
 				659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */,
 				65AC65B51B17CA110072364E /* RealmTests.swift in Sources */,

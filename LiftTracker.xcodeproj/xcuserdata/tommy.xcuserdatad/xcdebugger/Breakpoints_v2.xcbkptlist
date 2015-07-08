@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LiftTrackerTests/FirebaseTests.swift"
-            timestampString = "458003824.677483"
+            timestampString = "458008132.063703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "testPR()"
             landmarkType = "5">
          </BreakpointContent>

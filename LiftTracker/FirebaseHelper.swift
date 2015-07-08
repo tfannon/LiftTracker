@@ -8,6 +8,14 @@
 
 import UIKit
 
-class FirebaseHelper {
+public class FirebaseHelper {
     static var RootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
+    
+    public static func nullToNil(value : AnyObject?) -> AnyObject? {
+        if value is NSNull {
+            return nil
+        } else {
+            return value
+        }
+    }
 }

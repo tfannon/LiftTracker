@@ -56,11 +56,23 @@ class FirebaseTests: XCTestCase {
             done = true
         }
         */
+        
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
-        oneRepNode.childByAppendingPath("2015-07-05").setValue(230)
-        oneRepNode.childByAppendingPath("2015-07-10").setValue(240)
-        oneRepNode.childByAppendingPath("2015-07-10").setValue(250, withCompletionBlock: { _ in
-            done = true
+        oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
+        //oneRepNode.childByAppendingPath("2015-07-10").setValue(240)
+        oneRepNode.childByAppendingPath("2015-07-10").setValue(210, withCompletionBlock: { _ in
+            //go fetch it
+            //oneRepNode.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { (result) in
+            oneRepNode.queryOrderedByValue().observeEventType(.Value, withBlock: { (result) in
+                //println(result.value)
+                for child in result.children {
+                    println("key:\(child.key!)")
+                }
+//                if let d = result.value as? NSDictionary {
+//                    println(d["2015-07-01"]!)
+//                }
+                done = true
+            })
         })
         
         waitUntil(5) { done }

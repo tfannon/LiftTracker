@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00J-FU-pJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4850" y="431"/>
+            <point key="canvasLocation" x="3445.5" y="417"/>
         </scene>
         <!--Exercise Controller-->
         <scene sceneID="6le-gM-SS1">
@@ -196,16 +196,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Military Press" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pg-Pf-0F3" userLabel="Exercise">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Military Press" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pg-Pf-0F3" userLabel="Exercise">
                                 <rect key="frame" x="203" y="46" width="195" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huc-Jn-gxX">
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huc-Jn-gxX">
                                 <rect key="frame" x="0.0" y="133" width="600" height="162"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef" userLabel="Weight x Reps">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef" userLabel="Weight x Reps">
                                 <rect key="frame" x="128" y="89" width="344" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -225,22 +225,22 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="SiS-jq-gGY"/>
-                                <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="D5p-eW-Va1"/>
                                 <exclude reference="Dib-XZ-UtR"/>
                                 <exclude reference="bty-Ou-g0r"/>
                                 <exclude reference="cHI-X7-aV2"/>
+                                <exclude reference="SiS-jq-gGY"/>
+                                <exclude reference="Wui-cm-Fif"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
-                                <include reference="SiS-jq-gGY"/>
-                                <include reference="Wui-cm-Fif"/>
                                 <include reference="D5p-eW-Va1"/>
                                 <include reference="Dib-XZ-UtR"/>
                                 <include reference="bty-Ou-g0r"/>
                                 <include reference="cHI-X7-aV2"/>
+                                <include reference="SiS-jq-gGY"/>
+                                <include reference="Wui-cm-Fif"/>
                             </mask>
                         </variation>
                     </view>

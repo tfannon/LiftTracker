@@ -16,6 +16,10 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     let ones = [2.5, 5]
     
+    let firebase = AppDelegate.get.firebase
+    var firebasePr : Firebase!
+
+    
     //will be set by preceeding view controller
     var exercise : (key:String, name:String)!
     
@@ -24,6 +28,25 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         picker.dataSource = self
         picker.delegate = self
         lblExercise.text = exercise.name
+        firebasePr = firebase.childByAppendingPath("\(exercise.key)/prs")
+        fetchPR(10)
+        //go fetch 10 rep max and display it
+    }
+    
+    func fetchPR(rep : Int) {
+        let node = firebasePr.childByAppendingPath("\(rep)")
+
+        node.observeSingleEventOfType(.Value, withBlock: { result in
+            if result.value is NSNull {
+                self.lblPickedValue.text = "No PR yet for \(rep) reps"
+                //move to rep picker to the appropriate selection
+                self.picker.selectRow(rep-1, inComponent: 0, animated: true)
+            }
+            else {
+                println(result.value)
+                //lblPickedValue.text = String(rep)
+            }
+        })
     }
     
     //MARK: - PickerViewDataSource
