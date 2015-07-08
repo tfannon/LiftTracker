@@ -145,6 +145,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="0sc-Pz-zBP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qz5-Aj-bRw">
                             <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -199,52 +200,101 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Military Press" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pg-Pf-0F3" userLabel="Exercise">
                                 <rect key="frame" x="203" y="46" width="195" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current PR:  225 x 2 on 6/14/15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaU-lP-jfi" userLabel="Current PR">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef" userLabel="Weight x Reps">
+                                <rect key="frame" x="128" y="89" width="344" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huc-Jn-gxX">
                                 <rect key="frame" x="0.0" y="133" width="600" height="162"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef" userLabel="Weight x Reps">
-                                <rect key="frame" x="128" y="89" width="344" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHj-5k-q64">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleSaveTapped:" destination="xOC-Tx-ABA" eventType="touchUpInside" id="dIy-cy-zwq"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="zaU-lP-jfi" secondAttribute="bottom" constant="10" id="1qK-A8-uzG"/>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="2Sx-0P-GnQ"/>
                             <constraint firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="D5p-eW-Va1">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="30" id="Dib-XZ-UtR"/>
                             <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="26" id="SiS-jq-gGY"/>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="2Pg-Pf-0F3" secondAttribute="centerX" id="UjV-RT-cGg"/>
                             <constraint firstAttribute="centerX" secondItem="2Pg-Pf-0F3" secondAttribute="centerX" id="Wui-cm-Fif"/>
-                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="39" id="bty-Ou-g0r"/>
                             <constraint firstAttribute="centerX" secondItem="xc7-Fs-Jef" secondAttribute="centerX" id="cHI-X7-aV2"/>
+                            <constraint firstItem="Xlo-6R-YIH" firstAttribute="top" secondItem="QHj-5k-q64" secondAttribute="bottom" constant="20" id="kdk-s5-1cG"/>
+                            <constraint firstAttribute="centerX" secondItem="zaU-lP-jfi" secondAttribute="centerX" id="qNQ-8i-jou"/>
+                            <constraint firstItem="zaU-lP-jfi" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="8" id="rNS-M9-cd5"/>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="zaU-lP-jfi" secondAttribute="centerX" id="yVg-YF-ryi"/>
+                            <constraint firstAttribute="centerX" secondItem="QHj-5k-q64" secondAttribute="centerX" id="yiJ-Xj-u2n"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="zaU-lP-jfi"/>
+                                <exclude reference="QHj-5k-q64"/>
+                            </mask>
                             <mask key="constraints">
-                                <exclude reference="D5p-eW-Va1"/>
-                                <exclude reference="Dib-XZ-UtR"/>
-                                <exclude reference="bty-Ou-g0r"/>
-                                <exclude reference="cHI-X7-aV2"/>
+                                <exclude reference="qNQ-8i-jou"/>
+                                <exclude reference="rNS-M9-cd5"/>
                                 <exclude reference="SiS-jq-gGY"/>
                                 <exclude reference="Wui-cm-Fif"/>
+                                <exclude reference="D5p-eW-Va1"/>
+                                <exclude reference="Dib-XZ-UtR"/>
+                                <exclude reference="1qK-A8-uzG"/>
+                                <exclude reference="2Sx-0P-GnQ"/>
+                                <exclude reference="UjV-RT-cGg"/>
+                                <exclude reference="cHI-X7-aV2"/>
+                                <exclude reference="yVg-YF-ryi"/>
+                                <exclude reference="yiJ-Xj-u2n"/>
+                                <exclude reference="kdk-s5-1cG"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="zaU-lP-jfi"/>
+                                <include reference="QHj-5k-q64"/>
+                            </mask>
                             <mask key="constraints">
-                                <include reference="D5p-eW-Va1"/>
-                                <include reference="Dib-XZ-UtR"/>
-                                <include reference="bty-Ou-g0r"/>
-                                <include reference="cHI-X7-aV2"/>
+                                <include reference="qNQ-8i-jou"/>
+                                <include reference="rNS-M9-cd5"/>
                                 <include reference="SiS-jq-gGY"/>
                                 <include reference="Wui-cm-Fif"/>
+                                <include reference="D5p-eW-Va1"/>
+                                <include reference="Dib-XZ-UtR"/>
+                                <include reference="1qK-A8-uzG"/>
+                                <include reference="2Sx-0P-GnQ"/>
+                                <include reference="UjV-RT-cGg"/>
+                                <include reference="cHI-X7-aV2"/>
+                                <include reference="yVg-YF-ryi"/>
+                                <include reference="yiJ-Xj-u2n"/>
+                                <include reference="kdk-s5-1cG"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="lblCurrentPr" destination="zaU-lP-jfi" id="HnJ-5e-lMs"/>
                         <outlet property="lblExercise" destination="2Pg-Pf-0F3" id="Zz6-YO-KmR"/>
                         <outlet property="lblPickedValue" destination="xc7-Fs-Jef" id="hpW-f9-EHy"/>
                         <outlet property="picker" destination="huc-Jn-gxX" id="nOr-yk-URe"/>

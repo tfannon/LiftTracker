@@ -10,11 +10,16 @@ import UIKit
 
 class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet weak var picker: UIPickerView!
-    @IBOutlet weak var lblPickedValue: UILabel!
     @IBOutlet weak var lblExercise: UILabel!
+    @IBOutlet weak var lblCurrentPr: UILabel!
+    @IBOutlet weak var lblPickedValue: UILabel!
+    @IBOutlet weak var picker: UIPickerView!
     
-    let ones = [2.5, 5]
+    @IBAction func handleSaveTapped(sender: AnyObject) {
+        self.savePr()
+    }
+    
+    let onesValues = [0, 2.5, 5]
     
     let firebase = AppDelegate.get.firebase
     var firebasePr : Firebase!
@@ -25,10 +30,11 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         picker.dataSource = self
         picker.delegate = self
         lblExercise.text = exercise.name
-        firebasePr = firebase.childByAppendingPath("\(exercise.key)/prs")
+        firebasePr = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs")
         fetchPR(10)
         //go fetch 10 rep max and display it
     }
@@ -36,11 +42,16 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     func fetchPR(rep : Int) {
         let node = firebasePr.childByAppendingPath("\(rep)")
 
-        node.observeSingleEventOfType(.Value, withBlock: { result in
+        node.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: { result in
             if result.value is NSNull {
-                self.lblPickedValue.text = "No PR yet for \(rep) reps"
+                self.lblCurrentPr.text = "No PR yet for \(rep) reps"
                 //move to rep picker to the appropriate selection
+                //set all weight values to 0
                 self.picker.selectRow(rep-1, inComponent: 0, animated: true)
+                self.picker.selectRow(0, inComponent: 1, animated: true)
+                self.picker.selectRow(0, inComponent: 2, animated: true)
+                self.picker.selectRow(0, inComponent: 3, animated: true)
+                self.lblPickedValue.text = ""
             }
             else {
                 println(result.value)
@@ -57,23 +68,35 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch (component) {
             case (0) : return 20
-            case (1) : return 9
-            case (2) : return 9
-            case (3) : return 2
+            case (1) : return 10
+            case (2) : return 10
+            case (3) : return 3
             default :
                 println(component)
                 return 0
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+//        switch (component) {
+//            case (0) : return "\(row+1)"
+//            case (1) : return "\(row)"
+//            case (2) : return "\(row)"
+//            case (3) : return "\(ones[row])"
+//            default : return ""
+//        }
+//    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var color = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         switch (component) {
-            case (0) : return "\(row + 1)"
-            case (1) : return "\(row + 1)"
-            case (2) : return "\(row + 1)"
-            case (3) : return "\(ones[row])"
-            default : return ""
+            case (0) : return NSAttributedString(string: "\(row+1)", attributes: color)
+            case (1) : return NSAttributedString(string: "\(row)", attributes: color)
+            case (2) : return NSAttributedString(string: "\(row)", attributes: color)
+            case (3) : return NSAttributedString(string: "\(onesValues[row])", attributes: color)
+            default : return nil
         }
+        
     }
     
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
@@ -89,9 +112,35 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var reps = picker.selectedRowInComponent(0) + 1
-        var hundreds = picker.selectedRowInComponent(1) + 1
-        var tens = picker.selectedRowInComponent(2) + 1
-        var onesVal = ones[picker.selectedRowInComponent(3)]
-        lblPickedValue.text = "\(hundreds)\(tens)\(onesVal) x \(reps)"
+        var hundreds = picker.selectedRowInComponent(1)
+        var tens = picker.selectedRowInComponent(2)
+        var ones = onesValues[picker.selectedRowInComponent(3)]
+        var picked = ""
+        //strip leading zeros
+        if hundreds == 0 {
+            if tens == 0 {
+                picked = "\(ones)"
+            } else {
+                picked = "\(tens)\(ones)"
+            }
+        }
+        else {
+          picked = "\(hundreds)\(tens)\(ones)"
+        }
+        lblPickedValue.text = "\(picked) x \(reps)"
+    }
+    
+    //MARK: - Write value into firebase
+    func savePr() {
+        var reps : Int = picker.selectedRowInComponent(0) + 1
+        var hundreds = picker.selectedRowInComponent(1)
+        var tens = picker.selectedRowInComponent(2)
+        var ones = onesValues[picker.selectedRowInComponent(3)]
+        let weight : Int = Int(hundreds * 100) + Int(tens * 10) + Int(ones)
+        let date = (NSDate().toString(format: .ISO8601) as NSString).substringToIndex(10)
+        let node = firebasePr.childByAppendingPath("/\(reps)/\(date)")
+        node.setValue(weight, withCompletionBlock: { _ in
+            println("success")
+        })
     }
 }
