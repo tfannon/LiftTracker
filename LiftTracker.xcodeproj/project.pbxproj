@@ -11,14 +11,11 @@
 		650EAD9B1B4C91440062C999 /* AFDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650EAD991B4C91160062C999 /* AFDateExtension.swift */; };
 		6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6534F0C01B17C6CD0098FB87 /* libc++.dylib */; };
 		654BA53E1A5B8367007B3B53 /* Bodypart.json in Resources */ = {isa = PBXBuildFile; fileRef = 654BA53D1A5B8367007B3B53 /* Bodypart.json */; };
-		654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */; };
 		654C4F141B3D753C0027367D /* SetRepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C4F131B3D753C0027367D /* SetRepController.swift */; };
 		656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132AC1A50B06B0036689C /* AppDelegate.swift */; };
-		656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */; };
 		656132B21A50B06B0036689C /* BodypartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132B11A50B06B0036689C /* BodypartController.swift */; };
 		656132B51A50B06B0036689C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656132B31A50B06B0036689C /* Main.storyboard */; };
 		656132BA1A50B06B0036689C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656132B81A50B06B0036689C /* LaunchScreen.xib */; };
-		656132C61A50B06B0036689C /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132C51A50B06B0036689C /* CoreDataTests.swift */; };
 		656132D01A50B2940036689C /* BodypartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132CF1A50B2940036689C /* BodypartCell.swift */; };
 		656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D11A50B2B60036689C /* ExerciseCell.swift */; };
 		656132D41A50B8E70036689C /* ExerciseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D31A50B8E70036689C /* ExerciseController.swift */; };
@@ -26,12 +23,7 @@
 		6574F65D1A806672007434C8 /* Exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercise.json */; };
 		6574F65F1A80731D007434C8 /* BodypartExercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65E1A80731D007434C8 /* BodypartExercise.json */; };
 		658108931A5AA80800A1D380 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658108921A5AA80800A1D380 /* Media.xcassets */; };
-		659163761B1C05D00087244E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659163751B1C05D00087244E /* SwiftyJSON.swift */; };
-		659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659163751B1C05D00087244E /* SwiftyJSON.swift */; };
 		659163791B1C09E70087244E /* Exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercise.json */; };
-		659A4A711A9569B10042F6DF /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A701A9569B10042F6DF /* Exercise.swift */; };
-		659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A721A9569B20042F6DF /* Bodypart.swift */; };
-		659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */; };
 		65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A884B31B2919790024EEA1 /* FirebaseHelper.swift */; };
 		65A884B71B291C090024EEA1 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884B61B291C090024EEA1 /* libicucore.dylib */; };
 		65A884B91B291C1D0024EEA1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884B81B291C1D0024EEA1 /* CFNetwork.framework */; };
@@ -40,12 +32,6 @@
 		65A884C11B291CF40024EEA1 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884C01B291CF40024EEA1 /* Firebase.framework */; };
 		65A884C21B291CF40024EEA1 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884C01B291CF40024EEA1 /* Firebase.framework */; };
 		65A884C61B291F980024EEA1 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A884C41B291F980024EEA1 /* FirebaseTests.swift */; };
-		65AC65B31B17C8B90072364E /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B21B17C8B90072364E /* RealmModel.swift */; };
-		65AC65B51B17CA110072364E /* RealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC65B41B17CA110072364E /* RealmTests.swift */; };
-		65BCE0461B2D946500B1CE37 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BCE0441B2D946500B1CE37 /* Realm.framework */; };
-		65BCE0471B2D946500B1CE37 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65BCE0441B2D946500B1CE37 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65BCE0481B2D946500B1CE37 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BCE0451B2D946500B1CE37 /* RealmSwift.framework */; };
-		65BCE0491B2D946500B1CE37 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65BCE0451B2D946500B1CE37 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65C1C9281A5204710088A2DB /* 1091-weights.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9251A5204710088A2DB /* 1091-weights.png */; };
 		65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9261A5204710088A2DB /* 1091-weights@2x.png */; };
 		65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9271A5204710088A2DB /* 1091-weights@3x.png */; };
@@ -79,8 +65,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				65BCE0491B2D946500B1CE37 /* RealmSwift.framework in Embed Frameworks */,
-				65BCE0471B2D946500B1CE37 /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,18 +75,15 @@
 		650EAD991B4C91160062C999 /* AFDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateExtension.swift; sourceTree = "<group>"; };
 		6534F0C01B17C6CD0098FB87 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		654BA53D1A5B8367007B3B53 /* Bodypart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bodypart.json; sourceTree = "<group>"; };
-		654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		654C4F131B3D753C0027367D /* SetRepController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetRepController.swift; sourceTree = "<group>"; };
 		656132A71A50B06B0036689C /* LiftTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiftTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656132AB1A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		656132AC1A50B06B0036689C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		656132AF1A50B06B0036689C /* LiftTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LiftTracker.xcdatamodel; sourceTree = "<group>"; };
 		656132B11A50B06B0036689C /* BodypartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodypartController.swift; sourceTree = "<group>"; };
 		656132B41A50B06B0036689C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		656132B91A50B06B0036689C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		656132BF1A50B06B0036689C /* LiftTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiftTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		656132C41A50B06B0036689C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		656132C51A50B06B0036689C /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
 		656132CF1A50B2940036689C /* BodypartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodypartCell.swift; sourceTree = "<group>"; };
 		656132D11A50B2B60036689C /* ExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		656132D31A50B8E70036689C /* ExerciseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseController.swift; sourceTree = "<group>"; };
@@ -110,10 +91,6 @@
 		6574F65C1A806672007434C8 /* Exercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Exercise.json; sourceTree = "<group>"; };
 		6574F65E1A80731D007434C8 /* BodypartExercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BodypartExercise.json; sourceTree = "<group>"; };
 		658108921A5AA80800A1D380 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		659163751B1C05D00087244E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		659A4A701A9569B10042F6DF /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
-		659A4A721A9569B20042F6DF /* Bodypart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bodypart.swift; sourceTree = "<group>"; };
-		659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreData+Extensions.swift"; sourceTree = "<group>"; };
 		65A884B31B2919790024EEA1 /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		65A884B61B291C090024EEA1 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		65A884B81B291C1D0024EEA1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -122,10 +99,6 @@
 		65A884C01B291CF40024EEA1 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		65A884C41B291F980024EEA1 /* FirebaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
 		65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiftTracker-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		65AC65B21B17C8B90072364E /* RealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
-		65AC65B41B17CA110072364E /* RealmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTests.swift; sourceTree = "<group>"; };
-		65BCE0441B2D946500B1CE37 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		65BCE0451B2D946500B1CE37 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		65C1C9251A5204710088A2DB /* 1091-weights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights.png"; sourceTree = "<group>"; };
 		65C1C9261A5204710088A2DB /* 1091-weights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@2x.png"; sourceTree = "<group>"; };
 		65C1C9271A5204710088A2DB /* 1091-weights@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@3x.png"; sourceTree = "<group>"; };
@@ -151,9 +124,7 @@
 				65A884BB1B291C270024EEA1 /* Security.framework in Frameworks */,
 				65A884B91B291C1D0024EEA1 /* CFNetwork.framework in Frameworks */,
 				65A884B71B291C090024EEA1 /* libicucore.dylib in Frameworks */,
-				65BCE0461B2D946500B1CE37 /* Realm.framework in Frameworks */,
 				6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */,
-				65BCE0481B2D946500B1CE37 /* RealmSwift.framework in Frameworks */,
 				65A884C11B291CF40024EEA1 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,18 +140,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		654BA53A1A5B8136007B3B53 /* CoreDataFiles */ = {
-			isa = PBXGroup;
-			children = (
-				656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */,
-				654BA53F1A5B83DD007B3B53 /* CoreDataStack.swift */,
-				659A4A721A9569B20042F6DF /* Bodypart.swift */,
-				659A4A701A9569B10042F6DF /* Exercise.swift */,
-				659A4A741A9569F10042F6DF /* CoreData+Extensions.swift */,
-			);
-			name = CoreDataFiles;
-			sourceTree = "<group>";
-		};
 		6561329E1A50B06B0036689C = {
 			isa = PBXGroup;
 			children = (
@@ -227,9 +186,7 @@
 		656132C21A50B06B0036689C /* LiftTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				656132C51A50B06B0036689C /* CoreDataTests.swift */,
 				65A884C41B291F980024EEA1 /* FirebaseTests.swift */,
-				65AC65B41B17CA110072364E /* RealmTests.swift */,
 				656132C31A50B06B0036689C /* Supporting Files */,
 			);
 			path = LiftTrackerTests;
@@ -247,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				650EAD991B4C91160062C999 /* AFDateExtension.swift */,
-				659163751B1C05D00087244E /* SwiftyJSON.swift */,
 			);
 			name = 3rdParty;
 			sourceTree = "<group>";
@@ -255,8 +211,6 @@
 		659163731B1C00AE0087244E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65BCE0451B2D946500B1CE37 /* RealmSwift.framework */,
-				65BCE0441B2D946500B1CE37 /* Realm.framework */,
 				65A884C01B291CF40024EEA1 /* Firebase.framework */,
 				65A884BC1B291C330024EEA1 /* SystemConfiguration.framework */,
 				65A884BA1B291C270024EEA1 /* Security.framework */,
@@ -303,11 +257,9 @@
 		65C947F01B261C4000C3024A /* DataAccess */ = {
 			isa = PBXGroup;
 			children = (
-				654BA53A1A5B8136007B3B53 /* CoreDataFiles */,
 				654BA53D1A5B8367007B3B53 /* Bodypart.json */,
 				6574F65C1A806672007434C8 /* Exercise.json */,
 				6574F65E1A80731D007434C8 /* BodypartExercise.json */,
-				65AC65B21B17C8B90072364E /* RealmModel.swift */,
 				65C947F11B261C5A00C3024A /* Importer.swift */,
 				65A884B31B2919790024EEA1 /* FirebaseHelper.swift */,
 			);
@@ -460,23 +412,16 @@
 				65F60F6A1B34DC4E004DEDAB /* StringExtensions.swift in Sources */,
 				656132B21A50B06B0036689C /* BodypartController.swift in Sources */,
 				65C1C93E1A5206F40088A2DB /* SetupController.swift in Sources */,
-				659163761B1C05D00087244E /* SwiftyJSON.swift in Sources */,
 				656132D41A50B8E70036689C /* ExerciseController.swift in Sources */,
 				656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */,
 				650EAD9A1B4C91160062C999 /* AFDateExtension.swift in Sources */,
-				654BA5401A5B83DD007B3B53 /* CoreDataStack.swift in Sources */,
-				659A4A731A9569B20042F6DF /* Bodypart.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
 				65C947F21B261C5A00C3024A /* Importer.swift in Sources */,
-				659A4A711A9569B10042F6DF /* Exercise.swift in Sources */,
 				65F01A691AA4DCD0003FBBBF /* UIViewControllerExtensions.swift in Sources */,
-				65AC65B31B17C8B90072364E /* RealmModel.swift in Sources */,
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
-				659A4A751A9569F10042F6DF /* CoreData+Extensions.swift in Sources */,
 				654C4F141B3D753C0027367D /* SetRepController.swift in Sources */,
 				65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */,
-				656132B01A50B06B0036689C /* LiftTracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,10 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				650EAD9B1B4C91440062C999 /* AFDateExtension.swift in Sources */,
-				656132C61A50B06B0036689C /* CoreDataTests.swift in Sources */,
 				65A884C61B291F980024EEA1 /* FirebaseTests.swift in Sources */,
-				659163771B1C06FE0087244E /* SwiftyJSON.swift in Sources */,
-				65AC65B51B17CA110072364E /* RealmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -592,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -608,7 +550,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/tommy/Downloads,
 				);
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -628,7 +569,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/tommy/Downloads,
 				);
 				INFOPLIST_FILE = LiftTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -705,19 +645,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		656132AE1A50B06B0036689C /* LiftTracker.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				656132AF1A50B06B0036689C /* LiftTracker.xcdatamodel */,
-			);
-			currentVersion = 656132AF1A50B06B0036689C /* LiftTracker.xcdatamodel */;
-			path = LiftTracker.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6561329F1A50B06B0036689C /* Project object */;
 }
