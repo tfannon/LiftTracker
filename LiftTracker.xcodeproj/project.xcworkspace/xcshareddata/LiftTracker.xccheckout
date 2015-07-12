@@ -5,23 +5,23 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>024378DF-A13B-418B-A86F-06826F9393AA</string>
+	<string>2682A788-DBE9-462F-ADCF-9EE2EA61DA16</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>LiftTracker</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A436FC18A82134CA87386D5518A2F63F5F801D55</key>
-		<string>https://github.com/tfannon/LiftTracker.git</string>
+		<string>https://github.com/tfannon/LiftTracker</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LiftTracker.xcodeproj/project.xcworkspace</string>
+	<string>LiftTracker.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A436FC18A82134CA87386D5518A2F63F5F801D55</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/tfannon/LiftTracker.git</string>
+	<string>https://github.com/tfannon/LiftTracker</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
