@@ -12,7 +12,7 @@ import LiftTracker
 
 class FirebaseTests: XCTestCase {
     
-    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/test")
+    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/test2")
 
     override func setUp() {
         super.setUp()
@@ -41,36 +41,15 @@ class FirebaseTests: XCTestCase {
     func testPR() {
         var done = false
         let oneRepNode = myRootRef.childByAppendingPath("/exercises/benchpress/prs/1")
-        /* can do it this way by autoid
-        var child = oneRepNode.childByAutoId()
-        var pr = ["date":"2015-07-01", "weight":225]
-        child.setValue(pr) { (result) in
-        }
-        child = oneRepNode.childByAutoId()
-        pr = ["date":"2015-07-04", "weight":235]
-        child.setValue(pr) { (result) in
-        }
-        child = oneRepNode.childByAutoId()
-        pr = ["date":"2015-07-08", "weight":240]
-        child.setValue(pr) { (result) in
-            done = true
-        }
-        */
-        
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
         oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
         //oneRepNode.childByAppendingPath("2015-07-10").setValue(240)
         oneRepNode.childByAppendingPath("2015-07-10").setValue(210, withCompletionBlock: { _ in
             //go fetch it
-            //oneRepNode.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { (result) in
             oneRepNode.queryOrderedByValue().observeEventType(.Value, withBlock: { (result) in
-                //println(result.value)
                 for child in result.children {
                     println("key:\(child.key!)")
                 }
-//                if let d = result.value as? NSDictionary {
-//                    println(d["2015-07-01"]!)
-//                }
                 done = true
             })
         })
@@ -105,6 +84,27 @@ class FirebaseTests: XCTestCase {
         })
         
         waitUntil(5) { done }
+    }
+    
+    func testClearPr() {
+        var done = false
+        
+        let prs = myRootRef.childByAppendingPath("/exercises/benchpress/prs")
+        let oneRepNode = prs.childByAppendingPath("1")
+        oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
+        oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
+        
+        oneRepNode.childByAppendingPath("2015-07-05").removeValueWithCompletionBlock( { (result) in
+            FirebaseHelper.getPrs(self.myRootRef, exercise: "benchpress", completion: { (result) in
+                println(result)
+                XCTAssertNotNil(result[1], "1 rep dictionary should have been there")
+                XCTAssertNil(result[1]!["2015-07-05"], "2015-07-05 should have been removed")
+                done = true
+            })
+        })
+        
+        waitUntil(5) { done }
+        
     }
     
     

@@ -36,6 +36,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         picker.delegate = self
         lblExercise.text = exercise.name
         firebasePr = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs")
+        //let test = FirebaseHelper.getPrs(firebase, exercise: exercise.key)
         firebasePr.queryOrderedByKey().observeSingleEventOfType(.Value, withBlock: { (result) in
             for x in result.children {
                 let repSnap = x as! FDataSnapshot
@@ -205,5 +206,9 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
             })
         }
         //todo: throw alert box
+    }
+    
+    func clearPr() {
+        
     }
 }
