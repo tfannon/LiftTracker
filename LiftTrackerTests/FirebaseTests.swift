@@ -44,25 +44,8 @@ class FirebaseTests: XCTestCase {
     func testPR() {
         var done = false
         let oneRepNode = myRootRef.childByAppendingPath("/exercises/benchpress/prs/1")
-        /* can do it this way by autoid
-        var child = oneRepNode.childByAutoId()
-        var pr = ["date":"2015-07-01", "weight":225]
-        child.setValue(pr) { (result) in
-        }
-        child = oneRepNode.childByAutoId()
-        pr = ["date":"2015-07-04", "weight":235]
-        child.setValue(pr) { (result) in
-        }
-        child = oneRepNode.childByAutoId()
-        pr = ["date":"2015-07-08", "weight":240]
-        child.setValue(pr) { (result) in
-            done = true
-        }
-        */
-        
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
         oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
-        //oneRepNode.childByAppendingPath("2015-07-10").setValue(240)
         oneRepNode.childByAppendingPath("2015-07-10").setValue(210, withCompletionBlock: { _ in
             //go fetch it
             //oneRepNode.queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { (result) in
@@ -99,9 +82,14 @@ class FirebaseTests: XCTestCase {
         tenRepNode.childByAppendingPath("2015-07-04").setValue(137.5)
         tenRepNode.childByAppendingPath("2015-07-06").setValue(140)
         
-        prs.observeSingleEventOfType(.Value, withBlock: { (result : FDataSnapshot!) in
+        prs.queryOrderedByKey().observeSingleEventOfType(.Value, withBlock: { (result : FDataSnapshot!) in
             for x in result.children {
-                print(x)
+                let repSnap = x as! FDataSnapshot
+                print("key:\(repSnap.key)")
+                for y in repSnap.children {
+                    let dateSnap = y as! FDataSnapshot
+                    print("key:\(dateSnap.key) val:\(dateSnap.value)")
+                }
             }
             done = true
         })

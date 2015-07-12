@@ -23,6 +23,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     let firebase = AppDelegate.get.firebase
     var firebasePr : Firebase!
+    var prs = [Int:[String:Double]]()
 
     
     //will be set by preceeding view controller
@@ -35,29 +36,61 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         picker.delegate = self
         lblExercise.text = exercise.name
         firebasePr = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs")
-        fetchPR(10)
-        //go fetch 10 rep max and display it
+        firebasePr.queryOrderedByKey().observeSingleEventOfType(.Value, withBlock: { (result) in
+            for x in result.children {
+                let repSnap = x as! FDataSnapshot
+                var dateDict = [String:Double]()
+                for y in repSnap.children {
+                    let dateSnap = y as! FDataSnapshot
+                    dateDict[dateSnap.key] = dateSnap.value as? Double
+                    self.prs[Int(repSnap.key)!] = dateDict
+                }
+            }
+             //go fetch 10 rep max and display it
+            self.setPickerWithRep(10)
+        })
     }
     
-    func fetchPR(rep : Int) {
-        let node = firebasePr.childByAppendingPath("\(rep)")
-
-        node.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: { result in
-            if result.value is NSNull {
-                self.lblCurrentPr.text = "No PR yet for \(rep) reps"
-                //move to rep picker to the appropriate selection
-                //set all weight values to 0
-                self.picker.selectRow(rep-1, inComponent: 0, animated: true)
-                self.picker.selectRow(0, inComponent: 1, animated: true)
-                self.picker.selectRow(0, inComponent: 2, animated: true)
-                self.picker.selectRow(0, inComponent: 3, animated: true)
-                self.lblPickedValue.text = ""
+    func setPickerWithRep(rep : Int) {
+        if let node = prs[rep] {
+            var largestDate : String = ""
+            var largestWeight : Double = 0
+            for (date,weight) in node {
+                if weight > largestWeight {
+                    largestWeight = weight
+                    largestDate = date
+                }
+            }
+            if largestWeight > 0 {
+                self.lblCurrentPr.text = "\(largestWeight) x \(rep) on \(largestDate)"
+                setRepsAndWeight(rep, weight: largestWeight)
             }
             else {
-                print(result.value)
-                //lblPickedValue.text = String(rep)
-            }
-        })
+                movePickerToZero(rep)            }
+        }
+        else {
+           movePickerToZero(rep)
+        }
+    }
+    
+    func movePickerToZero(rep : Int) {
+        self.lblCurrentPr.text = "No PR yet for \(rep) reps"
+        self.lblPickedValue.text = ""
+        setRepsAndWeight(rep, weight: 0)
+    }
+
+    func setRepsAndWeight(reps : Int, weight : Double) {
+        let hundreds  = Int(weight / 100)
+        let tens = Int((weight - (Double(hundreds) * 100)) / 10)
+        let ones = Int(weight - (Double(hundreds) * 100) - (Double(tens) * 10))
+        self.picker.selectRow(reps-1, inComponent: 0, animated: true)
+        self.picker.selectRow(hundreds, inComponent: 1, animated: true)
+        self.picker.selectRow(tens, inComponent: 2, animated: true)
+        self.picker.selectRow(ones, inComponent: 3, animated: true)
+        let picked = "\(hundreds)\(tens)\(ones)"
+        if weight > 0 {
+            lblPickedValue.text = "\(picked) x \(reps)"
+        }
     }
     
     //MARK: - PickerViewDataSource
