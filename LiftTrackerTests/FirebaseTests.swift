@@ -23,21 +23,24 @@ class FirebaseTests: XCTestCase {
     }
     
     func testJson() {
-        var error: NSError? = nil
         let jsonURL = NSBundle.mainBundle().URLForResource("Bodypart", withExtension: "json")
         let jsonData = NSData(contentsOfURL: jsonURL!)
-        let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
-        var bodypartsNode = myRootRef.childByAppendingPath("bodyparts2")
-        for x in jsonArray {
-            println(x)
-            let d = x as! NSDictionary
-            println(d)
-            let name = d["name"] as! String
-            var newNode = bodypartsNode.childByAppendingPath(name)
-            newNode.setValue(x)
+        do {
+            let jsonArray = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: .AllowFragments) as! NSArray
+            let bodypartsNode = myRootRef.childByAppendingPath("bodyparts2")
+            for x in jsonArray {
+                let d = x as! NSDictionary
+                let name = d["name"] as! String
+                let newNode = bodypartsNode.childByAppendingPath(name)
+                newNode.setValue(x)
+            }
+        
+        } catch let caught as NSError {
+            print(caught)
+        } catch {
         }
     }
-    
+
     func testPR() {
         var done = false
         let oneRepNode = myRootRef.childByAppendingPath("/exercises/benchpress/prs/1")
@@ -66,7 +69,7 @@ class FirebaseTests: XCTestCase {
             oneRepNode.queryOrderedByValue().observeEventType(.Value, withBlock: { (result) in
                 //println(result.value)
                 for child in result.children {
-                    println("key:\(child.key!)")
+                    print("key:\(child.key!)")
                 }
 //                if let d = result.value as? NSDictionary {
 //                    println(d["2015-07-01"]!)
@@ -97,9 +100,8 @@ class FirebaseTests: XCTestCase {
         tenRepNode.childByAppendingPath("2015-07-06").setValue(140)
         
         prs.observeSingleEventOfType(.Value, withBlock: { (result : FDataSnapshot!) in
-            println(result)
             for x in result.children {
-                println(x)
+                print(x)
             }
             done = true
         })
@@ -109,12 +111,12 @@ class FirebaseTests: XCTestCase {
     
     
     func test() {
-        var node = myRootRef.childByAppendingPath("main")
-        var dict = ["foo":"bar"]
+        let node = myRootRef.childByAppendingPath("main")
+        let dict = ["foo":"bar"]
         var done = false
         
         node.setValue(dict) { (result) in
-            println(result)
+            print(result)
             done = true
         }
         
@@ -124,7 +126,7 @@ class FirebaseTests: XCTestCase {
     }
     
     func waitUntil(timeout: NSTimeInterval, predicate:(Void -> Bool)) {
-        var timeoutTime = NSDate(timeIntervalSinceNow: timeout).timeIntervalSinceReferenceDate
+        let timeoutTime = NSDate(timeIntervalSinceNow: timeout).timeIntervalSinceReferenceDate
         
         while (!predicate() && NSDate.timeIntervalSinceReferenceDate() < timeoutTime) {
             NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 0.25))
@@ -132,9 +134,9 @@ class FirebaseTests: XCTestCase {
     }
     
     func testImporter() {
-        var importer = FirebaseImporter(root: myRootRef)
-        importer.importSeedDataIfNeeded(overwrite: true)
-        var done = false
+        let importer = FirebaseImporter(root: myRootRef)
+        importer.importSeedDataIfNeeded(true)
+        let done = false
 
         waitUntil(5) { done }
         

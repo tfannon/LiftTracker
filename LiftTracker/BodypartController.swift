@@ -22,7 +22,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var imageView = UIImageView(frame:self.view.bounds)
+        let imageView = UIImageView(frame:self.view.bounds)
         imageView.contentMode = UIViewContentMode.ScaleToFill
         imageView.image = UIImage(named: "dumbells.jpg")!
         self.view.insertSubview(imageView, atIndex: 0)
@@ -30,7 +30,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         self.btnAddBodypart = self.addButton("+", action: "addNewBodypart")
         
         //the long press will trigger a delete
-        var longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
         longPressGestureRecognizer.delegate = self
         longPressGestureRecognizer.delaysTouchesBegan = true //so wont interfere with normal tap
         collectionView!.addGestureRecognizer(longPressGestureRecognizer)
@@ -48,7 +48,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
             deleteItem(cell.title.text!, indexPath:indexPath)
         }
         else {
-            println("could not find cell for longpress")
+            print("could not find cell for longpress")
         }
     }
     
@@ -63,13 +63,12 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                 let name = (child.value as! NSDictionary) ["name"] as! String
                 self.bodyparts += [(key: child.key!, name: name)]
             }
-            println(self.bodyparts)
             self.collectionView?.reloadData()
         })
     }
     
     func addNewBodypart() {
-        var alert = UIAlertController(title: "Bodypart",
+        let alert = UIAlertController(title: "Bodypart",
             message: "Add a new bodypart",
             preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -80,10 +79,10 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         
         alert.addAction(UIAlertAction(title: "Save",
             style: .Default, handler: { (action: UIAlertAction!) in
-                let name = (alert.textFields![0] as! UITextField).text
-                let key = name.removeWhitespace().lowercaseString
+                let name = (alert.textFields![0] as UITextField).text
+                let key = name!.removeWhitespace().lowercaseString
                 let keys = self.bodyparts.map { $0.key }
-                if  find(keys,key) == nil {
+                if  keys.indexOf(key) == nil {
                     let order = self.bodyparts.count
                     var dict = [String:AnyObject]()
                     dict["displayOrder"] = order
@@ -91,7 +90,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                     dict["name"] = name
                     let node = self.firebase.childByAppendingPath("bodyparts/\(key)")
                     node.setValue(dict, withCompletionBlock: { (error,result) in
-                        println(result)
+                        print(result)
                         self.fetchDataFromFirebase()
                     })
                 }
@@ -107,7 +106,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     }
     
     func deleteItem(title : String, indexPath : NSIndexPath) {
-        var alert = UIAlertController(title: "",
+        let alert = UIAlertController(title: "",
             message: "Do you want to delete \(title)?",
             preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -116,7 +115,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                 let key = self.bodyparts[indexPath.row].key
                 let node = self.firebase.childByAppendingPath("bodyparts/\(key)")
                 node.removeValueWithCompletionBlock {(result) in
-                    println(result)
+                    print(result)
                     self.fetchDataFromFirebase()
                 }
         }))
@@ -133,9 +132,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let dest = segue.destinationViewController as! ExerciseController
-        var indexPath = self.collectionView!.indexPathsForSelectedItems()[0] as! NSIndexPath
-        //var bodypart = fetchedResultsController.objectAtIndexPath(indexPath) as! Bodypart
-        //println(bodypart)
+        let indexPath = self.collectionView!.indexPathsForSelectedItems()![0] as NSIndexPath
         dest.bodypart = bodyparts[indexPath.row]
     }
     

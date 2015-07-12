@@ -54,7 +54,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
                 self.lblPickedValue.text = ""
             }
             else {
-                println(result.value)
+                print(result.value)
                 //lblPickedValue.text = String(rep)
             }
         })
@@ -72,7 +72,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
             case (2) : return 10
             case (3) : return 3
             default :
-                println(component)
+                print(component)
                 return 0
         }
     }
@@ -88,7 +88,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
 //    }
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        var color = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        let color = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         switch (component) {
             case (0) : return NSAttributedString(string: "\(row+1)", attributes: color)
             case (1) : return NSAttributedString(string: "\(row)", attributes: color)
@@ -111,10 +111,10 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        var reps = picker.selectedRowInComponent(0) + 1
-        var hundreds = picker.selectedRowInComponent(1)
-        var tens = picker.selectedRowInComponent(2)
-        var ones = onesValues[picker.selectedRowInComponent(3)]
+        let reps = picker.selectedRowInComponent(0) + 1
+        let hundreds = picker.selectedRowInComponent(1)
+        let tens = picker.selectedRowInComponent(2)
+        let ones = onesValues[picker.selectedRowInComponent(3)]
         var picked = ""
         //strip leading zeros
         if hundreds == 0 {
@@ -132,15 +132,15 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     //MARK: - Write value into firebase
     func savePr() {
-        var reps : Int = picker.selectedRowInComponent(0) + 1
-        var hundreds = picker.selectedRowInComponent(1)
-        var tens = picker.selectedRowInComponent(2)
-        var ones = onesValues[picker.selectedRowInComponent(3)]
+        let reps : Int = picker.selectedRowInComponent(0) + 1
+        let hundreds = picker.selectedRowInComponent(1)
+        let tens = picker.selectedRowInComponent(2)
+        let ones = onesValues[picker.selectedRowInComponent(3)]
         let weight : Int = Int(hundreds * 100) + Int(tens * 10) + Int(ones)
         let date = (NSDate().toString(format: .ISO8601) as NSString).substringToIndex(10)
         let node = firebasePr.childByAppendingPath("/\(reps)/\(date)")
         node.setValue(weight, withCompletionBlock: { _ in
-            println("success")
+            print("success")
         })
     }
 }

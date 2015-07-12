@@ -39,7 +39,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var imageView = UIImageView(frame:self.view.bounds)
+        let imageView = UIImageView(frame:self.view.bounds)
         imageView.contentMode = UIViewContentMode.ScaleToFill
         imageView.image = UIImage(named: "dumbells.jpg")!
         self.view.insertSubview(imageView, atIndex: 0)
@@ -49,7 +49,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         self.btnAddExercise = self.addButton("+", action: "pickExercise")
         
         //the long press will trigger a delete
-        var longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
         longPressGestureRecognizer.delegate = self
         longPressGestureRecognizer.delaysTouchesBegan = true //so wont interfere with normal tap
         collectionView!.addGestureRecognizer(longPressGestureRecognizer)
@@ -57,7 +57,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         setupPickerView()
         
         //swipe left will return back to bodypart
-        var swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: "handleSwipeLeft:")
         swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         collectionView!.addGestureRecognizer(swipeLeftRecognizer)
         fetchGlobalExercises()
@@ -101,7 +101,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
                 //fetch the exercise name from the global exercise list....
                 let exerciseDisplayName = self.allExercises.filter { $0.key == child.key }[0].name
                 self.bodypartExercises += [(key: child.key!, name: exerciseDisplayName)]
-                println(self.bodypartExercises)
+                print(self.bodypartExercises)
             }
             self.collectionView?.reloadData()
         })
@@ -116,9 +116,6 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         if let indexPath = collectionView!.indexPathForItemAtPoint(p) {
             let cell = collectionView!.cellForItemAtIndexPath(indexPath) as! ExerciseCell
             removeExercise(cell.title.text!, indexPath:indexPath)
-        }
-        else {
-            println("could not find cell for longpress")
         }
     }
 
@@ -138,9 +135,9 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         exercisesValidForSelection.removeAll()
         let bpKeys = bodypartExercises.map { $0.key }
         //filter out any of the exercises that are already chosen
-        var x = allExercises.filter { find(bpKeys, $0.key) == nil }
+        var x = allExercises.filter { bpKeys.indexOf($0.key) == nil }
         //display them alphabetically
-        x.sort { $0.key < $1.key }
+        x.sortInPlace { $0.key < $1.key }
         exercisesValidForSelection = x
         //recognize a tap outside the picker closes it down
         self.collectionView?.addGestureRecognizer(tapGesture)
@@ -148,7 +145,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
     }
     
     func removeExercise(title : String, indexPath : NSIndexPath) {
-        var alert = UIAlertController(title: "",
+        let alert = UIAlertController(title: "",
             message: "Do you want to remove \(title) from \(bodypart.name)?",
             preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -186,7 +183,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let dest = segue.destinationViewController as! SetRepController
-        var indexPath = self.collectionView!.indexPathsForSelectedItems()[0] as! NSIndexPath
+        let indexPath = self.collectionView!.indexPathsForSelectedItems()![0] as NSIndexPath
         dest.exercise = bodypartExercises[indexPath.row]
     }
     
@@ -263,10 +260,10 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        var color = row == indexOfAddNewExercise ? UIColor.redColor() : UIColor.blackColor()
-        var title = row == indexOfAddNewExercise ? "[Add new exercise]" : exercisesValidForSelection[row].name
+        let color = row == indexOfAddNewExercise ? UIColor.redColor() : UIColor.blackColor()
+        let title = row == indexOfAddNewExercise ? "[Add new exercise]" : exercisesValidForSelection[row].name
         
-        var attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName : color])
+        let attributedString = NSAttributedString(string: title, attributes: [NSForegroundColorAttributeName : color])
         
         return attributedString
     }
@@ -302,7 +299,7 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
     }
     
     func addNewExercise() {
-        var alert = UIAlertController(title: "Exercise",
+        let alert = UIAlertController(title: "Exercise",
             message: "Add a new exercise",
             preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -313,17 +310,16 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         
         alert.addAction(UIAlertAction(title: "Save",
             style: .Default, handler: { (action: UIAlertAction!) in
-                let name = (alert.textFields![0] as! UITextField).text
-                let key = name.removeWhitespace().lowercaseString
+                let name = (alert.textFields![0] as UITextField).text
+                let key = name!.removeWhitespace().lowercaseString
                 let keys = self.allExercises.map { $0.key }
-                if  find(keys,key) == nil {
+                if  keys.indexOf(key) == nil {
                     //first add it to the global list of exercises
                     var dict = [String:AnyObject]()
                     dict["isSystem"] = false
                     dict["name"] = name
                     let node = self.firebase.childByAppendingPath("exercises/\(key)")
                     node.setValue(dict, withCompletionBlock: { (error,result) in
-                        println(result)
                         self.fetchGlobalExercises()
                         self.saveExerciseBodypartRelationship(key, bodypartKey: self.bodypart.key)
                     })
