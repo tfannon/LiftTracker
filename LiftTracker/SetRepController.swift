@@ -51,7 +51,19 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         })
     }
     
+    
     func setPickerWithRep(rep : Int) {
+        let (date, weight) = getLargestWeight(rep)
+        if weight > 0 {
+            self.lblCurrentPr.text = "\(weight) x \(rep) on \(date)"
+            setRepsAndWeight(rep, weight: weight)
+        }
+        else {
+            movePickerToZero(rep)
+        }
+    }
+    
+    func getLargestWeight(rep : Int) -> (date : String, weight : Double) {
         if let node = prs[rep] {
             var largestDate : String = ""
             var largestWeight : Double = 0
@@ -62,16 +74,12 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
                 }
             }
             if largestWeight > 0 {
-                self.lblCurrentPr.text = "\(largestWeight) x \(rep) on \(largestDate)"
-                setRepsAndWeight(rep, weight: largestWeight)
+                return (largestDate, largestWeight)
             }
-            else {
-                movePickerToZero(rep)            }
         }
-        else {
-           movePickerToZero(rep)
-        }
+        return ("",0)
     }
+    
     
     func movePickerToZero(rep : Int) {
         self.lblCurrentPr.text = "No PR yet for \(rep) reps"
@@ -161,6 +169,10 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
           picked = "\(hundreds)\(tens)\(ones)"
         }
         lblPickedValue.text = "\(picked) x \(reps)"
+        //if reps were changed, go set the current PR
+        if component == 0 {
+            setPickerWithRep(reps)
+        }
     }
     
     //MARK: - Write value into firebase
@@ -169,11 +181,21 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         let hundreds = picker.selectedRowInComponent(1)
         let tens = picker.selectedRowInComponent(2)
         let ones = onesValues[picker.selectedRowInComponent(3)]
-        let weight : Int = Int(hundreds * 100) + Int(tens * 10) + Int(ones)
-        let date = (NSDate().toString(format: .ISO8601) as NSString).substringToIndex(10)
-        let node = firebasePr.childByAppendingPath("/\(reps)/\(date)")
-        node.setValue(weight, withCompletionBlock: { _ in
-            print("success")
-        })
+        let weight : Double = (Double(hundreds) * 100) + (Double(tens) * 10) + ones
+        //make sure this is actually a PR
+        let (_,currentPR) = getLargestWeight(reps)
+        if weight > currentPR {
+            let date = (NSDate().toString(format: .ISO8601) as NSString).substringToIndex(10)
+            let node = firebasePr.childByAppendingPath("/\(reps)/\(date)")
+            node.setValue(weight, withCompletionBlock: { _ in
+                self.lblCurrentPr.text = "\(weight) x \(reps) on \(date)"
+                if self.prs[reps] == nil {
+                    self.prs[reps] = [String:Double]()
+                }
+                self.prs[reps]![date] = weight
+                print("success")
+            })
+        }
+        //todo: throw alert box
     }
 }
