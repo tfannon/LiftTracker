@@ -19,11 +19,16 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         self.savePr()
     }
     
+    @IBAction func handleClearTapped(sender: AnyObject) {
+        self.clearPr()
+    }
+    
     let onesValues = [0, 2.5, 5]
     
     let firebase = AppDelegate.get.firebase
     var firebasePr : Firebase!
     var prs = [Int:[String:Double]]()
+    var currentPrInPicker : (reps : Int, date : String)?
     
     
     //will be set by preceeding view controller
@@ -44,16 +49,12 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
                 if self.prs[rep] == nil {
                     self.prs[rep] = [String:Double]()
                 }
-                //println(repSnap)
                 var dateDict = [String:Double]()
                 for y in repSnap.children {
                     let dateSnap = y as! FDataSnapshot
-                    //println(dateSnap)
                     dateDict[dateSnap.key] = dateSnap.value as? Double
-                    //println(dateDict)
                     self.prs[rep] = dateDict
                 }
-                //self.prs[Int(repSnap.key)] = dateDict
             }
             //go fetch 10 rep max and display it
             self.setPickerWithRep(10)
@@ -65,6 +66,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         let (date, weight) = getLargestWeight(rep)
         if weight > 0 {
             self.lblCurrentPr.text = "\(weight) x \(rep) on \(date)"
+            self.currentPrInPicker = (rep, date)
             setRepsAndWeight(rep, weight: weight)
         }
         else {
@@ -127,15 +129,6 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         }
     }
     
-    //    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-    //        switch (component) {
-    //            case (0) : return "\(row+1)"
-    //            case (1) : return "\(row)"
-    //            case (2) : return "\(row)"
-    //            case (3) : return "\(ones[row])"
-    //            default : return ""
-    //        }
-    //    }
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let color = [NSForegroundColorAttributeName:UIColor.whiteColor()]
@@ -198,6 +191,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
             let node = firebasePr.childByAppendingPath("/\(reps)/\(date)")
             node.setValue(weight, withCompletionBlock: { _ in
                 self.lblCurrentPr.text = "\(weight) x \(reps) on \(date)"
+                self.currentPrInPicker = (reps, date)
                 if self.prs[reps] == nil {
                     self.prs[reps] = [String:Double]()
                 }
@@ -208,7 +202,22 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         //todo: throw alert box
     }
     
-    func clearPr() {
-        
+    var reps : Int {
+        get {
+            return picker.selectedRowInComponent(0) + 1
+        }
     }
+    
+    func clearPr() {
+        if let pr = currentPrInPicker {
+            let prToClear = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs/\(pr.reps)/\(pr.date)")
+            prToClear.removeValueWithCompletionBlock( { (result) in
+                //update our in place dictionary
+                self.prs[pr.reps]!.removeValueForKey(pr.date)
+                self.setPickerWithRep(pr.reps)
+            })
+        }
+    }
+    
+    
 }
