@@ -234,19 +234,16 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="zaU-lP-jfi" secondAttribute="bottom" constant="10" id="1qK-A8-uzG"/>
-                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="2Sx-0P-GnQ"/>
                             <constraint firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="D5p-eW-Va1">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="30" id="Dib-XZ-UtR"/>
                             <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="26" id="SiS-jq-gGY"/>
-                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="2Pg-Pf-0F3" secondAttribute="centerX" id="UjV-RT-cGg"/>
                             <constraint firstAttribute="centerX" secondItem="2Pg-Pf-0F3" secondAttribute="centerX" id="Wui-cm-Fif"/>
                             <constraint firstAttribute="centerX" secondItem="xc7-Fs-Jef" secondAttribute="centerX" id="cHI-X7-aV2"/>
                             <constraint firstItem="Xlo-6R-YIH" firstAttribute="top" secondItem="QHj-5k-q64" secondAttribute="bottom" constant="20" id="kdk-s5-1cG"/>
                             <constraint firstAttribute="centerX" secondItem="zaU-lP-jfi" secondAttribute="centerX" id="qNQ-8i-jou"/>
                             <constraint firstItem="zaU-lP-jfi" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="8" id="rNS-M9-cd5"/>
-                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="centerX" secondItem="zaU-lP-jfi" secondAttribute="centerX" id="yVg-YF-ryi"/>
                             <constraint firstAttribute="centerX" secondItem="QHj-5k-q64" secondAttribute="centerX" id="yiJ-Xj-u2n"/>
                         </constraints>
                         <variation key="default">
@@ -255,16 +252,13 @@
                                 <exclude reference="QHj-5k-q64"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="yiJ-Xj-u2n"/>
                                 <exclude reference="qNQ-8i-jou"/>
                                 <exclude reference="rNS-M9-cd5"/>
-                                <exclude reference="yiJ-Xj-u2n"/>
                                 <exclude reference="D5p-eW-Va1"/>
                                 <exclude reference="Dib-XZ-UtR"/>
                                 <exclude reference="1qK-A8-uzG"/>
-                                <exclude reference="2Sx-0P-GnQ"/>
-                                <exclude reference="UjV-RT-cGg"/>
                                 <exclude reference="cHI-X7-aV2"/>
-                                <exclude reference="yVg-YF-ryi"/>
                                 <exclude reference="SiS-jq-gGY"/>
                                 <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="kdk-s5-1cG"/>
@@ -276,16 +270,13 @@
                                 <include reference="QHj-5k-q64"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="yiJ-Xj-u2n"/>
                                 <include reference="qNQ-8i-jou"/>
                                 <include reference="rNS-M9-cd5"/>
-                                <include reference="yiJ-Xj-u2n"/>
                                 <include reference="D5p-eW-Va1"/>
                                 <include reference="Dib-XZ-UtR"/>
                                 <include reference="1qK-A8-uzG"/>
-                                <include reference="2Sx-0P-GnQ"/>
-                                <include reference="UjV-RT-cGg"/>
                                 <include reference="cHI-X7-aV2"/>
-                                <include reference="yVg-YF-ryi"/>
                                 <include reference="SiS-jq-gGY"/>
                                 <include reference="Wui-cm-Fif"/>
                                 <include reference="kdk-s5-1cG"/>
