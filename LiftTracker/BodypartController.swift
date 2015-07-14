@@ -36,6 +36,11 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         collectionView!.addGestureRecognizer(longPressGestureRecognizer)
         
         fetchDataFromFirebase()
+        
+        var loginButton = FBSDKLoginButton()
+        loginButton.center = self.view.center
+        self.view.addSubview(loginButton)
+        
     }
     
     func handleLongPress(recognizer : UILongPressGestureRecognizer) {

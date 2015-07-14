@@ -23,6 +23,9 @@
 		6574F65D1A806672007434C8 /* Exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercise.json */; };
 		6574F65F1A80731D007434C8 /* BodypartExercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65E1A80731D007434C8 /* BodypartExercise.json */; };
 		658108931A5AA80800A1D380 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658108921A5AA80800A1D380 /* Media.xcassets */; };
+		658277A81B54BE47001782E6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658277A51B54BE47001782E6 /* FBSDKCoreKit.framework */; };
+		658277A91B54BE47001782E6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658277A61B54BE47001782E6 /* FBSDKLoginKit.framework */; };
+		658277AA1B54BE47001782E6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658277A71B54BE47001782E6 /* FBSDKShareKit.framework */; };
 		659163791B1C09E70087244E /* Exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercise.json */; };
 		65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A884B31B2919790024EEA1 /* FirebaseHelper.swift */; };
 		65A884B71B291C090024EEA1 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884B61B291C090024EEA1 /* libicucore.dylib */; };
@@ -91,6 +94,9 @@
 		6574F65C1A806672007434C8 /* Exercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Exercise.json; sourceTree = "<group>"; };
 		6574F65E1A80731D007434C8 /* BodypartExercise.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BodypartExercise.json; sourceTree = "<group>"; };
 		658108921A5AA80800A1D380 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		658277A51B54BE47001782E6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		658277A61B54BE47001782E6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		658277A71B54BE47001782E6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		65A884B31B2919790024EEA1 /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		65A884B61B291C090024EEA1 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		65A884B81B291C1D0024EEA1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -124,7 +130,10 @@
 				65A884BB1B291C270024EEA1 /* Security.framework in Frameworks */,
 				65A884B91B291C1D0024EEA1 /* CFNetwork.framework in Frameworks */,
 				65A884B71B291C090024EEA1 /* libicucore.dylib in Frameworks */,
+				658277A81B54BE47001782E6 /* FBSDKCoreKit.framework in Frameworks */,
+				658277AA1B54BE47001782E6 /* FBSDKShareKit.framework in Frameworks */,
 				6534F0C11B17C6CD0098FB87 /* libc++.dylib in Frameworks */,
+				658277A91B54BE47001782E6 /* FBSDKLoginKit.framework in Frameworks */,
 				65A884C11B291CF40024EEA1 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +220,9 @@
 		659163731B1C00AE0087244E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				658277A51B54BE47001782E6 /* FBSDKCoreKit.framework */,
+				658277A61B54BE47001782E6 /* FBSDKLoginKit.framework */,
+				658277A71B54BE47001782E6 /* FBSDKShareKit.framework */,
 				65A884C01B291CF40024EEA1 /* Firebase.framework */,
 				65A884BC1B291C330024EEA1 /* SystemConfiguration.framework */,
 				65A884BA1B291C270024EEA1 /* Security.framework */,
