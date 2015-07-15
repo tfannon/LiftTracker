@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BodypartController: UICollectionViewController,  UIGestureRecognizerDelegate {
+class BodypartController: UICollectionViewController,  UIGestureRecognizerDelegate, FBSDKLoginButtonDelegate {
 
     let cellIdentifier = "BodypartCell"
     var firebase = AppDelegate.get.firebase
@@ -18,6 +18,9 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     var bodyparts:[(key: String, name: String)] = []
     
     var btnAddBodypart : UIButton!
+    
+    var isLoggedIn = false
+    var loginButton : UIBarButtonItem!
 
     
     override func viewDidLoad() {
@@ -35,11 +38,83 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         longPressGestureRecognizer.delaysTouchesBegan = true //so wont interfere with normal tap
         collectionView!.addGestureRecognizer(longPressGestureRecognizer)
         
+        self.loginButton = UIBarButtonItem(title: "placeholder", style: .Plain, target: self, action: "loginPressed")
+        self.navigationItem.rightBarButtonItem = self.loginButton
+        
         fetchDataFromFirebase()
         
-        var loginButton = FBSDKLoginButton()
-        loginButton.center = self.view.center
-        self.view.addSubview(loginButton)
+        
+        if let accessToken = FBSDKAccessToken.currentAccessToken()?.tokenString {
+            println("user is already logged in with \(accessToken)")
+            loginToFirebase(accessToken)
+        }
+        
+        //var loginButton = FBSDKLoginButton()
+        //loginButton.center = self.view.center
+        //loginButton.center = self.navigationController!.view.center
+        //self.view.addSubview(loginButton)
+        //self.navigationItem.rightBarButtonItem = loginButton
+        //loginButton.delegate = self
+        
+        
+    }
+    
+    func loginPressed() {
+         var login = FBSDKLoginManager()
+        if !isLoggedIn {
+           
+            login.logInWithReadPermissions(nil, handler: { (result, error) in
+                if error != nil {
+                
+                } else {
+                    println(result)
+                    if let accessToken = FBSDKAccessToken.currentAccessToken()?.tokenString {
+                        self.loginToFirebase(accessToken)
+                    }
+                }
+            })
+        } else {
+            login.logOut()
+            isLoggedIn = false
+            self.loginButton.title = "Login with Facebook"
+        }
+    }
+    
+    func loginToFirebase(token : String) {
+        firebase.authWithOAuthProvider("facebook", token: token,
+            withCompletionBlock: { error, authData in
+                if error != nil {
+                    println("Login failed. \(error)")
+                } else {
+                    println("Logged in! \(authData)")
+                    let providerData = authData.providerData
+                    let auth = authData.auth
+                    println(auth)
+                    println(providerData)
+                    self.isLoggedIn = true
+                    self.loginButton.title = providerData["displayName"] as? String
+                    AppDelegate.get.uid = auth["uid"] as? String
+                }
+        })
+    }
+    
+    
+    //MARK: - facebook login
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        println(result)
+        let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+        firebase.authWithOAuthProvider("facebook", token: accessToken,
+            withCompletionBlock: { error, authData in
+                if error != nil {
+                    println("Login failed. \(error)")
+                } else {
+                    println("Logged in! \(authData)")
+                }
+        })
+
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         
     }
     
