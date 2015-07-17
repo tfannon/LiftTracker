@@ -13,14 +13,21 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var firebase = Firebase(url:"https://lifttracker2.firebaseio.com/tfannon")
+    var firebase : Firebase {
+        get {
+            assert(self.uid != nil, "the user id is not known")
+            return firebaseRoot.childByAppendingPath(uid)
+        }
+    }
+    
+    var firebaseRoot = Firebase(url:"https://lifttracker2.firebaseio.com/")
     
     var uid : String!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let importer = FirebaseImporter(root: firebase)
+        //let importer = FirebaseImporter(root: firebase)
         //importer.importSeedDataIfNeeded(overwrite: true)
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         //return true

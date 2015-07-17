@@ -12,7 +12,10 @@ import CoreData
 class BodypartController: UICollectionViewController,  UIGestureRecognizerDelegate, FBSDKLoginButtonDelegate {
 
     let cellIdentifier = "BodypartCell"
-    var firebase = AppDelegate.get.firebase
+    
+    lazy var firebase : Firebase = {
+        AppDelegate.get.firebase
+    }()
    
     //tuple:  KVP of key->bodypart Name
     var bodyparts:[(key: String, name: String)] = []
@@ -87,7 +90,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
 //    }
 //    
     func loginToFirebase(token : String) {
-        firebase.authWithOAuthProvider("facebook", token: token,
+        AppDelegate.get.firebaseRoot.authWithOAuthProvider("facebook", token: token,
             withCompletionBlock: { error, authData in
                 if error != nil {
                     println("Login failed. \(error)")
@@ -95,12 +98,16 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                     println("Logged in! \(authData)")
                     let providerData = authData.providerData
                     let auth = authData.auth
-                    println(auth)
-                    println(providerData)
+                    let displayName = providerData["displayName"] as! String
+                    //println(auth)
+                    //println(providerData)
+                    println("\(displayName) logged in")
                     self.isLoggedIn = true
-                    self.logoutButton.title = providerData["displayName"] as? String
+                    self.logoutButton.title = displayName
                     self.loginButton.hidden = true
                     AppDelegate.get.uid = auth["uid"] as? String
+                    //update the user display name - perhaps this is too chatty
+                    AppDelegate.get.firebase.childByAppendingPath("userInfo").setValue(["displayName":"\(displayName)"])
                     self.fetchDataFromFirebase()
                 }
         })
@@ -110,7 +117,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     //MARK: - facebook login
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         println(result)
-        let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+        let accessToken = result.token.tokenString //FBSDKAccessToken.currentAccessToken().tokenString
         self.loginButton.hidden = true
         loginToFirebase(accessToken)
     }
