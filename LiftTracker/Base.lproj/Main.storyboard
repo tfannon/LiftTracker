@@ -82,7 +82,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V1v-eb-CRw" id="tux-Ax-Boc">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Main Grouping" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c2-1u-SkV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Import Exercises" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c2-1u-SkV">
                                                     <rect key="frame" x="8" y="8" width="282" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,16 +268,16 @@
                                 <exclude reference="IwE-dd-161"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="lQ4-ZH-DDj"/>
+                                <exclude reference="yiJ-Xj-u2n"/>
                                 <exclude reference="qNQ-8i-jou"/>
                                 <exclude reference="rNS-M9-cd5"/>
-                                <exclude reference="SiS-jq-gGY"/>
-                                <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="D5p-eW-Va1"/>
                                 <exclude reference="Dib-XZ-UtR"/>
                                 <exclude reference="1qK-A8-uzG"/>
                                 <exclude reference="cHI-X7-aV2"/>
-                                <exclude reference="yiJ-Xj-u2n"/>
-                                <exclude reference="lQ4-ZH-DDj"/>
+                                <exclude reference="SiS-jq-gGY"/>
+                                <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="AdJ-JI-lvZ"/>
                                 <exclude reference="kdk-s5-1cG"/>
                             </mask>
@@ -288,15 +288,15 @@
                                 <include reference="QHj-5k-q64"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="yiJ-Xj-u2n"/>
                                 <include reference="qNQ-8i-jou"/>
                                 <include reference="rNS-M9-cd5"/>
-                                <include reference="SiS-jq-gGY"/>
-                                <include reference="Wui-cm-Fif"/>
                                 <include reference="D5p-eW-Va1"/>
                                 <include reference="Dib-XZ-UtR"/>
                                 <include reference="1qK-A8-uzG"/>
                                 <include reference="cHI-X7-aV2"/>
-                                <include reference="yiJ-Xj-u2n"/>
+                                <include reference="SiS-jq-gGY"/>
+                                <include reference="Wui-cm-Fif"/>
                                 <include reference="kdk-s5-1cG"/>
                             </mask>
                         </variation>

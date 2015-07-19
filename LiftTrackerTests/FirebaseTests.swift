@@ -12,7 +12,9 @@ import LiftTracker
 
 class FirebaseTests: XCTestCase {
     
-    var myRootRef = Firebase(url:"https://lifttracker2.firebaseio.com/test2")
+    var fbTestRoot = Firebase(url:"https://lifttracker2.firebaseio.com/test")
+    var fbTestUserNode : Firebase { get { return fbTestRoot.childByAppendingPath("JoeStrong2") }}
+    var fbRootNode = Firebase(url:"https://lifttracker2.firebaseio.com")
 
     override func setUp() {
         super.setUp()
@@ -27,7 +29,7 @@ class FirebaseTests: XCTestCase {
         let jsonURL = NSBundle.mainBundle().URLForResource("Bodypart", withExtension: "json")
         let jsonData = NSData(contentsOfURL: jsonURL!)
         let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
-        var bodypartsNode = myRootRef.childByAppendingPath("bodyparts2")
+        var bodypartsNode = fbTestRoot.childByAppendingPath("bodyparts")
         for x in jsonArray {
             println(x)
             let d = x as! NSDictionary
@@ -40,7 +42,7 @@ class FirebaseTests: XCTestCase {
     
     func testPR() {
         var done = false
-        let oneRepNode = myRootRef.childByAppendingPath("/exercises/benchpress/prs/1")
+        let oneRepNode = fbTestUserNode.childByAppendingPath("exercises/benchpress/prs/1")
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
         oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
         //oneRepNode.childByAppendingPath("2015-07-10").setValue(240)
@@ -59,7 +61,7 @@ class FirebaseTests: XCTestCase {
     
     func testAllPrsForExercise() {
         var done = false
-        let prs = myRootRef.childByAppendingPath("/exercises/benchpress/prs")
+        let prs = fbTestRoot.childByAppendingPath("/exercises/benchpress/prs")
         let oneRepNode = prs.childByAppendingPath("1")
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
         oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
@@ -89,13 +91,13 @@ class FirebaseTests: XCTestCase {
     func testClearPr() {
         var done = false
         
-        let prs = myRootRef.childByAppendingPath("/exercises/benchpress/prs")
+        let prs = fbTestRoot.childByAppendingPath("/exercises/benchpress/prs")
         let oneRepNode = prs.childByAppendingPath("1")
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
         oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
         
         oneRepNode.childByAppendingPath("2015-07-05").removeValueWithCompletionBlock( { (result) in
-            FirebaseHelper.getPrs(self.myRootRef, exercise: "benchpress", completion: { (result) in
+            FirebaseHelper.getPrs(self.fbTestRoot, exercise: "benchpress", completion: { (result) in
                 println(result)
                 XCTAssertNotNil(result[1], "1 rep dictionary should have been there")
                 XCTAssertNil(result[1]!["2015-07-05"], "2015-07-05 should have been removed")
@@ -109,7 +111,7 @@ class FirebaseTests: XCTestCase {
     
     
     func test() {
-        var node = myRootRef.childByAppendingPath("main")
+        var node = fbTestRoot.childByAppendingPath("main")
         var dict = ["foo":"bar"]
         var done = false
         
@@ -132,7 +134,7 @@ class FirebaseTests: XCTestCase {
     }
     
     func testImporter() {
-        var importer = FirebaseImporter(root: myRootRef)
+        var importer = FirebaseImporter(root: fbTestRoot)
         importer.importSeedDataIfNeeded(overwrite: true)
         var done = false
 

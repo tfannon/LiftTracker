@@ -10,6 +10,8 @@ import UIKit
 
 class SetupController: UITableViewController {
 
+    var appDelegate = AppDelegate.get
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +39,13 @@ class SetupController: UITableViewController {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return 3
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 1 : FirebaseImporter.importExercises(appDelegate.firebaseRoot, fbUser: appDelegate.firebase)
+        default: ""
+        }
     }
 
     /*

@@ -30,6 +30,8 @@ public class BaseImporter {
         let jsonArray = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &error) as! NSArray
         return jsonArray
     }
+    
+
 }
 
 public class FirebaseImporter : BaseImporter {
@@ -71,4 +73,16 @@ public class FirebaseImporter : BaseImporter {
             }
         }
     }
+    
+    public static func importExercises(exerciseRoot : Firebase, fbUser : Firebase) {
+        let node = exerciseRoot.childByAppendingPath("exercises")
+        node.observeSingleEventOfType(.Value, withBlock: { result in
+            let enumerator = result.children
+            while let child = enumerator.nextObject() as? FDataSnapshot {
+                //let name = (child.value as! NSDictionary) ["name"] as! String
+                println(child.key!, child.value!)
+            }
+        })
+    }
+    
 }
