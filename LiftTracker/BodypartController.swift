@@ -52,8 +52,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         
         
         if let accessToken = FBSDKAccessToken.currentAccessToken()?.tokenString {
-            println("user is already logged in with \(accessToken)")
-            self.logoutButton.title = "Log out"  //todo: change this to show user name
+            println("user is already logged in with facebook token")
             loginToFirebase(accessToken)
         } else {
             loginButton.hidden = false
@@ -78,11 +77,11 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                 if error != nil {
                     println("Login failed. \(error)")
                 } else {
-                    println("Logged in! \(authData)")
+                    //println("Logged in! \(authData)")
                     let providerData = authData.providerData
                     let auth = authData.auth
                     let displayName = providerData["displayName"] as! String
-                    println("\(displayName) logged in")
+                    println("\(displayName) logged in to firebase")
                     self.isLoggedIn = true
                     self.logoutButton.title = displayName
                     self.loginButton.hidden = true
@@ -111,7 +110,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     
     //MARK: - facebook login
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        let accessToken = result.token.tokenString 
+        let accessToken = result.token.tokenString
         self.loginButton.hidden = true
         loginToFirebase(accessToken)
     }
@@ -145,7 +144,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                 let name = (child.value as! NSDictionary) ["name"] as! String
                 self.bodyparts += [(key: child.key!, name: name)]
             }
-            println(self.bodyparts)
+            //println(self.bodyparts)
             self.collectionView?.reloadData()
         })
     }

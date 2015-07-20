@@ -9,21 +9,16 @@
 import Foundation
 
 
-public enum SeedData : String  {
-    case Bodyparts = "bodyparts"
-    case Exercises = "exercises"
-    case BodypartsToExercises = ""
-}
 
 public class BaseImporter {
 
     public func importSeedData() {
-        importJson(SeedData.Bodyparts)
-        importJson(SeedData.Exercises)
-        importJson(SeedData.BodypartsToExercises)
+        importJson(FBNodeType.Bodyparts)
+        importJson(FBNodeType.Exercises)
+        importJson(FBNodeType.BodypartsToExercises)
     }
     
-    func importJson(type: SeedData) {
+    func importJson(type: FBNodeType) {
         preconditionFailure("This method must be overridden")
     }
     
@@ -45,36 +40,32 @@ public class FirebaseImporter : BaseImporter {
         firebase = root
     }
     
-    override func importJson(type: SeedData) {
-        var fileName: String
-        var nodeName: String
+    override func importJson(type: FBNodeType) {
+        var fileName = ""
+        var nodeName = ""
         switch type {
         case .Bodyparts :
             fileName = "Bodyparts"
-            nodeName = "bodyparts"
+            nodeName = type.rawValue
         case .Exercises :
             fileName = "Exercises"
-            nodeName = "exercises"
+            nodeName = type.rawValue
         case .BodypartsToExercises :
             fileName = "BodypartsToExercises"
-            nodeName = "bodyparts"
+        default :
+            println("\(type) is invalid for import")
+            abort()
         }
         let jsonArray = readJson(fileName)
         for dict in jsonArray as! [NSDictionary] {
             switch(type) {
-            case .Exercises :
+            case .Exercises, .Bodyparts :
                 let node = firebase.childByAppendingPath(nodeName)
                 let name = dict["name"] as! String
                 let child = node.childByAppendingPath(name.removeWhitespace().lowercaseString)
                 child.setValue(dict)
-            case .Bodyparts :
-                let node = firebase.childByAppendingPath(nodeName)
-                let name = dict["name"] as! String
-                let child = node.childByAppendingPath(name.removeWhitespace().lowercaseString)
-                child.setValue(dict)
-                
             case .BodypartsToExercises :
-                var node = firebase.childByAppendingPath(nodeName)
+                var node = firebase.childByAppendingPath(FBNodeType.Bodyparts.rawValue)
                 let bodypart = dict["bodypart"] as! String,
                     exercise = dict["exercise"] as! String,
                     displayOrder = dict["displayOrder"] as! Int
@@ -92,10 +83,11 @@ public class FirebaseImporter : BaseImporter {
     }
 
     
-    public static func importToUser(types : [SeedData], fbRoot : Firebase, fbUser : Firebase, completion: () ->()) {
+    public static func importToUser(types : [FBNodeType], fbRoot : Firebase, fbUser : Firebase, completion: () ->()) {
         let group = dispatch_group_create()
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
+        //do not exit this thread until all data has been setup and completions have been fired
         for type in types {
             dispatch_group_enter(group)
             let node = fbRoot.childByAppendingPath(type.rawValue)
@@ -105,7 +97,6 @@ public class FirebaseImporter : BaseImporter {
                 println("getting ready to leave group")
                 dispatch_group_leave(group)
                 while let child = enumerator.nextObject() as? FDataSnapshot {
-                    //let name = (child.value as! NSDictionary) ["name"] as! String
                     println(child.key!, child.value!)
                     let key = child.key
                     let val = child.value! as! [NSObject : AnyObject]
@@ -114,6 +105,7 @@ public class FirebaseImporter : BaseImporter {
                 }
             })
         }
+        //i am awesome.  i can haz thredz
         dispatch_group_notify(group, queue) {
             completion()
         }

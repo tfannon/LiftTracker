@@ -15,4 +15,6 @@ public enum FBNodeType : String {
 
     case LastLogin = "lastLogin"
     case DisplayName = "displayName"
+    
+    case BodypartsToExercises = ""
 }

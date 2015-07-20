@@ -41,24 +41,12 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         picker.delegate = self
         lblExercise.text = exercise.name
         firebasePr = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs")
-        //let test = FirebaseHelper.getPrs(firebase, exercise: exercise.key)
-        firebasePr.queryOrderedByKey().observeSingleEventOfType(.Value, withBlock: { (result) in
-            for x in result.children {
-                let repSnap = x as! FDataSnapshot
-                let rep = repSnap.key.toInt()!
-                if self.prs[rep] == nil {
-                    self.prs[rep] = [String:Double]()
-                }
-                var dateDict = [String:Double]()
-                for y in repSnap.children {
-                    let dateSnap = y as! FDataSnapshot
-                    dateDict[dateSnap.key] = dateSnap.value as? Double
-                    self.prs[rep] = dateDict
-                }
-            }
+        
+        FirebaseHelper.getPrs(firebase, exercise: exercise.key) { (result) in
+            self.prs = result
             //go fetch 10 rep max and display it
             self.setPickerWithRep(10)
-        })
+        }
     }
     
     

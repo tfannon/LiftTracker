@@ -138,7 +138,7 @@ class FirebaseTests: XCTestCase {
     func testImportExercisesToUser() {
         var done = false
         println((fbTestRoot.description(),fbTestUser.description()))
-        FirebaseImporter.importToUser([SeedData.Bodyparts, SeedData.Exercises], fbRoot: fbRoot, fbUser: fbTestUser) {
+        FirebaseImporter.importToUser([.Bodyparts, .Exercises], fbRoot: fbRoot, fbUser: fbTestUser) {
             done = true
         }
         waitUntil(5) { done }

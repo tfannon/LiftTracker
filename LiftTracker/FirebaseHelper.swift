@@ -9,20 +9,9 @@
 import UIKit
 
 public class FirebaseHelper {
-    static var RootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
-    
-    
-    
-    public static func nullToNil(value : AnyObject?) -> AnyObject? {
-        if value is NSNull {
-            return nil
-        } else {
-            return value
-        }
-    }
     
     public static func getPrs(firebase : Firebase, exercise : String, completion: (result:[Int:[String:Double]]) -> Void)   {
-        let firebasePr = firebase.childByAppendingPath("/exercises/\(exercise)/prs")
+        let firebasePr = firebase.childByAppendingPath("/\(FBNodeType.Exercises.rawValue)/\(exercise)/prs")
         println(firebasePr.description())
       
         firebasePr.queryOrderedByKey().observeSingleEventOfType(.Value, withBlock: { (result) in
@@ -49,12 +38,11 @@ public class FirebaseHelper {
     
     public static func updateLastLogin(user : Firebase) {
         let node = user.childByAppendingPath(FBNodeType.UserInfo.rawValue)
-        node.setValue([FBNodeType.LastLogin.rawValue:NSDate().toIsoString()])
+        node.updateChildValues([FBNodeType.LastLogin.rawValue : NSDate().toIsoString()])
     }
     
     public static func updateDisplayName(user : Firebase, displayName : String) {
         let node = user.childByAppendingPath(FBNodeType.UserInfo.rawValue)
-        node.setValue([FBNodeType.DisplayName.rawValue:displayName])
+        node.updateChildValues([FBNodeType.DisplayName.rawValue : displayName])
     }
-    
 }
