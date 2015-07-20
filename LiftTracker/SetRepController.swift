@@ -187,7 +187,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         //make sure this is actually a PR
         let (_,currentPR) = getLargestWeight(reps)
         if weight > currentPR {
-            let date = (NSDate().toString(format: .ISO8601) as NSString).substringToIndex(10)
+            let date = NSDate().toIsoNSString().substringToIndex(10)
             let node = firebasePr.childByAppendingPath("/\(reps)/\(date)")
             node.setValue(weight, withCompletionBlock: { _ in
                 self.lblCurrentPr.text = "\(weight) x \(reps) on \(date)"

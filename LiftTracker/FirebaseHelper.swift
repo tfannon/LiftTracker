@@ -11,6 +11,8 @@ import UIKit
 public class FirebaseHelper {
     static var RootRef = Firebase(url:"https://lifttracker2.firebaseio.com/main")
     
+    
+    
     public static func nullToNil(value : AnyObject?) -> AnyObject? {
         if value is NSNull {
             return nil
@@ -44,4 +46,15 @@ public class FirebaseHelper {
             completion(result: prs)
         })
     }
+    
+    public static func updateLastLogin(user : Firebase) {
+        let node = user.childByAppendingPath(FBNodeType.UserInfo.rawValue)
+        node.setValue([FBNodeType.LastLogin.rawValue:NSDate().toIsoString()])
+    }
+    
+    public static func updateDisplayName(user : Firebase, displayName : String) {
+        let node = user.childByAppendingPath(FBNodeType.UserInfo.rawValue)
+        node.setValue([FBNodeType.DisplayName.rawValue:displayName])
+    }
+    
 }

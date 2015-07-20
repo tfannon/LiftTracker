@@ -36,6 +36,8 @@
 		65A884C21B291CF40024EEA1 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A884C01B291CF40024EEA1 /* Firebase.framework */; };
 		65A884C61B291F980024EEA1 /* FirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A884C41B291F980024EEA1 /* FirebaseTests.swift */; };
 		65B403DE1B5C5E6E00AEDE1A /* AdminFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B403DD1B5C5E6E00AEDE1A /* AdminFunctions.swift */; };
+		65B403E01B5CA65600AEDE1A /* NodeEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B403DF1B5CA65600AEDE1A /* NodeEnums.swift */; };
+		65B403E21B5CABFF00AEDE1A /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B403E11B5CABFF00AEDE1A /* NSDateExtensions.swift */; };
 		65C1C9281A5204710088A2DB /* 1091-weights.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9251A5204710088A2DB /* 1091-weights.png */; };
 		65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9261A5204710088A2DB /* 1091-weights@2x.png */; };
 		65C1C92A1A5204710088A2DB /* 1091-weights@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9271A5204710088A2DB /* 1091-weights@3x.png */; };
@@ -107,6 +109,8 @@
 		65A884C41B291F980024EEA1 /* FirebaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTests.swift; sourceTree = "<group>"; };
 		65AC65AE1B17C85F0072364E /* LiftTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiftTracker-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		65B403DD1B5C5E6E00AEDE1A /* AdminFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminFunctions.swift; sourceTree = "<group>"; };
+		65B403DF1B5CA65600AEDE1A /* NodeEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeEnums.swift; sourceTree = "<group>"; };
+		65B403E11B5CABFF00AEDE1A /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		65C1C9251A5204710088A2DB /* 1091-weights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights.png"; sourceTree = "<group>"; };
 		65C1C9261A5204710088A2DB /* 1091-weights@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@2x.png"; sourceTree = "<group>"; };
 		65C1C9271A5204710088A2DB /* 1091-weights@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1091-weights@3x.png"; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 				6574F65E1A80731D007434C8 /* BodypartsToExercises.json */,
 				65C947F11B261C5A00C3024A /* Importer.swift */,
 				65A884B31B2919790024EEA1 /* FirebaseHelper.swift */,
+				65B403DF1B5CA65600AEDE1A /* NodeEnums.swift */,
 			);
 			name = DataAccess;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			children = (
 				65F60F691B34DC4E004DEDAB /* StringExtensions.swift */,
 				65F01A681AA4DCD0003FBBBF /* UIViewControllerExtensions.swift */,
+				65B403E11B5CABFF00AEDE1A /* NSDateExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -432,8 +438,10 @@
 				650EAD9A1B4C91160062C999 /* AFDateExtension.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
 				65C947F21B261C5A00C3024A /* Importer.swift in Sources */,
+				65B403E21B5CABFF00AEDE1A /* NSDateExtensions.swift in Sources */,
 				65F01A691AA4DCD0003FBBBF /* UIViewControllerExtensions.swift in Sources */,
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
+				65B403E01B5CA65600AEDE1A /* NodeEnums.swift in Sources */,
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
 				654C4F141B3D753C0027367D /* SetRepController.swift in Sources */,
 				65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */,

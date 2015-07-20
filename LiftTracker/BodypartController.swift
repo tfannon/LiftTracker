@@ -66,6 +66,8 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         isLoggedIn = false
         logoutButton.title = ""
         loginButton.hidden = false
+        bodyparts.removeAll()
+        self.collectionView?.reloadData()
     }
     
     
@@ -80,8 +82,6 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                     let providerData = authData.providerData
                     let auth = authData.auth
                     let displayName = providerData["displayName"] as! String
-                    //println(auth)
-                    //println(providerData)
                     println("\(displayName) logged in")
                     self.isLoggedIn = true
                     self.logoutButton.title = displayName
@@ -93,14 +93,17 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                         if !result.exists() {
                             println("setting up new user: \(displayName)")
                             FirebaseImporter.setupNewUser(appDelegate.firebaseRoot, fbUser: appDelegate.firebase) {
-                                userInfo.setValue(["displayName":"\(displayName)"])
+                                FirebaseHelper.updateDisplayName(appDelegate.firebase, displayName: displayName)
                                 self.fetchDataFromFirebase()
+                                FirebaseHelper.updateLastLogin(appDelegate.firebase)
                             }
                         }
                         else {
                             self.fetchDataFromFirebase()
+                            FirebaseHelper.updateLastLogin(appDelegate.firebase)
                         }
                     })
+
                 }
         })
     }
@@ -108,8 +111,7 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     
     //MARK: - facebook login
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        println(result)
-        let accessToken = result.token.tokenString //FBSDKAccessToken.currentAccessToken().tokenString
+        let accessToken = result.token.tokenString 
         self.loginButton.hidden = true
         loginToFirebase(accessToken)
     }
