@@ -94,10 +94,9 @@ public class FirebaseImporter : BaseImporter {
             let userNode = fbUser.childByAppendingPath(type.rawValue)
             node.observeSingleEventOfType(.Value, withBlock: { result in
                 let enumerator = result.children
-                println("getting ready to leave group")
                 dispatch_group_leave(group)
                 while let child = enumerator.nextObject() as? FDataSnapshot {
-                    println(child.key!, child.value!)
+                    println("\(child.key!) added")
                     let key = child.key
                     let val = child.value! as! [NSObject : AnyObject]
                     let userNodeChild = userNode.childByAppendingPath(key)

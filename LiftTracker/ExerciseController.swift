@@ -96,12 +96,10 @@ class ExerciseController: UICollectionViewController, UIGestureRecognizerDelegat
         node.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: { result in
             let enumerator = result.children
             while let child = enumerator.nextObject() as? FDataSnapshot {
-                //println(child.key)
-                //println(child.value)
                 //fetch the exercise name from the global exercise list....
                 let exerciseDisplayName = self.allExercises.filter { $0.key == child.key }[0].name
                 self.bodypartExercises += [(key: child.key!, name: exerciseDisplayName)]
-                println(self.bodypartExercises)
+                //println(self.bodypartExercises)
             }
             self.collectionView?.reloadData()
         })

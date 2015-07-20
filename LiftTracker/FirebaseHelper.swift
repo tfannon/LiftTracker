@@ -12,7 +12,7 @@ public class FirebaseHelper {
     
     public static func getPrs(firebase : Firebase, exercise : String, completion: (result:[Int:[String:Double]]) -> Void)   {
         let firebasePr = firebase.childByAppendingPath("/\(FBNodeType.Exercises.rawValue)/\(exercise)/prs")
-        println(firebasePr.description())
+        //println(firebasePr.description())
       
         firebasePr.queryOrderedByKey().observeSingleEventOfType(.Value, withBlock: { (result) in
             var prs = [Int:[String:Double]]()

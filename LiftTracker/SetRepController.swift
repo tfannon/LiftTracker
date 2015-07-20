@@ -184,7 +184,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
                     self.prs[reps] = [String:Double]()
                 }
                 self.prs[reps]![date] = weight
-                print("success")
+                println("saved \(weight)x\(reps) on \(date)")
             })
         }
         //todo: throw alert box
