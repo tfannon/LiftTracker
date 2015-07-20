@@ -89,11 +89,11 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     func setRepsAndWeight(reps : Int, weight : Double) {
         let hundreds  = Int(weight / 100)
         let tens = Int((weight - (Double(hundreds) * 100)) / 10)
-        let ones = Int(weight - (Double(hundreds) * 100) - (Double(tens) * 10))
+        let ones = Double(weight - (Double(hundreds) * 100) - (Double(tens) * 10))
         self.picker.selectRow(reps-1, inComponent: 0, animated: true)
         self.picker.selectRow(hundreds, inComponent: 1, animated: true)
         self.picker.selectRow(tens, inComponent: 2, animated: true)
-        self.picker.selectRow(ones, inComponent: 3, animated: true)
+        self.picker.selectRow(find(self.onesValues, ones)!, inComponent: 3, animated: true)
         let picked = "\(hundreds)\(tens)\(ones)"
         if weight > 0 {
             lblPickedValue.text = "\(picked) x \(reps)"
