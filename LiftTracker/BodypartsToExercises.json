@@ -1,0 +1,50 @@
+[
+ {
+ "bodypart": "Chest",
+ "exercise": "Bench Press",
+ "displayOrder": 0
+ },
+ {
+ "bodypart": "Chest",
+ "exercise": "Smith Press",
+ "displayOrder": 1
+ },
+ {
+ "bodypart": "Shoulders",
+ "exercise": "Side Laterals",
+ "displayOrder": 0
+ },
+ {
+ "bodypart": "Arms",
+ "exercise": "Standing Curls",
+ "displayOrder": 0
+ },
+ {
+ "bodypart": "Arms",
+ "exercise": "Tricep Pressdown",
+ "displayOrder": 1
+ },
+ {
+ "bodypart": "Legs",
+ "exercise": "Squat",
+ "displayOrder": 0
+ },
+ {
+ "bodypart": "Legs",
+ "exercise": "Leg Press",
+ "displayOrder": 1
+ },
+ {
+ "bodypart": "Back",
+ "exercise": "Chin Ups",
+ "displayOrder": 0
+ },
+ {
+ "bodypart": "Back",
+ "exercise": "Bent Row",
+ "displayOrder": 1
+ }
+
+ 
+]
+

@@ -12,6 +12,10 @@
  "isSystem": true,
  },
  {
+ "name": "Side Laterals",
+ "isSystem": true,
+ },
+ {
  "name": "Flyes",
  "isSystem": true,
  },
@@ -27,4 +31,24 @@
  "name": "Tricep Pressdown",
  "isSystem": true,
  },
+ {
+ "name": "Squat",
+ "isSystem": true,
+ },
+ {
+ "name": "Leg Press",
+ "isSystem": true,
+ },
+  {
+ "name": "Deadlift",
+ "isSystem": true,
+ },
+ {
+ "name": "Chin Ups",
+ "isSystem": true,
+ },
+ {
+ "name": "Bent Row",
+ "isSystem": true,
+ }
 ]

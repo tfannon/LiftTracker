@@ -13,8 +13,8 @@ import LiftTracker
 class FirebaseTests: XCTestCase {
     
     var fbTestRoot = Firebase(url:"https://lifttracker2.firebaseio.com/test")
-    var fbTestUserNode : Firebase { get { return fbTestRoot.childByAppendingPath("JoeStrong2") }}
-    var fbRootNode = Firebase(url:"https://lifttracker2.firebaseio.com")
+    var fbTestUser : Firebase { get { return fbTestRoot.childByAppendingPath("JoeStrong2") }}
+    var fbRoot = Firebase(url:"https://lifttracker2.firebaseio.com")
 
     override func setUp() {
         super.setUp()
@@ -42,7 +42,7 @@ class FirebaseTests: XCTestCase {
     
     func testPR() {
         var done = false
-        let oneRepNode = fbTestUserNode.childByAppendingPath("exercises/benchpress/prs/1")
+        let oneRepNode = fbTestUser.childByAppendingPath("exercises/benchpress/prs/1")
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
         oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
         //oneRepNode.childByAppendingPath("2015-07-10").setValue(240)
@@ -61,7 +61,7 @@ class FirebaseTests: XCTestCase {
     
     func testAllPrsForExercise() {
         var done = false
-        let prs = fbTestRoot.childByAppendingPath("/exercises/benchpress/prs")
+        let prs = fbTestUser.childByAppendingPath("/exercises/benchpress/prs")
         let oneRepNode = prs.childByAppendingPath("1")
         oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
         oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
@@ -91,22 +91,24 @@ class FirebaseTests: XCTestCase {
     func testClearPr() {
         var done = false
         
-        let prs = fbTestRoot.childByAppendingPath("/exercises/benchpress/prs")
-        let oneRepNode = prs.childByAppendingPath("1")
-        oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
-        oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
-        
-        oneRepNode.childByAppendingPath("2015-07-05").removeValueWithCompletionBlock( { (result) in
-            FirebaseHelper.getPrs(self.fbTestRoot, exercise: "benchpress", completion: { (result) in
-                println(result)
-                XCTAssertNotNil(result[1], "1 rep dictionary should have been there")
-                XCTAssertNil(result[1]!["2015-07-05"], "2015-07-05 should have been removed")
-                done = true
+        let prs = fbTestUser.childByAppendingPath("/exercises/benchpress/prs")
+        //this wont work if values are left in PR
+        prs.removeValueWithCompletionBlock( { _ in
+            let oneRepNode = prs.childByAppendingPath("1")
+            oneRepNode.childByAppendingPath("2015-07-01").setValue(225)
+            oneRepNode.childByAppendingPath("2015-07-05").setValue(250)
+            
+            oneRepNode.childByAppendingPath("2015-07-05").removeValueWithCompletionBlock( { (result) in
+                FirebaseHelper.getPrs(self.fbTestRoot, exercise: "benchpress", completion: { (result) in
+                    println(result)
+                    XCTAssertNotNil(result[1], "1 rep dictionary should have been there")
+                    XCTAssertNil(result[1]!["2015-07-05"], "2015-07-05 should have been removed")
+                    done = true
+                })
             })
+            
+            self.waitUntil(5) { done }
         })
-        
-        waitUntil(5) { done }
-        
     }
     
     
@@ -133,12 +135,12 @@ class FirebaseTests: XCTestCase {
         }
     }
     
-    func testImporter() {
-        var importer = FirebaseImporter(root: fbTestRoot)
-        importer.importSeedDataIfNeeded(overwrite: true)
+    func testImportExercisesToUser() {
         var done = false
-
+        println((fbTestRoot.description(),fbTestUser.description()))
+        FirebaseImporter.importToUser([SeedData.Bodyparts, SeedData.Exercises], fbRoot: fbRoot, fbUser: fbTestUser) {
+            done = true
+        }
         waitUntil(5) { done }
-        
     }
 }

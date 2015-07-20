@@ -42,10 +42,10 @@ class SetupController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 1 : FirebaseImporter.importExercises(appDelegate.firebaseRoot, fbUser: appDelegate.firebase)
-        default: ""
-        }
+//        switch indexPath.row {
+//        case 1 : FirebaseImporter.importExercisesToUser(appDelegate.firebaseRoot, fbUser: appDelegate.firebase)
+//        default: ""
+//        }
     }
 
     /*
