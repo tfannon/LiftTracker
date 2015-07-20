@@ -87,6 +87,11 @@ public class FirebaseImporter : BaseImporter {
         }
     }
     
+    public static func setupNewUser(fbRoot : Firebase, fbUser : Firebase, completion: () ->()) {
+        importToUser([.Exercises,.Bodyparts,], fbRoot: fbRoot, fbUser: fbUser, completion: completion)
+    }
+
+    
     public static func importToUser(types : [SeedData], fbRoot : Firebase, fbUser : Firebase, completion: () ->()) {
         let group = dispatch_group_create()
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)

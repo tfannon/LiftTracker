@@ -49,7 +49,8 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
         self.view.addSubview(loginButton)
         loginButton.delegate = self
         loginButton.hidden = true
-
+        
+        
         if let accessToken = FBSDKAccessToken.currentAccessToken()?.tokenString {
             println("user is already logged in with \(accessToken)")
             self.logoutButton.title = "Log out"  //todo: change this to show user name
@@ -68,29 +69,9 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
     }
     
     
-//    func loginPressed() {
-//         var login = FBSDKLoginManager()
-//        if !isLoggedIn {
-//           
-//            login.logInWithReadPermissions(nil, handler: { (result, error) in
-//                if error != nil {
-//                
-//                } else {
-//                    println(result)
-//                    if let accessToken = FBSDKAccessToken.currentAccessToken()?.tokenString {
-//                        self.loginToFirebase(accessToken)
-//                    }
-//                }
-//            })
-//        } else {
-//            login.logOut()
-//            isLoggedIn = false
-//            self.loginButton.title = "Login with Facebook"
-//        }
-//    }
-//    
     func loginToFirebase(token : String) {
-        AppDelegate.get.firebaseRoot.authWithOAuthProvider("facebook", token: token,
+        let appDelegate =  AppDelegate.get
+        appDelegate.firebaseRoot.authWithOAuthProvider("facebook", token: token,
             withCompletionBlock: { error, authData in
                 if error != nil {
                     println("Login failed. \(error)")
@@ -105,10 +86,21 @@ class BodypartController: UICollectionViewController,  UIGestureRecognizerDelega
                     self.isLoggedIn = true
                     self.logoutButton.title = displayName
                     self.loginButton.hidden = true
-                    AppDelegate.get.uid = auth["uid"] as? String
-                    //update the user display name - perhaps this is too chatty
-                    AppDelegate.get.firebase.childByAppendingPath("userInfo").setValue(["displayName":"\(displayName)"])
-                    self.fetchDataFromFirebase()
+                    appDelegate.uid = auth["uid"] as? String
+
+                    var userInfo = appDelegate.firebase.childByAppendingPath("userInfo")
+                    userInfo.observeSingleEventOfType(.Value, withBlock: { result in
+                        if !result.exists() {
+                            println("setting up new user: \(displayName)")
+                            FirebaseImporter.setupNewUser(appDelegate.firebaseRoot, fbUser: appDelegate.firebase) {
+                                userInfo.setValue(["displayName":"\(displayName)"])
+                                self.fetchDataFromFirebase()
+                            }
+                        }
+                        else {
+                            self.fetchDataFromFirebase()
+                        }
+                    })
                 }
         })
     }
