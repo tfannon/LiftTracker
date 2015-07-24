@@ -8,12 +8,22 @@
 
 import UIKit
 
+enum PickMode {
+    case Reps
+    case Date
+}
+
+
 class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var lblExercise: UILabel!
     @IBOutlet weak var lblCurrentPr: UILabel!
     @IBOutlet weak var lblPickedValue: UILabel!
     @IBOutlet weak var picker: UIPickerView!
+    
+    @IBOutlet weak var btnDate: UIButton!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func handleSaveTapped(sender: AnyObject) {
         self.savePr()
@@ -23,12 +33,29 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         self.clearPr()
     }
     
+    @IBAction func handleDateTapped(sender: AnyObject) {
+        if pickerMode == .Reps {
+            self.picker.hidden = true
+            self.datePicker.hidden = false
+            print(datePicker.date)
+            self.btnDate.setTitle("Reps", forState: .Normal)
+            pickerMode = .Date
+        } else {
+            self.picker.hidden = false
+            self.datePicker.hidden = true
+            self.btnDate.setTitle("Date", forState: .Normal)
+            pickerMode = .Reps
+        }
+    }
+    
     let onesValues = [0, 2.5, 5]
     
     let firebase = AppDelegate.get.firebase
     var firebasePr : Firebase!
     var prs = [Int:[String:Double]]()
     var currentPrInPicker : (reps : Int, date : String)?
+    
+    var pickerMode = PickMode.Reps
     
     
     //will be set by preceeding view controller
@@ -55,7 +82,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         if weight > 0 {
             self.lblCurrentPr.text = "\(weight) x \(rep) on \(date)"
             self.currentPrInPicker = (rep, date)
-            setRepsAndWeight(rep, weight: weight)
+            setRepsAndWeight(rep, weight: weight, date: date)
         }
         else {
             movePickerToZero(rep)
@@ -83,10 +110,10 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     func movePickerToZero(rep : Int) {
         self.lblCurrentPr.text = "No PR yet for \(rep) reps"
         self.lblPickedValue.text = ""
-        setRepsAndWeight(rep, weight: 0)
+        setRepsAndWeight(rep, weight: 0.0, date: nil)
     }
     
-    func setRepsAndWeight(reps : Int, weight : Double) {
+    func setRepsAndWeight(reps : Int, weight : Double, date : String?) {
         let hundreds  = Int(weight / 100)
         let tens = Int((weight - (Double(hundreds) * 100)) / 10)
         let ones = Double(weight - (Double(hundreds) * 100) - (Double(tens) * 10))
@@ -97,6 +124,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         let picked = "\(hundreds)\(tens)\(ones)"
         if weight > 0 {
             lblPickedValue.text = "\(picked) x \(reps)"
+            self.datePicker.setDate(NSDate(isoString: date!), animated: true)
         }
     }
     

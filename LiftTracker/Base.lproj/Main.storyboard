@@ -226,8 +226,36 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="178" y="494" width="44" height="36"/>
+                                </variation>
                                 <connections>
                                     <action selector="handleSaveTapped:" destination="xOC-Tx-ABA" eventType="touchUpInside" id="dIy-cy-zwq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8L-Ch-UCq">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tiH-9m-jnC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Date">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="tiH-9m-jnC"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="100" y="497" width="59" height="30"/>
+                                    <mask key="constraints">
+                                        <include reference="tiH-9m-jnC"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="handleDateTapped:" destination="xOC-Tx-ABA" eventType="touchUpInside" id="J2N-Vf-ktM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwE-dd-161">
@@ -241,6 +269,12 @@
                                     <action selector="handleClearTapped:" destination="xOC-Tx-ABA" eventType="touchUpInside" id="kss-uP-Vtl"/>
                                 </connections>
                             </button>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aNa-Qj-nKP">
+                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="459466215.06035799">
+                                    <!--2015-07-24 21:30:15 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -251,33 +285,47 @@
                             <constraint firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="D5p-eW-Va1">
                                 <variation key="widthClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstItem="QHj-5k-q64" firstAttribute="leading" secondItem="Q8L-Ch-UCq" secondAttribute="trailing" constant="28" id="DJt-g7-7hn"/>
                             <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="30" id="Dib-XZ-UtR"/>
                             <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="26" id="SiS-jq-gGY"/>
                             <constraint firstAttribute="centerX" secondItem="2Pg-Pf-0F3" secondAttribute="centerX" id="Wui-cm-Fif"/>
+                            <constraint firstItem="Q8L-Ch-UCq" firstAttribute="baseline" secondItem="QHj-5k-q64" secondAttribute="baseline" id="bU0-vx-DjF"/>
                             <constraint firstAttribute="centerX" secondItem="xc7-Fs-Jef" secondAttribute="centerX" id="cHI-X7-aV2"/>
+                            <constraint firstItem="aNa-Qj-nKP" firstAttribute="leading" secondItem="qLZ-Tb-dAo" secondAttribute="leading" id="era-PT-l5q"/>
+                            <constraint firstItem="aNa-Qj-nKP" firstAttribute="top" secondItem="huc-Jn-gxX" secondAttribute="bottom" constant="66" id="gyJ-gE-fEq">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-147"/>
+                            </constraint>
                             <constraint firstItem="Xlo-6R-YIH" firstAttribute="top" secondItem="QHj-5k-q64" secondAttribute="bottom" constant="20" id="kdk-s5-1cG"/>
                             <constraint firstItem="IwE-dd-161" firstAttribute="leading" secondItem="QHj-5k-q64" secondAttribute="trailing" constant="28" id="lQ4-ZH-DDj"/>
                             <constraint firstAttribute="centerX" secondItem="zaU-lP-jfi" secondAttribute="centerX" id="qNQ-8i-jou"/>
                             <constraint firstItem="zaU-lP-jfi" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="8" id="rNS-M9-cd5"/>
+                            <constraint firstItem="aNa-Qj-nKP" firstAttribute="centerX" secondItem="QHj-5k-q64" secondAttribute="centerX" id="vo6-7N-loV"/>
                             <constraint firstAttribute="centerX" secondItem="QHj-5k-q64" secondAttribute="centerX" id="yiJ-Xj-u2n"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="zaU-lP-jfi"/>
                                 <exclude reference="QHj-5k-q64"/>
+                                <exclude reference="Q8L-Ch-UCq"/>
                                 <exclude reference="IwE-dd-161"/>
+                                <exclude reference="aNa-Qj-nKP"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="lQ4-ZH-DDj"/>
-                                <exclude reference="yiJ-Xj-u2n"/>
                                 <exclude reference="qNQ-8i-jou"/>
                                 <exclude reference="rNS-M9-cd5"/>
+                                <exclude reference="SiS-jq-gGY"/>
+                                <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="D5p-eW-Va1"/>
                                 <exclude reference="Dib-XZ-UtR"/>
                                 <exclude reference="1qK-A8-uzG"/>
                                 <exclude reference="cHI-X7-aV2"/>
-                                <exclude reference="SiS-jq-gGY"/>
-                                <exclude reference="Wui-cm-Fif"/>
+                                <exclude reference="era-PT-l5q"/>
+                                <exclude reference="gyJ-gE-fEq"/>
+                                <exclude reference="vo6-7N-loV"/>
+                                <exclude reference="bU0-vx-DjF"/>
+                                <exclude reference="DJt-g7-7hn"/>
+                                <exclude reference="yiJ-Xj-u2n"/>
+                                <exclude reference="lQ4-ZH-DDj"/>
                                 <exclude reference="AdJ-JI-lvZ"/>
                                 <exclude reference="kdk-s5-1cG"/>
                             </mask>
@@ -286,31 +334,40 @@
                             <mask key="subviews">
                                 <include reference="zaU-lP-jfi"/>
                                 <include reference="QHj-5k-q64"/>
+                                <include reference="Q8L-Ch-UCq"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="yiJ-Xj-u2n"/>
                                 <include reference="qNQ-8i-jou"/>
                                 <include reference="rNS-M9-cd5"/>
+                                <include reference="SiS-jq-gGY"/>
+                                <include reference="Wui-cm-Fif"/>
                                 <include reference="D5p-eW-Va1"/>
                                 <include reference="Dib-XZ-UtR"/>
                                 <include reference="1qK-A8-uzG"/>
                                 <include reference="cHI-X7-aV2"/>
-                                <include reference="SiS-jq-gGY"/>
-                                <include reference="Wui-cm-Fif"/>
+                                <include reference="bU0-vx-DjF"/>
+                                <include reference="DJt-g7-7hn"/>
+                                <include reference="yiJ-Xj-u2n"/>
                                 <include reference="kdk-s5-1cG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="IwE-dd-161"/>
+                                <include reference="aNa-Qj-nKP"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="era-PT-l5q"/>
+                                <include reference="gyJ-gE-fEq"/>
+                                <include reference="vo6-7N-loV"/>
                                 <include reference="lQ4-ZH-DDj"/>
                                 <include reference="AdJ-JI-lvZ"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="btnDate" destination="Q8L-Ch-UCq" id="tnT-az-LRP"/>
+                        <outlet property="datePicker" destination="aNa-Qj-nKP" id="IOa-fg-Buk"/>
                         <outlet property="lblCurrentPr" destination="zaU-lP-jfi" id="HnJ-5e-lMs"/>
                         <outlet property="lblExercise" destination="2Pg-Pf-0F3" id="Zz6-YO-KmR"/>
                         <outlet property="lblPickedValue" destination="xc7-Fs-Jef" id="hpW-f9-EHy"/>
