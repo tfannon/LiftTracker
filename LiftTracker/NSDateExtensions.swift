@@ -10,12 +10,12 @@ import Foundation
 
 extension NSDate {
     func toIsoString() -> String {
-        return self.toString(format: .ISO8601)
+        return (self.toString(format: .ISO8601) as NSString).substringToIndex(10)
     }
     
-    func toIsoNSString() -> NSString {
-        return self.toString(format: .ISO8601) as NSString
-    }
+//    func toIsoNSString() -> NSString {
+//        return self.toString(format: .ISO8601) as NSString
+//    }
     
     convenience init(isoString : String) {
         let stringWithTime = isoString + " 00:00"

@@ -206,7 +206,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current PR:  225 x 2 on 6/14/15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaU-lP-jfi" userLabel="Current PR">
                                 <rect key="frame" x="0.0" y="20" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="225 x 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc7-Fs-Jef" userLabel="Weight x Reps">
@@ -224,6 +223,9 @@
                                 <date key="date" timeIntervalSinceReferenceDate="459466215.06035799">
                                     <!--2015-07-24 21:30:15 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="handleDateChanged:" destination="xOC-Tx-ABA" eventType="valueChanged" id="O1U-p2-LgE"/>
+                                </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8L-Ch-UCq">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -295,19 +297,19 @@
                                 <exclude reference="QHj-5k-q64"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="lQ4-ZH-DDj"/>
+                                <exclude reference="DJt-g7-7hn"/>
+                                <exclude reference="yiJ-Xj-u2n"/>
                                 <exclude reference="qNQ-8i-jou"/>
                                 <exclude reference="rNS-M9-cd5"/>
-                                <exclude reference="SiS-jq-gGY"/>
-                                <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="eoc-En-rNn"/>
                                 <exclude reference="n9k-Wm-t05"/>
                                 <exclude reference="Dib-XZ-UtR"/>
                                 <exclude reference="VmI-fJ-sEX"/>
                                 <exclude reference="1qK-A8-uzG"/>
                                 <exclude reference="cHI-X7-aV2"/>
-                                <exclude reference="DJt-g7-7hn"/>
-                                <exclude reference="yiJ-Xj-u2n"/>
-                                <exclude reference="lQ4-ZH-DDj"/>
+                                <exclude reference="SiS-jq-gGY"/>
+                                <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="AdJ-JI-lvZ"/>
                                 <exclude reference="Frc-X1-FZH"/>
                                 <exclude reference="kdk-s5-1cG"/>
@@ -320,15 +322,15 @@
                                 <include reference="QHj-5k-q64"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="DJt-g7-7hn"/>
+                                <include reference="yiJ-Xj-u2n"/>
                                 <include reference="qNQ-8i-jou"/>
                                 <include reference="rNS-M9-cd5"/>
-                                <include reference="SiS-jq-gGY"/>
-                                <include reference="Wui-cm-Fif"/>
                                 <include reference="Dib-XZ-UtR"/>
                                 <include reference="1qK-A8-uzG"/>
                                 <include reference="cHI-X7-aV2"/>
-                                <include reference="DJt-g7-7hn"/>
-                                <include reference="yiJ-Xj-u2n"/>
+                                <include reference="SiS-jq-gGY"/>
+                                <include reference="Wui-cm-Fif"/>
                                 <include reference="kdk-s5-1cG"/>
                             </mask>
                         </variation>
@@ -338,10 +340,10 @@
                                 <include reference="IwE-dd-161"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="lQ4-ZH-DDj"/>
                                 <include reference="eoc-En-rNn"/>
                                 <include reference="n9k-Wm-t05"/>
                                 <include reference="VmI-fJ-sEX"/>
-                                <include reference="lQ4-ZH-DDj"/>
                                 <include reference="AdJ-JI-lvZ"/>
                                 <include reference="Frc-X1-FZH"/>
                             </mask>
@@ -353,7 +355,7 @@
                         <outlet property="lblCurrentPr" destination="zaU-lP-jfi" id="HnJ-5e-lMs"/>
                         <outlet property="lblExercise" destination="2Pg-Pf-0F3" id="Zz6-YO-KmR"/>
                         <outlet property="lblPickedValue" destination="xc7-Fs-Jef" id="hpW-f9-EHy"/>
-                        <outlet property="picker" destination="huc-Jn-gxX" id="nOr-yk-URe"/>
+                        <outlet property="repsPicker" destination="huc-Jn-gxX" id="hjt-0o-0Lq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he4-WL-ITk" userLabel="First Responder" sceneMemberID="firstResponder"/>

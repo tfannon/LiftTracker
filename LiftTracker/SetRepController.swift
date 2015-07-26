@@ -16,37 +16,22 @@ enum PickMode {
 
 class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    //MARK: outlets
     @IBOutlet weak var lblExercise: UILabel!
     @IBOutlet weak var lblCurrentPr: UILabel!
     @IBOutlet weak var lblPickedValue: UILabel!
-    @IBOutlet weak var picker: UIPickerView!
-    
+    @IBOutlet weak var repsPicker: UIPickerView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var btnDate: UIButton!
     
-    @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBAction func handleSaveTapped(sender: AnyObject) {
-        self.savePr()
-    }
+    //MARK: actions
+    @IBAction func handleSaveTapped(sender: AnyObject) { self.savePr() }
+    @IBAction func handleClearTapped(sender: AnyObject) { self.clearPr() }
+    @IBAction func handleDateTapped(sender: AnyObject) { self.dateButtonTapped() }
+    @IBAction func handleDateChanged(sender: AnyObject) { self.onDateChanged() }
     
-    @IBAction func handleClearTapped(sender: AnyObject) {
-        self.clearPr()
-    }
-    
-    @IBAction func handleDateTapped(sender: AnyObject) {
-        if pickerMode == .Reps {
-            self.picker.hidden = true
-            self.datePicker.hidden = false
-            print(datePicker.date)
-            self.btnDate.setTitle("Reps", forState: .Normal)
-            pickerMode = .Date
-        } else {
-            self.picker.hidden = false
-            self.datePicker.hidden = true
-            self.btnDate.setTitle("Date", forState: .Normal)
-            pickerMode = .Reps
-        }
-    }
+    //MARK: class vars
     
     let onesValues = [0, 2.5, 5]
     
@@ -57,15 +42,15 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     var pickerMode = PickMode.Reps
     
-    
     //will be set by preceeding view controller
     var exercise : (key:String, name:String)!
-    
+
+    //MARK: view controller
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        picker.dataSource = self
-        picker.delegate = self
+        repsPicker.dataSource = self
+        repsPicker.delegate = self
         lblExercise.text = exercise.name
         firebasePr = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs")
         
@@ -74,14 +59,26 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
             //go fetch 10 rep max and display it
             self.setPickersWithPrForRep(10)
         }
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped"))
+        
+        //datePicker.setValue(UIColor.whiteColor(), forKeyPath:"textColor")
     }
+    
+    func viewTapped() {
+        if pickerMode == .Date {
+            println("View tapped while user was in date pick mode")
+            switchPickerMode()
+        }
+    }
+    
     
     
     func setPickersWithPrForRep(rep : Int) {
         let (date, weight) = getLargestWeight(rep)
         if weight > 0 {
-            self.lblCurrentPr.text = "\(weight) x \(rep) on \(date)"
-            self.currentPrInPicker = (rep, date)
+            lblCurrentPr.text = "\(weight) x \(rep) on \(date)"
+            currentPrInPicker = (rep, date)
             setRepsAndWeight(rep, weight: weight, date: date)
         }
         else {
@@ -117,10 +114,10 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         let hundreds  = Int(weight / 100)
         let tens = Int((weight - (Double(hundreds) * 100)) / 10)
         let ones = Double(weight - (Double(hundreds) * 100) - (Double(tens) * 10))
-        self.picker.selectRow(reps-1, inComponent: 0, animated: true)
-        self.picker.selectRow(hundreds, inComponent: 1, animated: true)
-        self.picker.selectRow(tens, inComponent: 2, animated: true)
-        self.picker.selectRow(find(self.onesValues, ones)!, inComponent: 3, animated: true)
+        repsPicker.selectRow(reps-1, inComponent: 0, animated: true)
+        repsPicker.selectRow(hundreds, inComponent: 1, animated: true)
+        repsPicker.selectRow(tens, inComponent: 2, animated: true)
+        repsPicker.selectRow(find(self.onesValues, ones)!, inComponent: 3, animated: true)
         let picked = "\(hundreds)\(tens)\(ones)"
         if weight > 0 {
             lblPickedValue.text = "\(picked) x \(reps)"
@@ -170,10 +167,10 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let reps = picker.selectedRowInComponent(0) + 1
-        let hundreds = picker.selectedRowInComponent(1)
-        let tens = picker.selectedRowInComponent(2)
-        let ones = onesValues[picker.selectedRowInComponent(3)]
+        let reps = repsPicker.selectedRowInComponent(0) + 1
+        let hundreds = repsPicker.selectedRowInComponent(1)
+        let tens = repsPicker.selectedRowInComponent(2)
+        let ones = onesValues[repsPicker.selectedRowInComponent(3)]
         var picked = ""
         //strip leading zeros
         if hundreds == 0 {
@@ -195,15 +192,15 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     //MARK: - Write value into firebase
     func savePr() {
-        let reps : Int = picker.selectedRowInComponent(0) + 1
-        let hundreds = picker.selectedRowInComponent(1)
-        let tens = picker.selectedRowInComponent(2)
-        let ones = onesValues[picker.selectedRowInComponent(3)]
+        let reps : Int = repsPicker.selectedRowInComponent(0) + 1
+        let hundreds = repsPicker.selectedRowInComponent(1)
+        let tens = repsPicker.selectedRowInComponent(2)
+        let ones = onesValues[repsPicker.selectedRowInComponent(3)]
         let weight : Double = (Double(hundreds) * 100) + (Double(tens) * 10) + ones
         //make sure this is actually a PR
         let (_,currentPR) = getLargestWeight(reps)
         if weight > currentPR {
-            let date = NSDate().toIsoNSString().substringToIndex(10)
+            let date = NSDate().toIsoString()
             let node = firebasePr.childByAppendingPath("/\(reps)/\(date)")
             node.setValue(weight, withCompletionBlock: { _ in
                 self.lblCurrentPr.text = "\(weight) x \(reps) on \(date)"
@@ -220,7 +217,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     var reps : Int {
         get {
-            return picker.selectedRowInComponent(0) + 1
+            return repsPicker.selectedRowInComponent(0) + 1
         }
     }
     
@@ -237,5 +234,28 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         }
     }
     
+    //MARK: date button
+    func dateButtonTapped() {
+        switchPickerMode()
+    }
     
+    func switchPickerMode() {
+        if pickerMode == .Reps {
+            repsPicker.hidden = true
+            datePicker.hidden = false
+            //println(datePicker.date.toIsoString())
+            btnDate.setTitle("Reps", forState: .Normal)
+            pickerMode = .Date
+        } else {
+            repsPicker.hidden = false
+            datePicker.hidden = true
+            btnDate.setTitle("Date", forState: .Normal)
+            pickerMode = .Reps
+        }
+    }
+    
+    //MARK: date picker
+    func onDateChanged() {
+        println("date changed to \(datePicker.date.toIsoString())")
+    }
 }
