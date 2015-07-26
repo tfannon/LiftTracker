@@ -23,7 +23,9 @@ extension String {
     }
     
     func toDate() -> NSDate {
-        return NSDate(isoString: self)
+        let date = NSDate(isoString: self)
+        println("converting \(self) to \(date)")
+        return date
     }
 
 }
