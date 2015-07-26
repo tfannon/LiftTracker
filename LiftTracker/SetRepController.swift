@@ -72,12 +72,12 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         FirebaseHelper.getPrs(firebase, exercise: exercise.key) { (result) in
             self.prs = result
             //go fetch 10 rep max and display it
-            self.setPickerWithRep(10)
+            self.setPickersWithPrForRep(10)
         }
     }
     
     
-    func setPickerWithRep(rep : Int) {
+    func setPickersWithPrForRep(rep : Int) {
         let (date, weight) = getLargestWeight(rep)
         if weight > 0 {
             self.lblCurrentPr.text = "\(weight) x \(rep) on \(date)"
@@ -189,7 +189,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         lblPickedValue.text = "\(picked) x \(reps)"
         //if reps were changed, go set the current PR
         if component == 0 {
-            setPickerWithRep(reps)
+            setPickersWithPrForRep(reps)
         }
     }
     
@@ -228,9 +228,11 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         if let pr = currentPrInPicker {
             let prToClear = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs/\(pr.reps)/\(pr.date)")
             prToClear.removeValueWithCompletionBlock( { (result) in
+                println("cleared \(prToClear.description)")
                 //update our in place dictionary
                 self.prs[pr.reps]!.removeValueForKey(pr.date)
-                self.setPickerWithRep(pr.reps)
+                //go lookup the new pr
+                self.setPickersWithPrForRep(pr.reps)
             })
         }
     }
