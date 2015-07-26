@@ -21,4 +21,9 @@ extension String {
     func removeWhitespace() -> String {
         return self.replace(" ", replacement: "")
     }
+    
+    func toDate() -> NSDate {
+        return NSDate(isoString: self)
+    }
+
 }

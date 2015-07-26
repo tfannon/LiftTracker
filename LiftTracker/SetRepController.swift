@@ -77,7 +77,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     func setPickersWithPrForRep(rep : Int) {
         let (date, weight) = getLargestWeight(rep)
         if weight > 0 {
-            lblCurrentPr.text = "\(weight) x \(rep) on \(date)"
+            lblCurrentPr.text = "PR: \(weight) x \(rep) on \(date.toDate().toShortString())"
             currentPrInPicker = (rep, date)
             setRepsAndWeight(rep, weight: weight, date: date)
         }
@@ -121,7 +121,8 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         let picked = "\(hundreds)\(tens)\(ones)"
         if weight > 0 {
             lblPickedValue.text = "\(picked) x \(reps)"
-            self.datePicker.setDate(NSDate(isoString: date!), animated: true)
+            //datePicker.setDate(NSDate(isoString: date!), animated: true)
+            datePicker.setDate(date!.toDate(), animated: true)
         }
     }
     
@@ -167,27 +168,31 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let reps = repsPicker.selectedRowInComponent(0) + 1
+        //if reps were changed, go get the current PR
+        if component == 0 {
+            setPickersWithPrForRep(self.reps)
+        }
+        //otherwise update the picked value
+        else {
+            displayPickedValue()
+        }
+    }
+    
+    func displayPickedValue() {
+        let picked = getPickedValues()
+        lblPickedValue.text = "\(picked.weight) x \(picked.reps)"
+        if !picked.date.isToday() {
+            lblPickedValue.text = lblPickedValue.text! + " on \(picked.date.toShortString())"
+        }
+    }
+    
+    func getPickedValues() -> (reps: Int, weight: Double, date: NSDate) {
         let hundreds = repsPicker.selectedRowInComponent(1)
         let tens = repsPicker.selectedRowInComponent(2)
         let ones = onesValues[repsPicker.selectedRowInComponent(3)]
-        var picked = ""
-        //strip leading zeros
-        if hundreds == 0 {
-            if tens == 0 {
-                picked = "\(ones)"
-            } else {
-                picked = "\(tens)\(ones)"
-            }
-        }
-        else {
-            picked = "\(hundreds)\(tens)\(ones)"
-        }
-        lblPickedValue.text = "\(picked) x \(reps)"
-        //if reps were changed, go set the current PR
-        if component == 0 {
-            setPickersWithPrForRep(reps)
-        }
+        let date = datePicker.date
+        let weight = (Double(hundreds) * 100) + (Double(tens) * 10) + ones
+        return (self.reps, weight, date)
     }
     
     //MARK: - Write value into firebase
@@ -256,6 +261,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     //MARK: date picker
     func onDateChanged() {
-        println("date changed to \(datePicker.date.toIsoString())")
+        displayPickedValue()
+        switchPickerMode()
     }
 }

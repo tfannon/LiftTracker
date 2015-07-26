@@ -13,9 +13,9 @@ extension NSDate {
         return (self.toString(format: .ISO8601) as NSString).substringToIndex(10)
     }
     
-//    func toIsoNSString() -> NSString {
-//        return self.toString(format: .ISO8601) as NSString
-//    }
+    func toShortString() -> String {
+        return self.toString(dateStyle: .ShortStyle, timeStyle: .NoStyle, doesRelativeDateFormatting: false)
+    }
     
     convenience init(isoString : String) {
         let stringWithTime = isoString + " 00:00"
