@@ -145,7 +145,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let color = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        let color = [NSForegroundColorAttributeName:UIColor.blackColor()]
         switch (component) {
         case (0) : return NSAttributedString(string: "\(row+1)", attributes: color)
         case (1) : return NSAttributedString(string: "\(row)", attributes: color)
@@ -248,7 +248,6 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         if pickerMode == .Reps {
             repsPicker.hidden = true
             datePicker.hidden = false
-            //println(datePicker.date.toIsoString())
             btnDate.setTitle("Reps", forState: .Normal)
             pickerMode = .Date
         } else {
