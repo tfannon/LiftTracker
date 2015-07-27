@@ -28,12 +28,13 @@ class ProgressController: UIViewController, JBBarChartViewDataSource, JBBarChart
         barChartView.delegate = self;
         barChartView.backgroundColor = UIColor.darkGrayColor();
         barChartView.frame = CGRectMake(0, 20, self.view.bounds.width, self.view.bounds.height * 0.5);
+        barChartView.minimumValue = 0
         self.view.addSubview(barChartView);
         
         // Header
         headerView.frame = CGRectMake(padding,ceil(self.view.bounds.size.height * 0.5) - ceil(headerHeight * 0.5),self.view.bounds.width - padding*2, headerHeight)
-        headerView.titleLabel.text = "Loading..."
-        headerView.subtitleLabel.text = "Weather Forecast"
+        //headerView.titleLabel.text = "Loading..."
+        headerView.subtitleLabel.text = "Max Weight per Rep"
         barChartView.headerView = headerView
         
         // Footer
@@ -43,7 +44,7 @@ class ProgressController: UIViewController, JBBarChartViewDataSource, JBBarChart
         footerView.rightLabel.textColor = UIColor.whiteColor()
         barChartView.footerView = footerView
         
-        downloadData()
+        downloadLiftData()
     }
     
     func downloadData() {
@@ -70,6 +71,32 @@ class ProgressController: UIViewController, JBBarChartViewDataSource, JBBarChart
         }
     }
     
+    func downloadLiftData() {
+        var results = []
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd"
+        
+        var fbTestRoot = Firebase(url:"https://lifttracker2.firebaseio.com/test")
+        var fbTestUser : Firebase { get { return fbTestRoot.childByAppendingPath("JoeStrong2") }}
+        
+        FirebaseHelper.getPrs(fbTestUser, exercise: "benchpress", completion: { (result:[Int:[String:Double]]) in
+            //println(result)
+            let sortedKeys = result.keys.array.sorted { $0<$1 }
+            println(sortedKeys)
+            for rep in sortedKeys {
+                if let pr = FirebaseHelper.getPRForRep(result, rep: rep) {
+                    println(pr)
+                    self.chartLegend.append(String(rep))
+                    self.chartData.append(Float(pr.weight))
+                    self.chartBars.append(BarView(frame: CGRectZero, footer: self.footerView))
+                }
+            }
+            self.barChartView.reloadData();
+            self.barChartView.setState(JBChartViewState.Expanded, animated: true)
+        })
+    }
+    
+    
     
     /* Returns the numbers of BARs */
     func numberOfBarsInBarChartView(barChartView: JBBarChartView!) -> UInt {
@@ -83,10 +110,12 @@ class ProgressController: UIViewController, JBBarChartViewDataSource, JBBarChart
     
     /* Returns bar @ index */
     func barChartView(barChartView: JBBarChartView!, barViewAtIndex index: UInt) -> UIView! {
+
         var barView = chartBars[Int(index)]
         barView.backgroundColor = (Int(index) % 2 == 0 ) ? uicolorFromHex(0x34b234) : uicolorFromHex(0x08bcef)
         barView.legendLabel.text = chartLegend[Int(index)]
-        
+        barView.valueLabel.text = String(stringInterpolationSegment: chartData[Int(index)])
+        println("\(barView.valueLabel.text!) \(barView.legendLabel.text!)")
         return barView
     }
     

@@ -8,7 +8,11 @@
 
 import UIKit
 
+public typealias LogEntries = [Int:[String:Double]]
+
 public class FirebaseHelper {
+    
+    
     
     public static func getPrs(firebase : Firebase, exercise : String, completion: (result:[Int:[String:Double]]) -> Void)   {
         let firebasePr = firebase.childByAppendingPath("/\(FBNodeType.Exercises.rawValue)/\(exercise)/prs")
@@ -35,6 +39,24 @@ public class FirebaseHelper {
             completion(result: prs)
         })
     }
+    
+    public static func getPRForRep(entries : LogEntries, rep : Int) -> (date: String, weight: Double)? {
+        if let node = entries[rep] {
+            var largestDate : String = ""
+            var largestWeight : Double = 0
+            for (date,weight) in node {
+                if weight > largestWeight {
+                    largestWeight = weight
+                    largestDate = date
+                }
+            }
+            if largestWeight > 0 {
+                return (largestDate, largestWeight)
+            }
+        }
+        return nil
+    }
+    
     
     public static func updateLastLogin(user : Firebase) {
         let node = user.childByAppendingPath(FBNodeType.UserInfo.rawValue)

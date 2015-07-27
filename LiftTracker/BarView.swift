@@ -17,6 +17,8 @@ class BarView: UIView {
     var legendLabelWidth = CGFloat(50)
     var labelHeight = CGFloat(27)
     
+    var valueLabel = UILabel()
+    
     override init(frame: CGRect) {
         fatalError("Not Implemented")
     }
@@ -35,10 +37,16 @@ class BarView: UIView {
         legendLabel.shadowColor = UIColor.blackColor()
         legendLabel.shadowOffset = CGSizeMake(0, 1)
         legendLabel.backgroundColor = UIColor.clearColor()
-
         footer.addSubview(legendLabel)
-
         
+        valueLabel.frame = CGRectMake(0, 0, legendLabelWidth, labelHeight)
+        //valueLabel.frame = CGRectMake(0, 0, barWidth, labelHeight)
+        valueLabel.textAlignment = NSTextAlignment.Center
+        valueLabel.textColor = UIColor.yellowColor()
+        valueLabel.adjustsFontSizeToFitWidth = true
+        valueLabel.font = labelFont
+        self.addSubview(valueLabel)
+
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -50,8 +58,9 @@ class BarView: UIView {
         let yOffset:CGFloat = 0
         let width = self.frame.size.width
         let height = self.labelHeight
-        
+        println(xOffset, yOffset)
         self.legendLabel.frame = CGRectMake(xOffset, yOffset, width, height)
+        //self.valueLabel.frame = CGRectMake(xOffset, yOffset, width, height)
     }
     
     func uicolorFromHex(rgbValue:UInt32)->UIColor{

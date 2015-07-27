@@ -88,6 +88,40 @@ class FirebaseTests: XCTestCase {
         waitUntil(5) { done }
     }
     
+    func testBenchLifts() {
+        var done = false
+        let prs = fbTestUser.childByAppendingPath("/exercises/benchpress/prs")
+        var repNode = prs.childByAppendingPath("1")
+        repNode.childByAppendingPath("2015-07-01").setValue(315)
+        
+        repNode = prs.childByAppendingPath("5")
+        repNode.childByAppendingPath("2015-07-06").setValue(275)
+        
+        repNode = prs.childByAppendingPath("8")
+        repNode.childByAppendingPath("2015-07-07").setValue(240)
+        
+        repNode = prs.childByAppendingPath("10")
+        repNode.childByAppendingPath("2015-07-02").setValue(225)
+        
+        repNode = prs.childByAppendingPath("15")
+        repNode.childByAppendingPath("2015-07-04").setValue(230)
+        
+        repNode = prs.childByAppendingPath("20")
+        repNode.childByAppendingPath("2015-07-04").setValue(180)
+        
+        
+        prs.observeSingleEventOfType(.Value, withBlock: { (result : FDataSnapshot!) in
+            println(result)
+            for x in result.children {
+                println(x)
+            }
+            done = true
+        })
+        
+        waitUntil(5) { done }
+    }
+
+    
     func testClearPr() {
         var done = false
         
