@@ -14,7 +14,7 @@ enum PickMode {
 }
 
 
-class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, JBLineChartViewDataSource, JBLineChartViewDelegate {
+class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //MARK: outlets
     @IBOutlet weak var lblExercise: UILabel!
@@ -24,7 +24,6 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var btnDate: UIButton!
     
-    @IBOutlet weak var viewChart: UIView!
     
     //MARK: actions
     @IBAction func handleSaveTapped(sender: AnyObject) { self.saveEntry() }
@@ -62,13 +61,6 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         }
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped"))
-        
-        var chart = JBLineChartView()
-        chart.delegate = self
-        chart.dataSource = self
-        self.viewChart.addSubview(chart)
-
-        
     }
     
     func numberOfLinesInLineChartView(lineChartView: JBLineChartView!) -> UInt {
