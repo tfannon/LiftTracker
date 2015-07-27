@@ -22,6 +22,14 @@
 		656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656132D51A50C1270036689C /* ExerciseHeaderView.swift */; };
 		6574F65D1A806672007434C8 /* Exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65C1A806672007434C8 /* Exercises.json */; };
 		6574F65F1A80731D007434C8 /* BodypartsToExercises.json in Resources */ = {isa = PBXBuildFile; fileRef = 6574F65E1A80731D007434C8 /* BodypartsToExercises.json */; };
+		657FD1F71B655E6600E5F02E /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FD1F21B655E6600E5F02E /* JBBarChartView.m */; };
+		657FD1F81B655E6600E5F02E /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FD1F41B655E6600E5F02E /* JBChartView.m */; };
+		657FD1F91B655E6600E5F02E /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 657FD1F61B655E6600E5F02E /* JBLineChartView.m */; };
+		657FD1FB1B65816A00E5F02E /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FD1FA1B65816A00E5F02E /* ProgressController.swift */; };
+		657FD1FD1B658DF800E5F02E /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FD1FC1B658DF800E5F02E /* json.swift */; };
+		657FD1FF1B65B82A00E5F02E /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FD1FE1B65B82A00E5F02E /* FooterView.swift */; };
+		657FD2011B65C78000E5F02E /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FD2001B65C78000E5F02E /* BarView.swift */; };
+		657FD2031B65C9CB00E5F02E /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657FD2021B65C9CB00E5F02E /* HeaderView.swift */; };
 		658108931A5AA80800A1D380 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 658108921A5AA80800A1D380 /* Media.xcassets */; };
 		658277A81B54BE47001782E6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658277A51B54BE47001782E6 /* FBSDKCoreKit.framework */; };
 		658277A91B54BE47001782E6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658277A61B54BE47001782E6 /* FBSDKLoginKit.framework */; };
@@ -96,6 +104,17 @@
 		656132D51A50C1270036689C /* ExerciseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseHeaderView.swift; sourceTree = "<group>"; };
 		6574F65C1A806672007434C8 /* Exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Exercises.json; sourceTree = "<group>"; };
 		6574F65E1A80731D007434C8 /* BodypartsToExercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BodypartsToExercises.json; sourceTree = "<group>"; };
+		657FD1F11B655E6600E5F02E /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
+		657FD1F21B655E6600E5F02E /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
+		657FD1F31B655E6600E5F02E /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
+		657FD1F41B655E6600E5F02E /* JBChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartView.m; sourceTree = "<group>"; };
+		657FD1F51B655E6600E5F02E /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
+		657FD1F61B655E6600E5F02E /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
+		657FD1FA1B65816A00E5F02E /* ProgressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
+		657FD1FC1B658DF800E5F02E /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
+		657FD1FE1B65B82A00E5F02E /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		657FD2001B65C78000E5F02E /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		657FD2021B65C9CB00E5F02E /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		658108921A5AA80800A1D380 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		658277A51B54BE47001782E6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		658277A61B54BE47001782E6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -177,6 +196,7 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
+				657FD1F01B655E6600E5F02E /* Classes */,
 				65F60F681B34DC3E004DEDAB /* Extensions */,
 				659163711B1BEFA40087244E /* 3rdParty */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
@@ -216,9 +236,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		657FD1F01B655E6600E5F02E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				657FD1F11B655E6600E5F02E /* JBBarChartView.h */,
+				657FD1F21B655E6600E5F02E /* JBBarChartView.m */,
+				657FD1F31B655E6600E5F02E /* JBChartView.h */,
+				657FD1F41B655E6600E5F02E /* JBChartView.m */,
+				657FD1F51B655E6600E5F02E /* JBLineChartView.h */,
+				657FD1F61B655E6600E5F02E /* JBLineChartView.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		659163711B1BEFA40087244E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				657FD1FC1B658DF800E5F02E /* json.swift */,
 				650EAD991B4C91160062C999 /* AFDateExtension.swift */,
 			);
 			name = 3rdParty;
@@ -243,6 +277,9 @@
 		65A884C31B291D6A0024EEA1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				657FD2001B65C78000E5F02E /* BarView.swift */,
+				657FD2021B65C9CB00E5F02E /* HeaderView.swift */,
+				657FD1FE1B65B82A00E5F02E /* FooterView.swift */,
 				656132CF1A50B2940036689C /* BodypartCell.swift */,
 				656132B11A50B06B0036689C /* BodypartController.swift */,
 				656132D11A50B2B60036689C /* ExerciseCell.swift */,
@@ -250,6 +287,7 @@
 				656132D51A50C1270036689C /* ExerciseHeaderView.swift */,
 				65C1C93D1A5206F40088A2DB /* SetupController.swift */,
 				654C4F131B3D753C0027367D /* SetRepController.swift */,
+				657FD1FA1B65816A00E5F02E /* ProgressController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -432,20 +470,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				65F60F6A1B34DC4E004DEDAB /* StringExtensions.swift in Sources */,
+				657FD1F91B655E6600E5F02E /* JBLineChartView.m in Sources */,
 				656132B21A50B06B0036689C /* BodypartController.swift in Sources */,
 				65C1C93E1A5206F40088A2DB /* SetupController.swift in Sources */,
 				656132D41A50B8E70036689C /* ExerciseController.swift in Sources */,
 				656132D61A50C1270036689C /* ExerciseHeaderView.swift in Sources */,
 				650EAD9A1B4C91160062C999 /* AFDateExtension.swift in Sources */,
+				657FD1FD1B658DF800E5F02E /* json.swift in Sources */,
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
 				65C947F21B261C5A00C3024A /* Importer.swift in Sources */,
 				65B403E21B5CABFF00AEDE1A /* NSDateExtensions.swift in Sources */,
+				657FD1F71B655E6600E5F02E /* JBBarChartView.m in Sources */,
 				65F01A691AA4DCD0003FBBBF /* UIViewControllerExtensions.swift in Sources */,
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,
+				657FD1FB1B65816A00E5F02E /* ProgressController.swift in Sources */,
+				657FD1FF1B65B82A00E5F02E /* FooterView.swift in Sources */,
 				65B403E01B5CA65600AEDE1A /* NodeEnums.swift in Sources */,
 				656132D21A50B2B60036689C /* ExerciseCell.swift in Sources */,
 				654C4F141B3D753C0027367D /* SetRepController.swift in Sources */,
+				657FD1F81B655E6600E5F02E /* JBChartView.m in Sources */,
 				65A884B41B2919790024EEA1 /* FirebaseHelper.swift in Sources */,
+				657FD2031B65C9CB00E5F02E /* HeaderView.swift in Sources */,
+				657FD2011B65C78000E5F02E /* BarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

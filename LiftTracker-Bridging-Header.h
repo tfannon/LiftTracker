@@ -5,3 +5,7 @@
 #import <Firebase/Firebase.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+#import "LiftTracker/Classes/JBChartView.h"
+#import "LiftTracker/Classes/JBBarChartView.h"
+#import "LiftTracker/Classes/JBLineChartView.h"
