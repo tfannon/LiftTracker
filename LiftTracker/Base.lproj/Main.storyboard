@@ -287,12 +287,12 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="HsV-YX-mFO"/>
+                                        <exclude reference="xzz-XC-uBy"/>
                                         <exclude reference="FH1-3p-scE"/>
                                         <exclude reference="VCO-YO-svo"/>
                                         <exclude reference="Xak-hl-Jmk"/>
                                         <exclude reference="bn1-Jc-rkN"/>
                                         <exclude reference="nrr-w0-w7m"/>
-                                        <exclude reference="xzz-XC-uBy"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -303,31 +303,31 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="HsV-YX-mFO"/>
+                                        <include reference="xzz-XC-uBy"/>
                                         <include reference="FH1-3p-scE"/>
                                         <include reference="VCO-YO-svo"/>
                                         <include reference="Xak-hl-Jmk"/>
                                         <include reference="bn1-Jc-rkN"/>
                                         <include reference="nrr-w0-w7m"/>
-                                        <include reference="xzz-XC-uBy"/>
                                     </mask>
                                 </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="zaU-lP-jfi" secondAttribute="bottom" constant="10" id="1qK-A8-uzG"/>
+                            <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="zaU-lP-jfi" secondAttribute="bottom" constant="5" id="1qK-A8-uzG"/>
                             <constraint firstAttribute="centerX" secondItem="9hj-yE-HfT" secondAttribute="centerX" id="2x0-ui-QTb"/>
-                            <constraint firstItem="9hj-yE-HfT" firstAttribute="top" secondItem="aNa-Qj-nKP" secondAttribute="bottom" constant="19" id="AF3-dJ-foC"/>
-                            <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="20" id="Dib-XZ-UtR"/>
+                            <constraint firstItem="9hj-yE-HfT" firstAttribute="top" secondItem="aNa-Qj-nKP" secondAttribute="bottom" constant="-10" id="AF3-dJ-foC"/>
+                            <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="-5" id="Dib-XZ-UtR"/>
                             <constraint firstItem="9hj-yE-HfT" firstAttribute="leading" secondItem="qLZ-Tb-dAo" secondAttribute="leading" id="O0g-A3-nWy"/>
-                            <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="26" id="SiS-jq-gGY"/>
+                            <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="10" id="SiS-jq-gGY"/>
                             <constraint firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="VmI-fJ-sEX"/>
                             <constraint firstAttribute="centerX" secondItem="2Pg-Pf-0F3" secondAttribute="centerX" id="Wui-cm-Fif"/>
                             <constraint firstAttribute="centerX" secondItem="xc7-Fs-Jef" secondAttribute="centerX" id="cHI-X7-aV2"/>
-                            <constraint firstItem="aNa-Qj-nKP" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="20" id="eoc-En-rNn"/>
+                            <constraint firstItem="aNa-Qj-nKP" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="-5" id="eoc-En-rNn"/>
                             <constraint firstAttribute="centerX" secondItem="aNa-Qj-nKP" secondAttribute="centerX" id="n9k-Wm-t05"/>
                             <constraint firstAttribute="centerX" secondItem="zaU-lP-jfi" secondAttribute="centerX" id="qNQ-8i-jou"/>
-                            <constraint firstItem="zaU-lP-jfi" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="8" id="rNS-M9-cd5"/>
+                            <constraint firstItem="zaU-lP-jfi" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="5" id="rNS-M9-cd5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -338,8 +338,6 @@
                             <mask key="constraints">
                                 <exclude reference="qNQ-8i-jou"/>
                                 <exclude reference="rNS-M9-cd5"/>
-                                <exclude reference="SiS-jq-gGY"/>
-                                <exclude reference="Wui-cm-Fif"/>
                                 <exclude reference="eoc-En-rNn"/>
                                 <exclude reference="n9k-Wm-t05"/>
                                 <exclude reference="Dib-XZ-UtR"/>
@@ -349,6 +347,8 @@
                                 <exclude reference="2x0-ui-QTb"/>
                                 <exclude reference="AF3-dJ-foC"/>
                                 <exclude reference="O0g-A3-nWy"/>
+                                <exclude reference="SiS-jq-gGY"/>
+                                <exclude reference="Wui-cm-Fif"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -358,11 +358,11 @@
                             <mask key="constraints">
                                 <include reference="qNQ-8i-jou"/>
                                 <include reference="rNS-M9-cd5"/>
-                                <include reference="SiS-jq-gGY"/>
-                                <include reference="Wui-cm-Fif"/>
                                 <include reference="Dib-XZ-UtR"/>
                                 <include reference="1qK-A8-uzG"/>
                                 <include reference="cHI-X7-aV2"/>
+                                <include reference="SiS-jq-gGY"/>
+                                <include reference="Wui-cm-Fif"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
