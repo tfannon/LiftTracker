@@ -63,17 +63,6 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped"))
     }
     
-    func numberOfLinesInLineChartView(lineChartView: JBLineChartView!) -> UInt {
-        return 1
-    }
-    
-    func lineChartView(lineChartView: JBLineChartView!, numberOfVerticalValuesAtLineIndex lineIndex: UInt) -> UInt {
-        return 2
-    }
-    
-    func lineChartView(lineChartView: JBLineChartView!, verticalValueForHorizontalIndex horizontalIndex: UInt, atLineIndex lineIndex: UInt) -> CGFloat {
-        return CGFloat(lineIndex + 1)
-    }
     
     func viewTapped() {
         if pickerMode == .Date {
@@ -148,16 +137,32 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     }
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let color = [NSForegroundColorAttributeName:UIColor.blackColor()]
+        let attributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+                          //NSFontAttributeName: UIFont.systemFontOfSize(UIFont.smallSystemFontSize())] //size not supported in pickerview
         switch (component) {
-        case (0) : return NSAttributedString(string: "\(row+1)", attributes: color)
-        case (1) : return NSAttributedString(string: "\(row)", attributes: color)
-        case (2) : return NSAttributedString(string: "\(row)", attributes: color)
-        case (3) : return NSAttributedString(string: "\(onesValues[row])", attributes: color)
+        case (0) : return NSAttributedString(string: "\(row+1)", attributes: attributes)
+        case (1) : return NSAttributedString(string: "\(row)", attributes: attributes)
+        case (2) : return NSAttributedString(string: "\(row)", attributes: attributes)
+        case (3) : return NSAttributedString(string: "\(onesValues[row])", attributes: attributes)
         default : return nil
         }
-        
     }
+    
+//    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView!) -> UIView
+//    {
+//        var pickerLabel = UILabel()
+//        pickerLabel.textColor = UIColor.blackColor()
+//        pickerLabel.font = UIFont(name: "Arial-BoldMT", size: 20) // In this use your custom font
+//        pickerLabel.textAlignment = NSTextAlignment.Center
+//        
+//        switch (component) {
+//            case 0 :   pickerLabel.text = "\(row+1)"
+//            case 1,2:  pickerLabel.text =  "\(row)"
+//            case 3 :   pickerLabel.text = "\(onesValues[row])"
+//            default:""
+//        }
+//        return pickerLabel
+//    }
     
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         if component == 0 {
