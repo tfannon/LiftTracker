@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LH8-nl-3Ia">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Bodypart Controller-->
@@ -303,19 +304,16 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDz-PO-MRp" userLabel="Chart">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="378" width="400" height="305"/>
-                                </variation>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xc7-Fs-Jef" firstAttribute="top" secondItem="zaU-lP-jfi" secondAttribute="bottom" constant="5" id="1qK-A8-uzG"/>
                             <constraint firstAttribute="centerX" secondItem="9hj-yE-HfT" secondAttribute="centerX" id="2x0-ui-QTb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pDz-PO-MRp" secondAttribute="trailing" id="7GQ-71-QCV"/>
                             <constraint firstItem="9hj-yE-HfT" firstAttribute="top" secondItem="aNa-Qj-nKP" secondAttribute="bottom" constant="-20" id="AF3-dJ-foC"/>
                             <constraint firstItem="huc-Jn-gxX" firstAttribute="top" secondItem="xc7-Fs-Jef" secondAttribute="bottom" constant="-5" id="Dib-XZ-UtR"/>
-                            <constraint firstItem="pDz-PO-MRp" firstAttribute="top" secondItem="9hj-yE-HfT" secondAttribute="bottom" id="JM4-2X-8P2"/>
                             <constraint firstItem="9hj-yE-HfT" firstAttribute="leading" secondItem="qLZ-Tb-dAo" secondAttribute="leading" id="O0g-A3-nWy"/>
                             <constraint firstItem="2Pg-Pf-0F3" firstAttribute="top" secondItem="GYQ-Fp-DMV" secondAttribute="bottom" constant="10" id="SiS-jq-gGY"/>
                             <constraint firstAttribute="centerX" secondItem="huc-Jn-gxX" secondAttribute="centerX" id="VmI-fJ-sEX"/>
@@ -325,6 +323,9 @@
                             <constraint firstAttribute="centerX" secondItem="aNa-Qj-nKP" secondAttribute="centerX" id="n9k-Wm-t05"/>
                             <constraint firstAttribute="centerX" secondItem="zaU-lP-jfi" secondAttribute="centerX" id="qNQ-8i-jou"/>
                             <constraint firstItem="zaU-lP-jfi" firstAttribute="top" secondItem="2Pg-Pf-0F3" secondAttribute="bottom" constant="5" id="rNS-M9-cd5"/>
+                            <constraint firstItem="pDz-PO-MRp" firstAttribute="leading" secondItem="qLZ-Tb-dAo" secondAttribute="leadingMargin" id="t1t-rl-aGh"/>
+                            <constraint firstItem="pDz-PO-MRp" firstAttribute="top" secondItem="9hj-yE-HfT" secondAttribute="bottom" id="twT-Fv-kid"/>
+                            <constraint firstItem="Xlo-6R-YIH" firstAttribute="top" secondItem="pDz-PO-MRp" secondAttribute="bottom" id="xll-CM-T24"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -348,7 +349,10 @@
                                 <exclude reference="2x0-ui-QTb"/>
                                 <exclude reference="AF3-dJ-foC"/>
                                 <exclude reference="O0g-A3-nWy"/>
-                                <exclude reference="JM4-2X-8P2"/>
+                                <exclude reference="7GQ-71-QCV"/>
+                                <exclude reference="t1t-rl-aGh"/>
+                                <exclude reference="twT-Fv-kid"/>
+                                <exclude reference="xll-CM-T24"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -379,7 +383,10 @@
                                 <include reference="2x0-ui-QTb"/>
                                 <include reference="AF3-dJ-foC"/>
                                 <include reference="O0g-A3-nWy"/>
-                                <include reference="JM4-2X-8P2"/>
+                                <include reference="7GQ-71-QCV"/>
+                                <include reference="t1t-rl-aGh"/>
+                                <include reference="twT-Fv-kid"/>
+                                <include reference="xll-CM-T24"/>
                             </mask>
                         </variation>
                     </view>
