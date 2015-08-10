@@ -222,12 +222,14 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
             println("saved \(picked)")
             //if there is no PR or the weight is > PR, it is a new PR
             //if the date is the same, overwrite the PR
-            if currentPR == nil || picked.weight > currentPR!.weight || picked.date == currentPR!.date  {
+            if picked.weight > 0 && (currentPR == nil || picked.weight > currentPR!.weight || picked.date == currentPR!.date)  {
                 self.displayPR(reps, weight: picked.weight, date: picked.date)
+                SVProgressHUD.showInfoWithStatus("Saved")
+            }
+            else {
+                SVProgressHUD.showErrorWithStatus("Nothing changed")
             }
         })
-
-        //todo: throw alert box
     }
     
     func getPRForRep(rep : Int) -> (date : String, weight : Double)? {
@@ -249,16 +251,20 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     
     func clearPr() {
-//        if let pr = currentPrInPicker {
-//            let prToClear = firebase.childByAppendingPath("/exercises/\(exercise.key)/prs/\(pr.reps)/\(pr.date)")
-//            prToClear.removeValueWithCompletionBlock( { (result) in
-//                println("cleared \(prToClear.description)")
-//                //update our in place dictionary
-//                self.prs[pr.reps]!.removeValueForKey(pr.date)
-//                //go lookup the new pr
-//                self.setPickersWithPrForRep(pr.reps)
-//            })
-//        }
+        let picked = getPickedValues()
+        if let entry = entries[picked.reps] where !entry.isEmpty {
+            let node = firebasePr.childByAppendingPath("/\(reps)/\(picked.date)")
+                node.removeValueWithCompletionBlock { (error,result)  in
+                    println("removed \(result)")
+                    self.entries[picked.reps]!.removeValueForKey(picked.date)
+                    SVProgressHUD.showInfoWithStatus("Date cleared")
+                    self.setPickersWithPrForRep(picked.reps)
+                }
+        }
+        else {
+            SVProgressHUD.showErrorWithStatus("No entries for \(picked.reps) reps")
+        }
+    
     }
     
     //MARK: date button
@@ -269,7 +275,7 @@ class SetRepController : UIViewController, UIPickerViewDataSource, UIPickerViewD
     //MARK: date picker
     func onDateChanged() {
         displayPickedValue()
-        switchPickerMode()
+        //switchPickerMode()
     }
     
     func switchPickerMode() {

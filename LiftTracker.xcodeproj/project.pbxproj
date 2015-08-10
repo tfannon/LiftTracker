@@ -58,6 +58,10 @@
 		65C1C9441A5209090088A2DB /* 910-graph@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9411A5209090088A2DB /* 910-graph@3x.png */; };
 		65C1C94A1A521B4A0088A2DB /* dumbells.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65C1C9491A521B4A0088A2DB /* dumbells.jpg */; };
 		65C947F21B261C5A00C3024A /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C947F11B261C5A00C3024A /* Importer.swift */; };
+		65E751751B78496E006F97D7 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E751701B78496E006F97D7 /* SVIndefiniteAnimatedView.m */; };
+		65E751761B78496E006F97D7 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65E751721B78496E006F97D7 /* SVProgressHUD.bundle */; };
+		65E751771B78496E006F97D7 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E751741B78496E006F97D7 /* SVProgressHUD.m */; };
+		65E751791B7849A2006F97D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E751781B7849A2006F97D7 /* QuartzCore.framework */; };
 		65F01A691AA4DCD0003FBBBF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F01A681AA4DCD0003FBBBF /* UIViewControllerExtensions.swift */; };
 		65F60F6A1B34DC4E004DEDAB /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F60F691B34DC4E004DEDAB /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -142,6 +146,13 @@
 		65C1C9411A5209090088A2DB /* 910-graph@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "910-graph@3x.png"; sourceTree = "<group>"; };
 		65C1C9491A521B4A0088A2DB /* dumbells.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dumbells.jpg; sourceTree = "<group>"; };
 		65C947F11B261C5A00C3024A /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
+		65E7516F1B78496E006F97D7 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		65E751701B78496E006F97D7 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		65E751711B78496E006F97D7 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		65E751721B78496E006F97D7 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		65E751731B78496E006F97D7 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		65E751741B78496E006F97D7 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		65E751781B7849A2006F97D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		65F01A681AA4DCD0003FBBBF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		65F60F691B34DC4E004DEDAB /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E751791B7849A2006F97D7 /* QuartzCore.framework in Frameworks */,
 				65A884BD1B291C330024EEA1 /* SystemConfiguration.framework in Frameworks */,
 				65A884BB1B291C270024EEA1 /* Security.framework in Frameworks */,
 				65A884B91B291C1D0024EEA1 /* CFNetwork.framework in Frameworks */,
@@ -196,7 +208,6 @@
 		656132A91A50B06B0036689C /* LiftTracker */ = {
 			isa = PBXGroup;
 			children = (
-				657FD1F01B655E6600E5F02E /* Classes */,
 				65F60F681B34DC3E004DEDAB /* Extensions */,
 				659163711B1BEFA40087244E /* 3rdParty */,
 				656132AC1A50B06B0036689C /* AppDelegate.swift */,
@@ -236,7 +247,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		657FD1F01B655E6600E5F02E /* Classes */ = {
+		657FD1F01B655E6600E5F02E /* JBCharts */ = {
 			isa = PBXGroup;
 			children = (
 				657FD1F11B655E6600E5F02E /* JBBarChartView.h */,
@@ -246,12 +257,15 @@
 				657FD1F51B655E6600E5F02E /* JBLineChartView.h */,
 				657FD1F61B655E6600E5F02E /* JBLineChartView.m */,
 			);
+			name = JBCharts;
 			path = Classes;
 			sourceTree = "<group>";
 		};
 		659163711B1BEFA40087244E /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				657FD1F01B655E6600E5F02E /* JBCharts */,
+				65E7516E1B78496E006F97D7 /* SVProgressHUD */,
 				657FD1FC1B658DF800E5F02E /* json.swift */,
 				650EAD991B4C91160062C999 /* AFDateExtension.swift */,
 			);
@@ -261,6 +275,7 @@
 		659163731B1C00AE0087244E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65E751781B7849A2006F97D7 /* QuartzCore.framework */,
 				658277A51B54BE47001782E6 /* FBSDKCoreKit.framework */,
 				658277A61B54BE47001782E6 /* FBSDKLoginKit.framework */,
 				658277A71B54BE47001782E6 /* FBSDKShareKit.framework */,
@@ -322,6 +337,19 @@
 				65B403DF1B5CA65600AEDE1A /* NodeEnums.swift */,
 			);
 			name = DataAccess;
+			sourceTree = "<group>";
+		};
+		65E7516E1B78496E006F97D7 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				65E7516F1B78496E006F97D7 /* SVIndefiniteAnimatedView.h */,
+				65E751701B78496E006F97D7 /* SVIndefiniteAnimatedView.m */,
+				65E751711B78496E006F97D7 /* SVProgressHUD-Prefix.pch */,
+				65E751721B78496E006F97D7 /* SVProgressHUD.bundle */,
+				65E751731B78496E006F97D7 /* SVProgressHUD.h */,
+				65E751741B78496E006F97D7 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		65F60F681B34DC3E004DEDAB /* Extensions */ = {
@@ -420,6 +448,7 @@
 			files = (
 				656132B51A50B06B0036689C /* Main.storyboard in Resources */,
 				65C1C9291A5204710088A2DB /* 1091-weights@2x.png in Resources */,
+				65E751761B78496E006F97D7 /* SVProgressHUD.bundle in Resources */,
 				658108931A5AA80800A1D380 /* Media.xcassets in Resources */,
 				6574F65D1A806672007434C8 /* Exercises.json in Resources */,
 				65C1C9431A5209090088A2DB /* 910-graph@2x.png in Resources */,
@@ -480,6 +509,8 @@
 				656132AD1A50B06B0036689C /* AppDelegate.swift in Sources */,
 				65C947F21B261C5A00C3024A /* Importer.swift in Sources */,
 				65B403E21B5CABFF00AEDE1A /* NSDateExtensions.swift in Sources */,
+				65E751751B78496E006F97D7 /* SVIndefiniteAnimatedView.m in Sources */,
+				65E751771B78496E006F97D7 /* SVProgressHUD.m in Sources */,
 				657FD1F71B655E6600E5F02E /* JBBarChartView.m in Sources */,
 				65F01A691AA4DCD0003FBBBF /* UIViewControllerExtensions.swift in Sources */,
 				656132D01A50B2940036689C /* BodypartCell.swift in Sources */,

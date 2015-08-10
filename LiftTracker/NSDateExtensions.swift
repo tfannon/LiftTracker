@@ -19,7 +19,7 @@ extension NSDate {
     
     convenience init(isoString : String) {
         let stringWithTime = isoString + "T00:00:00-05:00"
-        println("NSDate constructed with \(stringWithTime)")
+        //println("NSDate constructed with \(stringWithTime)")
         self.init(fromString: stringWithTime, format: .ISO8601)
     }
     

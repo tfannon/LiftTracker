@@ -84,7 +84,7 @@ class ProgressController: UIViewController, JBBarChartViewDataSource, JBBarChart
             let sortedKeys = result.keys.array.sorted { $0<$1 }
             println(sortedKeys)
             for rep in sortedKeys {
-                if let pr = FirebaseHelper.getPRForRep(result, rep: rep) {
+                if let pr = FirebaseHelper.getPrForRep(result, rep: rep) {
                     println(pr)
                     self.chartLegend.append(String(rep))
                     self.chartData.append(Float(pr.weight))

@@ -40,7 +40,7 @@ public class FirebaseHelper {
         })
     }
     
-    public static func getPRForRep(entries : LogEntries, rep : Int) -> (date: String, weight: Double)? {
+    public static func getPrForRep(entries : LogEntries, rep : Int) -> (date: String, weight: Double)? {
         if let node = entries[rep] {
             var largestDate : String = ""
             var largestWeight : Double = 0

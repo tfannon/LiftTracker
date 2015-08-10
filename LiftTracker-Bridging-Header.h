@@ -9,3 +9,5 @@
 #import "LiftTracker/Classes/JBChartView.h"
 #import "LiftTracker/Classes/JBBarChartView.h"
 #import "LiftTracker/Classes/JBLineChartView.h"
+
+#import "LiftTracker/SVProgressHUD/SVProgressHUD.h"
